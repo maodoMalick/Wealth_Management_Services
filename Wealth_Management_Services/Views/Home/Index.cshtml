@@ -1,0 +1,32 @@
+﻿@model Wealth_Management_Services.Models.Departments
+
+@*@using Wealth_Management_Services.Models*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/modernizr-2.8.3.js"></script>
+
+
+<div id="mainContainer">
+
+    <h2>Welcome to Management</h2>
+
+    @*@using(Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        foreach(SelectListItem item in Model.getDepartments())
+        {
+            Html.ActionLink(item.Text, "Index", "Home", new { Value = item.Value });
+        }
+    }*@
+
+</div>
+
+
+
