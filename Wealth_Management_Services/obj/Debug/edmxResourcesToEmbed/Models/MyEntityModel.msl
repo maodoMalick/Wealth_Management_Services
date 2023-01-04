@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseLessonsVaultModelStoreContainer" CdmEntityContainer="DataConnector">
+    <EntitySetMapping Name="brokers">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.broker">
+        <MappingFragment StoreEntitySet="broker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="investors">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.investor">
+        <MappingFragment StoreEntitySet="investor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+          <ScalarProperty Name="capital" ColumnName="capital" />
+          <ScalarProperty Name="latestDividend" ColumnName="latestDividend" />
+          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+          <ScalarProperty Name="retryAttempts" ColumnName="retryAttempts" />
+          <ScalarProperty Name="isLocked" ColumnName="isLocked" />
+          <ScalarProperty Name="lockOutTime" ColumnName="lockOutTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="managements">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.management">
+        <MappingFragment StoreEntitySet="management">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

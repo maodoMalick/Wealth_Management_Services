@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Wealth_Management_Services.Models;
 
 namespace Wealth_Management_Services.Areas.Brokers.Controllers
 {
@@ -10,6 +11,17 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
     {
         // GET: Brokers/Home
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(broker broker)
+        {
+            return View("~/Views/Home/Dashboard.cshtml");
+        }
+
+        public ActionResult Registration()
         {
             return View();
         }

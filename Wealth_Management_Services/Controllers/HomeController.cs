@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Wealth_Management_Services.Models;
 
 namespace Wealth_Management_Services.Controllers
@@ -12,20 +13,12 @@ namespace Wealth_Management_Services.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //Departments departments = new Departments();
-            //return View(departments.getDepartments());
-            //IEnumerable<SelectListItem> selectListItems = Departments.getDepartments;
             return View(new Departments());
         }
 
-        //[HttpPost]
-        //public ActionResult Index(string value)
-        //{
-        //    switch (value)
-        //    {
-        //        case "investors":
-        //            return RedirectToAction("Index");
-        //    }
-        //}
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
     }
 }

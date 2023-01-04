@@ -70,3 +70,7 @@ C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Ser
 C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\obj\Debug\Wealth_Management_Services.csproj.CopyComplete
 C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\obj\Debug\Wealth_Management_Services.dll
 C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\obj\Debug\Wealth_Management_Services.pdb
+C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\bin\EntityFramework.dll
+C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\bin\EntityFramework.SqlServer.dll
+C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\bin\EntityFramework.xml
+C:\Users\pc\Dropbox\GIT_WINDOWS\Wealth_Management_Services\Wealth_Management_Services\bin\EntityFramework.SqlServer.xml

@@ -8,7 +8,7 @@ namespace Wealth_Management_Services.Models
 {
     public class Departments
     {
-        public static IEnumerable<SelectListItem> getDepartments
+        public IEnumerable<SelectListItem> getDepartments
         {
             get
             {
@@ -16,7 +16,7 @@ namespace Wealth_Management_Services.Models
                 new SelectListItem(){ Text = "INVESTORS", Value = "investors"},
                 new SelectListItem(){ Text = "BROKERS", Value = "brokers"},
                 new SelectListItem(){ Text = "MANAGEMENT", Value = "management"}
-            };
+                };
             }
         }
     }

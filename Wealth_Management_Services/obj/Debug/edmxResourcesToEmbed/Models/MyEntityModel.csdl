@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseLessonsVaultModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="broker">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="commission" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="hireDate" Type="DateTime" Precision="3" />
+    <Property Name="managerID" Type="Int32" />
+    <NavigationProperty Name="management" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="broker" ToRole="management" />
+    <NavigationProperty Name="investors" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="broker" ToRole="investor" />
+  </EntityType>
+  <EntityType Name="investor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberSince" Type="DateTime" Precision="3" />
+    <Property Name="capital" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="latestDividend" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="brokerID" Type="Int32" />
+    <Property Name="retryAttempts" Type="Int32" />
+    <Property Name="isLocked" Type="Int32" />
+    <Property Name="lockOutTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="broker" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="investor" ToRole="broker" />
+  </EntityType>
+  <EntityType Name="management">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="hireDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="brokers" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="management" ToRole="broker" />
+  </EntityType>
+  <Association Name="FK__broker__managerI__398D8EEE">
+    <End Role="management" Type="Self.management" Multiplicity="0..1" />
+    <End Role="broker" Type="Self.broker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="management">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="broker">
+        <PropertyRef Name="managerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__investor__broker__3C69FB99">
+    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+    <End Role="investor" Type="Self.investor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="broker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="investor">
+        <PropertyRef Name="brokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataConnector" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="brokers" EntityType="Self.broker" />
+    <EntitySet Name="investors" EntityType="Self.investor" />
+    <EntitySet Name="managements" EntityType="Self.management" />
+    <AssociationSet Name="FK__broker__managerI__398D8EEE" Association="Self.FK__broker__managerI__398D8EEE">
+      <End Role="management" EntitySet="managements" />
+      <End Role="broker" EntitySet="brokers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__investor__broker__3C69FB99" Association="Self.FK__investor__broker__3C69FB99">
+      <End Role="broker" EntitySet="brokers" />
+      <End Role="investor" EntitySet="investors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

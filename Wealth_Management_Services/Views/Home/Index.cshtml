@@ -16,15 +16,22 @@
 
 <div id="mainContainer">
 
-    <h2>Welcome to Management</h2>
+    <h2 id="head2">Welcome to Wealth Management</h2>
 
-    @*@using(Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
-        foreach(SelectListItem item in Model.getDepartments())
+    <div id="statement">
+        At Wealth Management Services our professionals take the time to listen carefully to every client. That way, we can learn about your situation and life goals and better understand what's most important to you. Our main goal is to help individuals grow their portfolios and plan for a better retirement.
+    </div>
+
+    <br />
+    <br />
+
+    @{
+        foreach (var item in Model.getDepartments)
         {
-            Html.ActionLink(item.Text, "Index", "Home", new { Value = item.Value });
+            @Html.ActionLink(item.Text, "Index", "Home", new { area = item.Value }, null);
+            <br />
         }
-    }*@
+    }
 
 </div>
 
