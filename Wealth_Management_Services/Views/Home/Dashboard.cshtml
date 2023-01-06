@@ -1,7 +1,22 @@
-﻿
+﻿@model IEnumerable<Wealth_Management_Services.Models.management>
 @{
     ViewBag.Title = "Dashboard";
 }
 
 <h2>Main Dashboard</h2>
+
+<table width="500px" border="1">
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@m.name</td>
+            <td>@m.username</td>
+            <td>@m.password</td>
+            <td>@m.gender</td>
+            <td>@m.email</td>
+            <td>@m.salary</td>
+            <td>@m.hireDate</td>
+        </tr>
+    }
+</table>
 

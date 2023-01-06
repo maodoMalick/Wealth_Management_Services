@@ -6,12 +6,11 @@
 
 <h3>Management Registration</h3>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Registration", "Home", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>management</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -74,7 +73,11 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Register" class="btn btn-default" />
             </div>
+            <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold;">
+                @ViewBag.Warning
+            </div>
         </div>
+
     </div>
 }
 

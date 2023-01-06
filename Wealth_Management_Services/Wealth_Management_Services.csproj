@@ -166,6 +166,8 @@
     <Compile Include="Models\broker.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Departments.cs" />
     <Compile Include="Models\investor.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
@@ -188,6 +190,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MyEntityModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +206,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Home\testing.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

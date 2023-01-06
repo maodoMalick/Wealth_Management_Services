@@ -1,7 +1,5 @@
 ﻿@model Wealth_Management_Services.Models.Departments
 
-@*@using Wealth_Management_Services.Models*@
-
 @{
     ViewBag.Title = "Index";
 }
@@ -25,6 +23,7 @@
     <br />
     <br />
 
+    <!--When clicked each Department will send user to a specific Area-->
     @{
         foreach (var item in Model.getDepartments)
         {
@@ -32,6 +31,7 @@
             <br />
         }
     }
+    <br />
 
 </div>
 
