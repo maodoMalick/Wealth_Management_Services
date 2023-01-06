@@ -11,7 +11,7 @@ namespace Wealth_Management_Services.Models
     public partial class management
     {
         [Required]
-        [Compare("Passwords don't match")]
+        [Compare("password")]
         [DisplayName("confirm password")]
         public string confirmPassword { get; set; }
     }
