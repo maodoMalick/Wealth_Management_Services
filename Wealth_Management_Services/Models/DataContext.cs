@@ -8,14 +8,11 @@ namespace Wealth_Management_Services.Models
     public class DataContext
     {
         // Database Connection
-        //SqlConnection conn = Connection.getConnection();
-        // Entity Framework Data
-        DataConnector Connector = new DataConnector();
+        SqlConnection conn = Connection.getConnection();
 
         public int Management_Registration(management mgmt)
         {
-            string cstr = ConfigurationManager.ConnectionStrings["CONN"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(cstr))
+            using (conn)
             {
                 SqlCommand cmd = new SqlCommand("Mgmt_Registration_sp", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -45,6 +42,17 @@ namespace Wealth_Management_Services.Models
                 // Will return 1 or -1 to the MVC program
                 return returnCode;
             }
+        }
+
+        public int Broker_Registration(management mgmt)
+        {
+            using (conn)
+            {
+                SqlCommand cmd = new SqlCommand("Investor_Registration_sp", conn);
+
+            }
+
+            return 
         }
     }
 }

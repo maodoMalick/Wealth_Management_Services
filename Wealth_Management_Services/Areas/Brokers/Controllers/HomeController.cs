@@ -25,5 +25,11 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Registration(broker broker)
+        {
+            return View();
+        }
     }
 }
