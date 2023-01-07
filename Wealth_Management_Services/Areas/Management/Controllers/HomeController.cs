@@ -8,14 +8,13 @@ using System.Threading;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-
-
+using Wealth_Management_Services.ViewModel;
 
 namespace Wealth_Management_Services.Areas.Management.Controllers
 {
     public class HomeController : Controller
     {
-        // 
+        // Entity Framework Data Object
         DataContext dataContext = new DataContext();
 
         public ActionResult Index()
@@ -25,9 +24,26 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
 
         // User Login
         [HttpPost]
-        public ActionResult Login(management management)
+        public ActionResult Login(management mgmt)
         {
-            return View("~/Views/Home/Dashboard.cshtml");
+            if (ModelState.IsValid)
+            {
+                // Get Authentication from Database
+                int result = dataContext.Management_Login(mgmt);
+
+                if (result == 1)
+                {
+                    MyViewModel.Welcome = "Welcome to your Dashboard " + mgmt.name;
+                    // Send Authenticated user to his/her Dashboard
+                    return View("~/Views/Home/Dashboard.cshtml", mgmt);
+                }
+                else
+                {
+                    MyViewModel.Warning = "Invalid username or password";
+                }
+            }
+
+            return View();
         }
 
         public ActionResult Registration()
@@ -42,7 +58,8 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             if (ModelState.IsValid)
             {
                 //Get results from Database
-                //Thread thread = new Thread(dataContext.Management_Registration(mgmt))
+                //int result = 0;
+                //Thread thread = new Thread(result = dataContext.Management_Registration(mgmt));
                 int result = dataContext.Management_Registration(mgmt);
                 //Validate the user is registered
                 if (result == 1)
@@ -51,14 +68,15 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
                 }
                 else
                 {
-                    ViewBag.Warning = "Username is already taken";
+                    // Error to be sent back to the Broker Registration page
+                    MyViewModel.Warning = "Error! Username is already taken.";
                 }
             }
             
             return View();
         }
 
-
+       
         
 
     }

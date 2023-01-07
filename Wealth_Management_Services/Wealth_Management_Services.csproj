@@ -173,6 +173,7 @@
     <Compile Include="Models\investor.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\investor.custom.cs" />
     <Compile Include="Models\management.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
@@ -194,6 +195,7 @@
     </Compile>
     <Compile Include="Models\PasswordHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\MyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

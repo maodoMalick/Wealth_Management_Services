@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace Wealth_Management_Services.Models
@@ -54,7 +51,7 @@ namespace Wealth_Management_Services.Models
         public DateTime hireDate { get; set; }
 
         [Required]
-        [Range(1, 1)]
+        [Range(1, 10)]
         public int managerID { get; set; }
 
     }

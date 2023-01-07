@@ -1,5 +1,7 @@
 ﻿@model Wealth_Management_Services.Models.management
 
+@using Wealth_Management_Services.ViewModel
+
 @{
     ViewBag.Title = "Registration";
 }
@@ -89,8 +91,9 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Register" class="btn btn-default" />
             </div>
-            <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold;">
-                @ViewBag.Warning
+            <!--ERROR MESSAGE-->
+            <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold">
+                @MyViewModel.Warning
             </div>
         </div>
 

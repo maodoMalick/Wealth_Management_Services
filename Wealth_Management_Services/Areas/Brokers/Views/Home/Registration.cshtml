@@ -1,5 +1,7 @@
 ﻿@model Wealth_Management_Services.Models.broker
 
+@using Wealth_Management_Services.ViewModel
+
 @{
     ViewBag.Title = "Registration";
 }
@@ -9,7 +11,6 @@
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 <script src="~/Scripts/modernizr-2.8.3.js"></script>
-
 
 <h3>Brokers Registration</h3>
 
@@ -107,6 +108,10 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Register" class="btn btn-default" />
+            </div>
+            <!--ERROR MESSAGE-->
+            <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold">
+                @MyViewModel.Warning
             </div>
         </div>
     </div>
