@@ -1,8 +1,16 @@
 ﻿@model Wealth_Management_Services.Models.management
 
+@using Wealth_Management_Services.ViewModel
+
 @{
     ViewBag.Title = "Index";
 }
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/modernizr-2.8.3.js"></script>
 
 <div class="containers">
     <h2>Management Login</h2>
@@ -36,6 +44,10 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Login" class="btn btn-default" />
+                </div>
+                <!--ERROR MESSAGE-->
+                <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold">
+                    @MyViewModel.Warning
                 </div>
             </div>
 

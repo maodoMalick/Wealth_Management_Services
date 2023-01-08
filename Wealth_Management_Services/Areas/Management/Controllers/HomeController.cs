@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Wealth_Management_Services.Models;
-using System.Threading;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using Wealth_Management_Services.ViewModel;
+
 
 namespace Wealth_Management_Services.Areas.Management.Controllers
 {
@@ -19,6 +12,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
 
         public ActionResult Index()
         {
+            MyViewModel.Warning = "";
             return View();
         }
 
@@ -26,11 +20,11 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         [HttpPost]
         public ActionResult Login(management mgmt)
         {
-            if (ModelState.IsValid)
+            if (mgmt != null)
             {
                 // Get Authentication from Database
                 int result = dataContext.Management_Login(mgmt);
-
+                //MyViewModel.Warning = result.ToString();
                 if (result == 1)
                 {
                     MyViewModel.Welcome = "Welcome to your Dashboard " + mgmt.name;
@@ -43,7 +37,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
                 }
             }
 
-            return View();
+            return View("Index");
         }
 
         public ActionResult Registration()

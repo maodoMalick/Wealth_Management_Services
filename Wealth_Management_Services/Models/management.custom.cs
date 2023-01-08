@@ -26,11 +26,11 @@ namespace Wealth_Management_Services.Models
         public string name { get; set; }
 
         [Required]
-        [RegularExpression("^[A-Za-z][A-Za-z0-9_]{2,8}$", ErrorMessage = "Name must be made of Alphabet letters.")]
+        [RegularExpression("^[A-Za-z][A-Za-z0-9_]{2,8}$", ErrorMessage = "Username must be made between 2 to 8 Alphanumeric characters.")]
         public string username { get; set; }
 
         [Required]
-        [DataType(DataType.Password)]
+        //[DataType(DataType.Password)]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?  &])[A-Za-z\d@$!%*?&]{8,}$", ErrorMessage = "Minimum eight   characters, at least one uppercase letter, one lowercase letter, one number and one special character")]
         public string password { get; set; }
 

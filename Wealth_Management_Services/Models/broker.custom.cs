@@ -22,7 +22,7 @@ namespace Wealth_Management_Services.Models
         public string name { get; set; }
 
         [Required]
-        [RegularExpression("^[A-Za-z][A-Za-z0-9_]{2,8}$", ErrorMessage = "Name must be made of Alphanumeric characters.")]
+        [RegularExpression("^[A-Za-z][A-Za-z0-9_]{2,8}$", ErrorMessage = "Username must be made between 2 to 8 Alphanumeric characters.")]
         public string username { get; set; }
 
         [Required]

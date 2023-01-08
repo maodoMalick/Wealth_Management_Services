@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Web.Helpers;
 
 
 namespace Wealth_Management_Services.Models
@@ -40,7 +38,8 @@ namespace Wealth_Management_Services.Models
                 SqlParameter paramHireDate = new SqlParameter("@hireDate", mgmt.hireDate);
                 cmd.Parameters.Add(paramHireDate);
 
-                int returnCode = cmd.ExecuteNonQuery();
+                // Get the validation digit (1 or 0) from SP
+                int returnCode = (int)cmd.ExecuteScalar(); 
 
                 // Will return 1 or -1 to the MVC program
                 return returnCode;
@@ -61,11 +60,11 @@ namespace Wealth_Management_Services.Models
                 // Stored Procedure params
                 SqlParameter paramUser = new SqlParameter("@user", mgmt.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
+                SqlParameter paramPwd = new SqlParameter("@pwd", mgmt.password);
                 cmd.Parameters.Add(paramPwd);
 
                 // Get the validation digit (1 or 0) from SP
-                int result = cmd.ExecuteNonQuery();
+                int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
 
                 // Send digit to the Login Action Method 
                 return result;
@@ -73,7 +72,7 @@ namespace Wealth_Management_Services.Models
         }
 
 
-        // ---------------------* /END MANAGEMENT SECTION *---------------------------------------------------------//
+        // ---------------------* BROKER SECTION *---------------------------------------------------------//
 
         public int Broker_Registration(broker broker)
         {
@@ -105,13 +104,16 @@ namespace Wealth_Management_Services.Models
                 SqlParameter paramMgrID = new SqlParameter("@mgrID", broker.managerID);
                 cmd.Parameters.Add(paramMgrID);
 
-                int result = cmd.ExecuteNonQuery();
+                // Get the validation digit (1 or 0) from SP
+                int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
 
                 return result;
             }
 
         }
 
+
+        // ---------------------* INVESTOR SECTION *---------------------------------------------------------//
         public int Investor_Registration(investor investor)
         {
             using (conn)
@@ -144,7 +146,8 @@ namespace Wealth_Management_Services.Models
                 SqlParameter parambrokerID = new SqlParameter("@brokerID", investor.brokerID);
                 cmd.Parameters.Add(parambrokerID);
 
-                int result = cmd.ExecuteNonQuery();
+                // Get the validation digit (1 or 0) from SP
+                int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
 
                 return result;
             }

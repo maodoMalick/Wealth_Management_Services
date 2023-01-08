@@ -1,11 +1,14 @@
-﻿@using Wealth_Management_Services.ViewModel
+﻿@*@model Wealth_Management_Services.ViewModel.MyViewModel*@
+
+@using Wealth_Management_Services.ViewModel
 @using Wealth_Management_Services.Models
 
 
 <h3>Main Dashboard</h3>
+@MyViewModel.Welcome
 
 @{ 
     management mgmt = new management();
 
-    //if(Model == )
+    @mgmt.name
 }
