@@ -13,9 +13,9 @@ namespace Wealth_Management_Services.ViewModel
         public static string Welcome { get; set; }
 
         // Models
-        //static broker broker = new broker();
-        //static investor investor = new investor();
-        //static management management = new management();
+        public static broker broker = new broker();
+        public static investor investor = new investor();
+        public static management management = new management();
 
         public static List<broker> brokers { get; set; }
         public static List<investor> investors { get; set; }

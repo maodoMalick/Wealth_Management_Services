@@ -1,14 +1,56 @@
-﻿@*@model Wealth_Management_Services.ViewModel.MyViewModel*@
+﻿@using Wealth_Management_Services.ViewModel
+@*@using Wealth_Management_Services.Models*@
 
-@using Wealth_Management_Services.ViewModel
-@using Wealth_Management_Services.Models
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/modernizr-2.8.3.js"></script>
 
+<div class="containers">
 
-<h3>Main Dashboard</h3>
-@MyViewModel.Welcome
+    <h3>Main Dashboard</h3>
+    <table width="300px">
+        <caption style="color:dimgrey; font-weight:bold;">
+            @MyViewModel.Welcome
+        </caption>
 
-@{ 
-    management mgmt = new management();
+        @{
+            //management mgmt = MyViewModel.management;
+            var mgmt = MyViewModel.management;
+            if (mgmt != null)
+            {
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.name)</b></td>
+                    <td>@mgmt.name</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.username)</b></td>
+                    <td>@mgmt.username</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.password)</b></td>
+                    <td>@mgmt.password</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.gender)</b></td>
+                    <td>@mgmt.gender</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.email)</b></td>
+                    <td>@mgmt.email</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.salary)</b></td>
+                    <td>@mgmt.salary</td>
+                </tr>
+                <tr>
+                    <td><b>@Html.DisplayNameFor(x => mgmt.hireDate)</b></td>
+                    <td>@mgmt.hireDate</td>
+                </tr>
 
-    @mgmt.name
-}
+            }
+        }
+
+    </table>
+
+</div>

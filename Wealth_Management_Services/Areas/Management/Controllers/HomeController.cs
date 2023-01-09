@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using Wealth_Management_Services.Models;
 using Wealth_Management_Services.ViewModel;
 
@@ -9,6 +10,8 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
     {
         // Entity Framework Data Object
         DataContext dataContext = new DataContext();
+
+        DataConnector DataConnector = new DataConnector();
 
         public ActionResult Index()
         {
@@ -27,9 +30,12 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
                 //MyViewModel.Warning = result.ToString();
                 if (result == 1)
                 {
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + mgmt.name;
+                    //string title = mgmt.gender ? "Male" : "Female";
+                    management managerial = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username);
+                    MyViewModel.management = managerial;
+                    MyViewModel.Welcome = "Welcome to your Dashboard " + (managerial.name);
                     // Send Authenticated user to his/her Dashboard
-                    return View("~/Views/Home/Dashboard.cshtml", mgmt);
+                    return View("~/Views/Home/Dashboard.cshtml");
                 }
                 else
                 {
