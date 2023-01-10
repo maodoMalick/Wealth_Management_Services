@@ -1,5 +1,7 @@
 ﻿@model Wealth_Management_Services.Models.broker
 
+@using Wealth_Management_Services.ViewModel
+
 @{
     ViewBag.Title = "Index";
 }
@@ -7,7 +9,7 @@
 <div class="containers">
     <h2>Brokers Login</h2>
 
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { area = "Brokers"}))
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { area = "Brokers" }))
     {
         @Html.AntiForgeryToken()
 
@@ -35,6 +37,10 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Login" class="btn btn-default" />
+                </div>
+                <!--ERROR MESSAGE-->
+                <div class="col-md-offset-2 col-md-10" style="color:red; font-weight:bold">
+                    @MyViewModel.Warning
                 </div>
             </div>
 

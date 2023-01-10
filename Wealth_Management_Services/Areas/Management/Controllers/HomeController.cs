@@ -8,9 +8,10 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
 {
     public class HomeController : Controller
     {
-        // Entity Framework Data Object
+        // Data Object
         DataContext dataContext = new DataContext();
 
+        // Entity Framework Data Connection
         DataConnector DataConnector = new DataConnector();
 
         public ActionResult Index()
@@ -25,20 +26,24 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         {
             if (mgmt != null)
             {
-                // Get Authentication from Database
+                // Get Authentication result from Database
                 int result = dataContext.Management_Login(mgmt);
-                //MyViewModel.Warning = result.ToString();
+                
                 if (result == 1)
                 {
-                    //string title = mgmt.gender ? "Male" : "Female";
-                    management managerial = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username);
-                    MyViewModel.management = managerial;
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + (managerial.name);
+                    // Get the corresponding row from the database
+                    management manager = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password);
+                    // Data to be sent to the View
+                    MyViewModel.management = manager;
+                    //ViewBag.management = manager;
+                    MyViewModel.Welcome = "Welcome to your Dashboard " + manager.name;
+
                     // Send Authenticated user to his/her Dashboard
-                    return View("~/Views/Home/Dashboard.cshtml");
+                    return View("~/Views/Home/Dashboard.cshtml", MyViewModel.management);
                 }
                 else
                 {
+                    // Not authenticated message back to view
                     MyViewModel.Warning = "Invalid username or password";
                 }
             }

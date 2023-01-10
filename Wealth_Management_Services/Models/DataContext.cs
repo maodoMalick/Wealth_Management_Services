@@ -1,6 +1,8 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
-
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Wealth_Management_Services.Models
 {
@@ -111,6 +113,30 @@ namespace Wealth_Management_Services.Models
             }
 
         }
+        
+        public int Broker_Login(broker broker)
+        {
+            using (conn)
+            {
+                SqlCommand cmd = new SqlCommand("Broker_Login_sp", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                // Password Hashing
+                //string pwdHash = PasswordHash.HashCode(broker.password);
+
+                SqlParameter paramUser = new SqlParameter("@user", broker.username);
+                cmd.Parameters.Add(paramUser);
+                SqlParameter paramPwd = new SqlParameter("@pwd", broker.password);
+                cmd.Parameters.Add(paramPwd);
+
+                int returnCode = (int)cmd.ExecuteScalar();
+
+                return returnCode;
+            }
+            
+        }
+        
 
 
         // ---------------------* INVESTOR SECTION *---------------------------------------------------------//

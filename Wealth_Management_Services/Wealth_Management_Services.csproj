@@ -211,6 +211,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Home\testing.cshtml" />
+    <Content Include="Views\Shared\_BrokerPartial.cshtml" />
+    <Content Include="Views\Shared\_MgmtPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

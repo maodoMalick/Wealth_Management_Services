@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+
 
 namespace Wealth_Management_Services.Models
 {
@@ -13,9 +11,9 @@ namespace Wealth_Management_Services.Models
             get
             {
                 return new List<SelectListItem> {
-                new SelectListItem(){ Text = "INVESTORS", Value = "investors"},
-                new SelectListItem(){ Text = "BROKERS", Value = "brokers"},
-                new SelectListItem(){ Text = "MANAGEMENT", Value = "management"}
+                new SelectListItem(){ Text = "INVESTORS", Value = "Investors"},
+                new SelectListItem(){ Text = "BROKERS", Value = "Brokers"},
+                new SelectListItem(){ Text = "MANAGEMENT", Value = "Management"}
                 };
             }
         }

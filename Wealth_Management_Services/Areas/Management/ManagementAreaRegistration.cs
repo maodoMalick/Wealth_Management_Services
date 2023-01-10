@@ -17,7 +17,7 @@ namespace Wealth_Management_Services.Areas.Management
             context.MapRoute(
                 "Management_default",
                 "Management/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { Controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
