@@ -35,7 +35,7 @@
           <Property Name="capital" Type="money" />
           <Property Name="latestDividend" Type="money" />
           <Property Name="brokerID" Type="int" />
-          <Property Name="retryAttempts" Type="int" />
+          <Property Name="loginAttempts" Type="int" />
           <Property Name="isLocked" Type="int" />
           <Property Name="lockOutTime" Type="datetime" />
         </EntityType>
@@ -126,7 +126,7 @@
           <Property Name="capital" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="latestDividend" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="brokerID" Type="Int32" />
-          <Property Name="retryAttempts" Type="Int32" />
+          <Property Name="loginAttempts" Type="Int32" />
           <Property Name="isLocked" Type="Int32" />
           <Property Name="lockOutTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="broker" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="investor" ToRole="broker" />
@@ -169,7 +169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataConnector" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DataConnection" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="brokers" EntityType="Self.broker" />
           <EntitySet Name="investors" EntityType="Self.investor" />
           <EntitySet Name="managements" EntityType="Self.management" />
@@ -187,7 +187,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseLessonsVaultModelStoreContainer" CdmEntityContainer="DataConnector">
+        <EntityContainerMapping StorageEntityContainer="DatabaseLessonsVaultModelStoreContainer" CdmEntityContainer="DataConnection">
           <EntitySetMapping Name="brokers">
             <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.broker">
               <MappingFragment StoreEntitySet="broker">
@@ -218,7 +218,7 @@
                 <ScalarProperty Name="capital" ColumnName="capital" />
                 <ScalarProperty Name="latestDividend" ColumnName="latestDividend" />
                 <ScalarProperty Name="brokerID" ColumnName="brokerID" />
-                <ScalarProperty Name="retryAttempts" ColumnName="retryAttempts" />
+                <ScalarProperty Name="loginAttempts" ColumnName="loginAttempts" />
                 <ScalarProperty Name="isLocked" ColumnName="isLocked" />
                 <ScalarProperty Name="lockOutTime" ColumnName="lockOutTime" />
               </MappingFragment>

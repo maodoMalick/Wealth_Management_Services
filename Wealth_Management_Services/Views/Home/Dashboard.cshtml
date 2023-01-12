@@ -1,10 +1,10 @@
 ﻿@using Wealth_Management_Services.ViewModel
 @using Wealth_Management_Services.Models
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+@*<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/Scripts/modernizr-2.8.3.js"></script>
+<script src="~/Scripts/modernizr-2.8.3.js"></script>*@
 
 <div class="containers">
 
@@ -13,10 +13,10 @@
 
 
     @{
-        // -- MANAGEMENT SECTION --
+
         if (MyViewModel.management != null)
         {
-            //@model Wealth_Management_Services.Models.management
+            // -- MANAGEMENT SECTION --
             management mgmt = MyViewModel.management;
 
             @Html.Partial("_MgmtPartial", mgmt)
@@ -26,13 +26,28 @@
         else if (MyViewModel.broker != null)
         {
             // -- BROKER SECTION --
-            //@model Wealth_Management_Services.Models.broker
             broker bkr = MyViewModel.broker;
 
             @Html.Partial("_BrokerPartial", bkr)
+            // Must clean the model otherwise it will interfere
+            MyViewModel.broker = null;
         }
+        else if (MyViewModel.investor != null)
+        {
+            // -- INVESTOR SECTION --
+            investor investor = MyViewModel.investor;
 
-        // -- INVESTOR SECTION --
+            @Html.Partial("_InvestorPartial", investor)
+        }
+        @*else if (investor != null)
+        {
+            // -- INVESTOR SECTION --
+            investor investor = MyViewModel.investor;
+
+            @Html.Partial("_InvestorPartial", investor)
+        }*@
+
+
 
 
 

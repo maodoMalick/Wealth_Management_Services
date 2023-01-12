@@ -25,7 +25,7 @@ namespace Wealth_Management_Services.Models
         public Nullable<decimal> capital { get; set; }
         public Nullable<decimal> latestDividend { get; set; }
         public Nullable<int> brokerID { get; set; }
-        public Nullable<int> retryAttempts { get; set; }
+        public Nullable<int> loginAttempts { get; set; }
         public Nullable<int> isLocked { get; set; }
         public Nullable<System.DateTime> lockOutTime { get; set; }
     

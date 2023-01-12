@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
-using System.Text;
+using System.Linq;
+using Wealth_Management_Services.ViewModel;
+
 
 namespace Wealth_Management_Services.Models
 {
@@ -10,6 +11,8 @@ namespace Wealth_Management_Services.Models
     {
         // Database Connection accessible to all methods
         SqlConnection conn = Connection.getConnection();
+
+        DataConnection DataConnector = new DataConnection();
 
 
         // ---------------------* MANAGEMENT SECTION *---------------------------------------------------------//
@@ -48,8 +51,10 @@ namespace Wealth_Management_Services.Models
             }
         }
 
-        public int Management_Login(management mgmt)
+        public management Management_Login(management mgmt)
         {
+            management manager = null;
+
             using (conn)
             {
                 SqlCommand cmd = new SqlCommand("Mgmt_Login_sp", conn);
@@ -68,9 +73,15 @@ namespace Wealth_Management_Services.Models
                 // Get the validation digit (1 or 0) from SP
                 int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
 
-                // Send digit to the Login Action Method 
-                return result;
+                if (result == 1)
+                {
+                    // Get the corresponding row from the database
+                    manager = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password);
+                }
             }
+
+            // Send model to the Login Action Method 
+            return manager;
         }
 
 
@@ -114,8 +125,10 @@ namespace Wealth_Management_Services.Models
 
         }
         
-        public int Broker_Login(broker broker)
+        public broker Broker_Login(broker broker)
         {
+            broker bkr = null;
+            
             using (conn)
             {
                 SqlCommand cmd = new SqlCommand("Broker_Login_sp", conn);
@@ -130,9 +143,17 @@ namespace Wealth_Management_Services.Models
                 SqlParameter paramPwd = new SqlParameter("@pwd", broker.password);
                 cmd.Parameters.Add(paramPwd);
 
+                // Get the validation digit (1 or 0) from SP
                 int returnCode = (int)cmd.ExecuteScalar();
 
-                return returnCode;
+                if(returnCode == 1)
+                {
+                    // Fetch the corresponding row from the database
+                    bkr = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == broker.password);
+                }
+
+                // Send model to the Login Action Method 
+                return bkr;
             }
             
         }
@@ -161,7 +182,7 @@ namespace Wealth_Management_Services.Models
                 cmd.Parameters.Add(paramEmail);
                 SqlParameter paramUser = new SqlParameter("@user", investor.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
+                SqlParameter paramPwd = new SqlParameter("@pwd", investor.password);
                 cmd.Parameters.Add(paramPwd);
                 SqlParameter paramMbrSince = new SqlParameter("@mbrSince", investor.memberSince);
                 cmd.Parameters.Add(paramMbrSince);
@@ -178,6 +199,54 @@ namespace Wealth_Management_Services.Models
                 return result;
             }
 
+        }
+
+        public string Investor_Login(investor investor)
+        {
+            // Container to be sent to Action method with result 
+            string result = "";
+
+            using (conn)
+            {
+                SqlCommand cmd = new SqlCommand("Investor_Login_sp", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                // Password Hashing
+                string pwdHash = PasswordHash.HashCode(investor.password);
+
+                SqlParameter paramUser = new SqlParameter("@user", investor.username);
+                cmd.Parameters.Add(paramUser);
+                SqlParameter paramPwd = new SqlParameter("@pwd", investor.password);
+                cmd.Parameters.Add(paramPwd);
+
+                SqlDataReader ReadMe= cmd.ExecuteReader();
+
+                while (ReadMe.Read())
+                {
+                    int failedAttempts = (int)ReadMe["LoginAttempts"];
+
+                    // The 'Reader' is expecting 3 values from the Stored Procedure
+                    if (Convert.ToBoolean(ReadMe["IsLocked"]))
+                    {
+                        MyViewModel.Warning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT 5MN AND RETRY OR CALL CUSTOMER SERVICE.";
+                        return result = "Account_Locked";
+                    }
+                    else if (Convert.ToBoolean(ReadMe["IsAuthenticated"]))
+                    {
+                        MyViewModel.investor = DataConnector.investors.SingleOrDefault(x => x.username == investor.username && x.password == investor.password);
+                        return result = "Authenticated";
+                    }
+                    else if(failedAttempts <= 3)
+                    {
+                        int remainingLoginAttempts = 4 - failedAttempts;
+                        MyViewModel.Warning = "Invalid Username/Password. You have " + remainingLoginAttempts + " login attempt(s) left.";
+                        return result = "Failed_Login";
+                    }                    
+                }
+            }
+
+            return result;
         }
     }
 }

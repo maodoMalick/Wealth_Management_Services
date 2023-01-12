@@ -14,7 +14,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         DataContext dataContext = new DataContext();
 
         // Entity Framework Data Connection
-        DataConnector DataConnector = new DataConnector();
+        DataConnection DataConnector = new DataConnection();
 
         public ActionResult Index()
         {
@@ -27,16 +27,13 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             if (broker != null)
             {
                 // Get Authentication result from Database
-                int result = dataContext.Broker_Login(broker);
+                broker bkr = dataContext.Broker_Login(broker);
 
-                if (result == 1)
+                if (bkr != null)
                 {
-                    // Fetch the corresponding row from the database
-                    broker bkr = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == broker.password);
                     // Data to be sent to the View
                     MyViewModel.broker = bkr;
-                    //ViewBag.broker = bkr;
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + bkr.name;
+                    MyViewModel.Welcome = "Welcome to your Personal Finance Dashboard " + bkr.name;
 
                     // Send Authenticated user to his/her Dashboard
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.broker);

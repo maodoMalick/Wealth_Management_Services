@@ -13,10 +13,10 @@ namespace Wealth_Management_Services.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataConnector : DbContext
+    public partial class DataConnection : DbContext
     {
-        public DataConnector()
-            : base("name=DataConnector")
+        public DataConnection()
+            : base("name=DataConnection")
         {
         }
     

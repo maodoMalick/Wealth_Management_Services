@@ -12,7 +12,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         DataContext dataContext = new DataContext();
 
         // Entity Framework Data Connection
-        DataConnector DataConnector = new DataConnector();
+        DataConnection DataConnector = new DataConnection();
 
         public ActionResult Index()
         {
@@ -27,15 +27,12 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             if (mgmt != null)
             {
                 // Get Authentication result from Database
-                int result = dataContext.Management_Login(mgmt);
+                management manager = dataContext.Management_Login(mgmt);
                 
-                if (result == 1)
+                if (manager != null)
                 {
-                    // Get the corresponding row from the database
-                    management manager = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password);
                     // Data to be sent to the View
                     MyViewModel.management = manager;
-                    //ViewBag.management = manager;
                     MyViewModel.Welcome = "Welcome to your Dashboard " + manager.name;
 
                     // Send Authenticated user to his/her Dashboard
