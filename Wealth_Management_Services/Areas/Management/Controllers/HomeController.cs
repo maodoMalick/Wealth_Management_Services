@@ -27,12 +27,12 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             if (mgmt != null)
             {
                 // Get Authentication result from Database
-                management manager = dataContext.Management_Login(mgmt);
+                int result = dataContext.Management_Login(mgmt);
                 
-                if (manager != null)
+                if (result == 1)
                 {
                     // Data to be sent to the View
-                    MyViewModel.management = manager;
+                    management manager = MyViewModel.management;
                     MyViewModel.Welcome = "Welcome to your Dashboard " + manager.name;
 
                     // Send Authenticated user to his/her Dashboard
@@ -40,11 +40,12 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
                 }
                 else
                 {
-                    // Not authenticated message back to view
+                    // Not authenticated message back to the View
                     MyViewModel.Warning = "Invalid username or password";
                 }
             }
 
+            // If it fails, stay in this same Login page
             return View("Index");
         }
 
@@ -77,9 +78,6 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             
             return View();
         }
-
-       
-        
 
     }
 }

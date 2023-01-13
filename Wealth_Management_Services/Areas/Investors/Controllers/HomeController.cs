@@ -24,26 +24,27 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         [HttpPost]
         public ActionResult Login(investor invest)
         {
+            // Get Authentication result from Database
             string result = dataContext.Investor_Login(invest);
 
+            // User will be redirected based on the returned data
             switch (result)
             {
                 case "Account_Locked":
+                    // Failed! Will return to the Login page
                     return View("Index");
-                    //break;
                 case "Failed_Login":
+                    // Failed! Will return to the Login page
                     return View("Index");
-                    //break;
                 case "Authenticated":
-                    //investor investor = DataConnector.investors.SingleOrDefault(x => x.username == invest.username && x.password == invest.password);
+                    // Success!
                     investor investor = MyViewModel.investor;
                     MyViewModel.Welcome = "Welcome to your Dashboard " + investor.firstName;
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
-                default: 
+                default:
+                    // Will return to the Login page
                     return View("Index");
             }
-
-            //return View();
         }
 
         public ActionResult Registration()

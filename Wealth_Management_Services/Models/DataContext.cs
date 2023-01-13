@@ -51,10 +51,8 @@ namespace Wealth_Management_Services.Models
             }
         }
 
-        public management Management_Login(management mgmt)
+        public int Management_Login(management mgmt)
         {
-            management manager = null;
-
             using (conn)
             {
                 SqlCommand cmd = new SqlCommand("Mgmt_Login_sp", conn);
@@ -67,21 +65,20 @@ namespace Wealth_Management_Services.Models
                 // Stored Procedure params
                 SqlParameter paramUser = new SqlParameter("@user", mgmt.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", mgmt.password);
+                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
-
+                
                 // Get the validation digit (1 or 0) from SP
                 int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
-
+                
                 if (result == 1)
                 {
                     // Get the corresponding row from the database
-                    manager = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password);
+                    MyViewModel.management = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
                 }
-            }
 
-            // Send model to the Login Action Method 
-            return manager;
+                return result;
+            }
         }
 
 
