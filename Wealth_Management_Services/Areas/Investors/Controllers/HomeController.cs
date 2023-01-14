@@ -74,5 +74,12 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             
             return View();
         }
+
+        // Client-Side Validation 'for Registration' to prevent username 'duplication' (see username field in 'management.custom.cs')
+        public JsonResult IsUsernameValid(string username)
+        {
+            // Will return the opposite of the logic (to be true)
+            return Json(!DataConnector.investors.Any(x => x.username == username), JsonRequestBehavior.AllowGet);
+        }
     }
 }
