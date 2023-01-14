@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace Wealth_Management_Services.Models
 {
@@ -9,7 +9,7 @@ namespace Wealth_Management_Services.Models
     public partial class broker
     {
         [Required]
-        [Compare("password")]
+        [System.Web.Mvc.Compare("password")]
         [DataType(DataType.Password)]
         [DisplayName("confirm password")]
         public string confirmPassword { get; set; }
@@ -23,6 +23,7 @@ namespace Wealth_Management_Services.Models
 
         [Required]
         [RegularExpression("^[A-Za-z][A-Za-z0-9_]{2,8}$", ErrorMessage = "Username must be made between 2 to 8 Alphanumeric characters.")]
+        [Remote("IsUsernameValid", "Home", ErrorMessage = "Username has already been taken")] // 'Json' Client-Side Validation
         public string username { get; set; }
 
         [Required]
