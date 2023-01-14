@@ -133,11 +133,11 @@ namespace Wealth_Management_Services.Models
                 conn.Open();
 
                 // Password Hashing
-                //string pwdHash = PasswordHash.HashCode(broker.password);
+                string pwdHash = PasswordHash.HashCode(broker.password);
 
                 SqlParameter paramUser = new SqlParameter("@user", broker.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", broker.password);
+                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
 
                 // Get the validation digit (1 or 0) from SP
@@ -146,7 +146,7 @@ namespace Wealth_Management_Services.Models
                 if(returnCode == 1)
                 {
                     // Fetch the corresponding row from the database
-                    bkr = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == broker.password);
+                    bkr = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
                 }
 
                 // Send model to the Login Action Method 
@@ -179,7 +179,7 @@ namespace Wealth_Management_Services.Models
                 cmd.Parameters.Add(paramEmail);
                 SqlParameter paramUser = new SqlParameter("@user", investor.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", investor.password);
+                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
                 SqlParameter paramMbrSince = new SqlParameter("@mbrSince", investor.memberSince);
                 cmd.Parameters.Add(paramMbrSince);
@@ -200,7 +200,7 @@ namespace Wealth_Management_Services.Models
 
         public string Investor_Login(investor investor)
         {
-            // Container to be sent to Action method with result 
+            // Will be sent to Action method with result 
             string result = "";
 
             using (conn)
@@ -214,13 +214,14 @@ namespace Wealth_Management_Services.Models
 
                 SqlParameter paramUser = new SqlParameter("@user", investor.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", investor.password);
+                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
 
-                SqlDataReader ReadMe= cmd.ExecuteReader();
+                SqlDataReader ReadMe = cmd.ExecuteReader();
 
                 while (ReadMe.Read())
                 {
+                    // Get the current number of the user's failed login attempts
                     int failedAttempts = (int)ReadMe["LoginAttempts"];
 
                     // The 'Reader' is expecting 3 values from the Stored Procedure
@@ -231,7 +232,8 @@ namespace Wealth_Management_Services.Models
                     }
                     else if (Convert.ToBoolean(ReadMe["IsAuthenticated"]))
                     {
-                        MyViewModel.investor = DataConnector.investors.SingleOrDefault(x => x.username == investor.username && x.password == investor.password);
+                        MyViewModel.investor = DataConnector.investors.SingleOrDefault(x => x.username == investor.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
+
                         return result = "Authenticated";
                     }
                     else if(failedAttempts <= 3)

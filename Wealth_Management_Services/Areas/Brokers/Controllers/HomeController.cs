@@ -33,7 +33,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 {
                     // Data to be sent to the View
                     MyViewModel.broker = bkr;
-                    MyViewModel.Welcome = "Welcome to your Personal Finance Dashboard " + bkr.name;
+                    MyViewModel.Welcome = "Welcome to your Dashboard " + bkr.name;
 
                     // Send Authenticated user to his/her Dashboard
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.broker);
@@ -42,10 +42,10 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 {
                     // Not authenticated message back to view
                     MyViewModel.Warning = "Invalid username or password";
-                    
                 }
             }
 
+            // If it fails, stay in this same Login page
             return View("Index");
         }
 
@@ -65,6 +65,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 if (returnCode == 1)
                 {
                     // Success! User will be sent to the Broker login page
+                    // *** CREATE A JS ALERT FOR SUCCESS
                     return RedirectToAction("Index");
                 }
                 else

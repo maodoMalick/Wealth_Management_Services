@@ -62,6 +62,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                 if (returnCode == 1)
                 {
                     // Success! User will be sent to the Broker login page
+                    
                     return RedirectToAction("Index");
                 }
                 else
