@@ -18,12 +18,16 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
 
         public ActionResult Index()
         {
+            // Reset the warning message
+            MyViewModel.Warning = "";
             return View();
         }
 
         [HttpPost]
         public ActionResult Login(investor invest)
         {
+            MyViewModel.Warning = "";
+
             // Get Authentication result from Database
             string result = dataContext.Investor_Login(invest);
 
