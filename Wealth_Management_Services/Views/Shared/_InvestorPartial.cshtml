@@ -2,50 +2,53 @@
 
 @using Wealth_Management_Services.ViewModel
 
-<table width="300px" border="1" style="background-color:yellow;">
+<link href="PartialStyles.css" rel="stylesheet" />
 
-    <caption style="color:dimgrey; font-weight:bold;">
-        @MyViewModel.Welcome
-    </caption>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.firstName)</a></td>
-        <td>@Html.DisplayFor(x => x.firstName)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.lastName)</a></td>
-        <td>@Html.DisplayFor(x => x.lastName)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.gender)</a></td>
-        <td>@Html.DisplayFor(x => x.gender)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.email)</a></td>
-        <td>@Html.DisplayFor(x => x.email)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.username)</a></td>
-        <td>@Html.DisplayFor(x => x.username)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.password)</a></td>
-        <td>@Html.DisplayFor(x => x.password)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.memberSince)</a></td>
-        <td>@Html.DisplayFor(x => x.memberSince)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.capital)</a></td>
-        <td>@Html.DisplayFor(x => x.capital)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.latestDividend)</a></td>
-        <td>@Html.DisplayFor(x => x.latestDividend)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.brokerID)</a></td>
-        <td>@Html.DisplayFor(x => x.brokerID)</td>
-    </tr>
+<div id="partialDashboardBox">
 
-</table>
+    <table width="300px" border="1" style="background-color:yellow;">
+        <caption style="color:dimgrey; font-weight:bold;">
+            @MyViewModel.Welcome
+        </caption>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.firstName)</a></td>
+            <td>@Html.DisplayFor(x => x.firstName)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.lastName)</a></td>
+            <td>@Html.DisplayFor(x => x.lastName)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.gender)</a></td>
+            <td>@Html.DisplayFor(x => x.gender)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.email)</a></td>
+            <td>@Html.DisplayFor(x => x.email)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.username)</a></td>
+            <td>@Html.DisplayFor(x => x.username)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.password)</a></td>
+            <td>@Html.DisplayFor(x => x.password)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.memberSince)</a></td>
+            <td>@Html.DisplayFor(x => x.memberSince)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.capital)</a></td>
+            <td>@Html.DisplayFor(x => x.capital)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.latestDividend)</a></td>
+            <td>@Html.DisplayFor(x => x.latestDividend)</td>
+        </tr>
+        <tr>
+            <td><a>@Html.DisplayNameFor(x => x.brokerID)</a></td>
+            <td>@Html.DisplayFor(x => x.brokerID)</td>
+        </tr>
+    </table>
+</div>
