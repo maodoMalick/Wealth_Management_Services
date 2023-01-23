@@ -1,4 +1,5 @@
-﻿using Wealth_Management_Services.Models;
+﻿using System.Collections;
+using Wealth_Management_Services.Models;
 
 namespace Wealth_Management_Services.ViewModel
 {
@@ -12,6 +13,9 @@ namespace Wealth_Management_Services.ViewModel
         public static broker broker = null;
         public static investor investor = null;
         public static management management = null;
+
+        // Collections
+        public static ArrayList Investor_ArrList { get; set; }
 
     }
 }

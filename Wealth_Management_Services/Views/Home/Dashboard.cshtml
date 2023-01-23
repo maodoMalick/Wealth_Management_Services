@@ -1,13 +1,13 @@
 ﻿@using Wealth_Management_Services.ViewModel
 @using Wealth_Management_Services.Models
 
-
 <div class="containers">
 
     <h3>Main Dashboard</h3>
+    <div style="text-align:right; float:right;margin-top:-55px">@DateTime.Today.ToLongDateString()</div>
 
-    <!-- Here, instead of using AJAX, I have applied a simple conditional 
-         technique to display the right View.    
+    <!-- Here, instead of using AJAX, I have applied a simple conditional
+         technique to display the right View.
     -->
 
     @{ // >>>>> DON'T FORGET CLIENT SIDE VALID 4 LOGIN <<<<<<

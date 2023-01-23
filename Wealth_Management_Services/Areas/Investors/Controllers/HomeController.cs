@@ -43,12 +43,21 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                 case "Authenticated":
                     // Success!
                     investor investor = MyViewModel.investor;
+                    ViewBag.SingleInvestorData = dataContext.Investor_Data( investor.id);
+                    //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
                     MyViewModel.Welcome = "Welcome to your Dashboard " + investor.firstName;
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
                 default:
                     // Will return to the Login page
                     return View("Index");
             }
+        }
+
+        public PartialViewResult Investments()
+        {
+            List<investor> investors = DataConnector.investors.ToList();
+            return PartialView("~/Views/Shared/_MinStocks.cshtml", investors);
+            //return PartialView("_MinStocks", investors);
         }
 
         public ActionResult Registration()
@@ -79,7 +88,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             return View();
         }
 
-        // Client-Side Validation 'for Registration' to prevent username 'duplication' (see username field in 'management.custom.cs')
+        // Client-Side Validation 'for Registration' to prevent username 'duplication' (see username field in 'investor.custom.cs')
         public JsonResult IsUsernameValid(string username)
         {
             // Will return the opposite of the logic (to be true)

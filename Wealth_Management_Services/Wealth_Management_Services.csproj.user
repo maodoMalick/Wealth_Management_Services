@@ -25,7 +25,7 @@
     <WebStackScaffolding_AreaDialogWidth>600</WebStackScaffolding_AreaDialogWidth>
     <Area_SelectedScaffolderID>MvcAreaScaffolder</Area_SelectedScaffolderID>
     <Area_SelectedScaffolderCategoryPath>root/Common/MVC/Area</Area_SelectedScaffolderCategoryPath>
-    <WebStackScaffolding_DbContextTypeFullName>Wealth_Management_Services.Models.DataConnector</WebStackScaffolding_DbContextTypeFullName>
+    <WebStackScaffolding_DbContextTypeFullName>Wealth_Management_Services.Models.DataConnection</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

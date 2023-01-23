@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -246,6 +247,36 @@ namespace Wealth_Management_Services.Models
             }
 
             return result;
+        }
+
+        public ArrayList Investor_Data(int id)
+        {
+            ArrayList InvArrList = new ArrayList();
+            SqlConnection conn1 = Connection.getConnection();
+
+            using (conn1)
+            {
+                SqlCommand cmd = new SqlCommand("InvestorData_sp", conn1);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn1.Open();
+
+                SqlParameter paramId = new SqlParameter("@id", id);
+                cmd.Parameters.Add(paramId);
+
+                SqlDataReader iReader = cmd.ExecuteReader();
+                while (iReader.Read())
+                {
+                    InvArrList.Add(iReader["firstName"]);
+                    InvArrList.Add(iReader["lastName"]);
+                    InvArrList.Add(iReader["email"]);
+                    InvArrList.Add(Convert.ToDateTime(iReader["memberSince"]));
+                    InvArrList.Add(Convert.ToDecimal(iReader["capital"]));
+                    InvArrList.Add(Convert.ToDecimal(iReader["last profit"]));
+                    InvArrList.Add(iReader["name"]);
+                }
+
+                return InvArrList;
+            }
         }
     }
 }

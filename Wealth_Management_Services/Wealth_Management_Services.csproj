@@ -101,8 +101,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomStyles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\boA.jpg" />
+    <Content Include="images\boA_1.jpg" />
+    <Content Include="images\charlesSchawb.jpg" />
+    <Content Include="images\charlesSchawb1.jpg" />
+    <Content Include="images\eTrade.jpg" />
+    <Content Include="images\fidelity2.jpg" />
+    <Content Include="images\merryll_2.jpg" />
     <Content Include="images\nestEgg.jpg" />
     <Content Include="Models\MyEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -138,18 +146,24 @@
     <Content Include="Models\MyEntityModel.edmx.diagram">
       <DependentUpon>MyEntityModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\_MinStocks.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Views\Shared\PartialStyles.css" />
+    <Content Include="Content\PartialStyles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
