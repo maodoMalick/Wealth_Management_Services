@@ -18,7 +18,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         [HttpPost]
