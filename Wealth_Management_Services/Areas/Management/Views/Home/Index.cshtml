@@ -6,7 +6,7 @@
     ViewBag.Title = "Index";
 }
 
-<link href="../../Content/CustomStyles.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/CustomStyles.css")" rel="stylesheet" />
 <!--No JS Validations; it is to avoid confusion with the Json Remote Validation for Registration-->
 
 <div class="containers">
@@ -59,33 +59,42 @@
     }
 
     <div class="rightPanel">
+        <div class="item item-mgmt">
+            <div>
+                <p>
+                    Fees <br />
+                    <span style="font-size: 2em">$0</span>
+                    <br />
+                    per trade for online U.S. stocks and ETFs
+                </p>
+                <hr />
+                Open a new, eligible Merryll account and get $50 or more. Limited time offer. Terms apply. <br /><br />
+                <a href="https://www.ml.com/" target="_blank" class="">Learn More</a>
+            </div>
+        </div>
+
         <div class="item">
             <p>
                 Fees <br />
-                <span style="font-size: 2em">$0</span>
-                <br />
-                per trade for online U.S. stocks and ETFs
+                $0.005 per share with volume discounts
+                <a href="https://www.bankofamerica.com/" target="_blank" class="btn btn-default">Learn More</a>
             </p>
-            <hr />
-            Account minimum <br />
-            $0
-            <hr />
-            Open a new, eligible Merryll account and get $50 or more. Limited time offer. Terms apply.
-            <div class="col-md-offset-2 col-md-10">
-                <a href="#" class="btn btn-default">Learn More</a>
-            </div>
         </div>
-        <div class="item">
 
+        <div class="item">
+            <p>
+                Fees <br />
+                $0 on exchange-traded fund (ETF) investment.
+                <a href="https://www.fidelity.com/" target="_blank" class="btn btn-default">Learn More</a>
+            </p>
         </div>
-        <div class="item">
 
-        </div>
         <div class="item">
-
-        </div>
-        <div class="item">
-
+            <p>
+                Fees <br />
+                $0 when you open and fund an E*TRADE account
+                <a href="https://us.etrade.com/" target="_blank" class="btn btn-default">Learn More</a>
+            </p>
         </div>
     </div>
 

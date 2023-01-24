@@ -112,6 +112,8 @@
     <Content Include="images\fidelity2.jpg" />
     <Content Include="images\merryll_2.jpg" />
     <Content Include="images\merryll_black.jpg" />
+    <Content Include="images\merryll_black_300x169.jpg" />
+    <Content Include="images\merryll_black_300x225.jpg" />
     <Content Include="images\nestEgg.jpg" />
     <Content Include="Models\MyEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
