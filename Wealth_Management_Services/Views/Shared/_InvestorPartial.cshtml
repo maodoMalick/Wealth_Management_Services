@@ -3,7 +3,7 @@
 @using Wealth_Management_Services.ViewModel
 @using Wealth_Management_Services.Models
 
-<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 <!--Css Styles-->
@@ -49,15 +49,16 @@
     </div>
 
     <div id="inv_navbar">
-        @Ajax.ActionLink("Stocks", "Investments", new { area="Investors"}, new AjaxOptions()
+        @Ajax.ActionLink("Stocks", "Investments", new { area = "Investors" }, new AjaxOptions()
                                                                    {
                                                                        HttpMethod = "GET",
                                                                        UpdateTargetId = "data_content",
                                                                        InsertionMode = InsertionMode.Replace
                                                                    }) |
-        @Html.ActionLink("Bonds", "BondsSheet", new {area=""})
+        @*@Html.ActionLink("Bonds", "BondsSheet", new {area=""})*@
 
         <div id="data_content"></div>
+
     </div>
     <div id="inv_center">
 
@@ -67,11 +68,11 @@
         hello Brooklyn
         <br />
         @*@{
-            foreach (var item in ViewBag.SingleInvestorData)
-            {
-                @item <br />
-            }
-        }*@
+                foreach (var item in ViewBag.SingleInvestorData)
+                {
+                    @item <br />
+                }
+            }*@
     </div>
 
 </div>

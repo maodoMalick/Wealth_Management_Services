@@ -108,13 +108,40 @@
     <Content Include="images\boA_1.jpg" />
     <Content Include="images\charlesSchawb.jpg" />
     <Content Include="images\charlesSchawb1.jpg" />
+    <Content Include="images\chart_blue.jpg" />
     <Content Include="images\eTrade.jpg" />
     <Content Include="images\fidelity2.jpg" />
     <Content Include="images\merryll_2.jpg" />
     <Content Include="images\merryll_black.jpg" />
-    <Content Include="images\merryll_black_300x169.jpg" />
     <Content Include="images\merryll_black_300x225.jpg" />
     <Content Include="images\nestEgg.jpg" />
+    <Content Include="images\pattern_600_Alpha.jpg" />
+    <Content Include="images_bonds\bond_00.jpg" />
+    <Content Include="images_bonds\bond_01.jpg" />
+    <Content Include="images_bonds\bond_02.jpg" />
+    <Content Include="images_bonds\bond_03.jpg" />
+    <Content Include="images_bonds\bond_04.jpg" />
+    <Content Include="images_bonds\bond_05.jpg" />
+    <Content Include="images_bonds\bond_06.jpg" />
+    <Content Include="images_bonds\bond_07.jpg" />
+    <Content Include="images_bonds\bond_08.jpg" />
+    <Content Include="images_bonds\bond_09.jpg" />
+    <Content Include="images_bonds\bond_10.jpg" />
+    <Content Include="images_bonds\bond_11.jpg" />
+    <Content Include="images_bonds\bond_12.jpg" />
+    <Content Include="images_bonds\bond_13.jpg" />
+    <Content Include="images_bonds\bond_14.jpg" />
+    <Content Include="images_bonds\bond_15.jpg" />
+    <Content Include="images_stocks\acorns_mini.jpg" />
+    <Content Include="images_stocks\ameritrade_mini.jpg" />
+    <Content Include="images_stocks\etrade_mini.jpg" />
+    <Content Include="images_stocks\fidelity_mini.jpg" />
+    <Content Include="images_stocks\firstrade_mini.jpg" />
+    <Content Include="images_stocks\interactive_mini.jpg" />
+    <Content Include="images_stocks\schwab_mini.jpg" />
+    <Content Include="images_stocks\stash_mini.jpg" />
+    <Content Include="images_stocks\tradeStation_mini.jpg" />
+    <Content Include="images_stocks\vanguard_mini.jpg" />
     <Content Include="Models\MyEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MyEntityModel.edmx</DependentUpon>
@@ -150,6 +177,12 @@
       <DependentUpon>MyEntityModel.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Shared\_MinStocks.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\BrokerDashboard.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\_testing.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\_BrokerDashboard.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\_ClientsList.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\_StocksPage.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\_BondsPage.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />

@@ -1,0 +1,26 @@
+﻿@using Wealth_Management_Services.ViewModel
+
+<!--Styles-->
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+
+<div id="StocksDisplay">
+    <div class="titles">@MyViewModel.Message</div>
+    <div id="stocksBondsNav">@Html.ActionLink("STOCKS", "GetStocksList", "home", new { area = "Brokers" }, null) | @Html.ActionLink("BONDS", "GetBondsList", "home", new { area = "Brokers" }, null)</div>
+    <hr />
+    <div id="stocksBox">
+        <div class="item"><a href="https://www.acorns.com" target="_blank"><img src="~/images_stocks/acorns_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.interactivebrokers.com" target="_blank"><img src="~/images_stocks/interactive_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.us.etrade.com" target="_blank"><img src="~/images_stocks/etrade_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.stash.com" target="_blank"><img src="~/images_stocks/stash_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.tradestation.com" target="_blank"><img src="~/images_stocks/tradeStation_mini.jpg" /></a></div>
+        <div class="item"><a href="https://investor.vanguard.com/home" target="_blank"><img src="~/images_stocks/vanguard_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.fidelity.com" target="_blank"><img src="~/images_stocks/fidelity_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.firstrade.com" target="_blank"><img src="~/images_stocks/firstrade_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.schwab.com" target="_blank"><img src="~/images_stocks/schwab_mini.jpg" /></a></div>
+        <div class="item"><a href="https://www.tdameritrade.com" target="_blank"><img src="~/images_stocks/ameritrade_mini.jpg" /></a></div>
+    </div>
+</div>
+
+

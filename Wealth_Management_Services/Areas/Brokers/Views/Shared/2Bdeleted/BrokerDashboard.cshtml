@@ -1,0 +1,132 @@
+﻿@model Wealth_Management_Services.Models.broker
+
+    @using Wealth_Management_Services.ViewModel
+
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="partialDashboardBox">
+        <div class="item">
+            <div style="color:dimgrey; font-weight:bold;">
+                @MyViewModel.Welcome
+            </div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.salary)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.salary)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.commission)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.commission)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hireDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hireDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.management.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.management.name)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="item">
+            lorem30 Many or all of the products featured here are from our partners who compensate us. This may influence which products we write about and where and how the product appears on a page. However, this does not influence our evaluations. Our opinions are our own. Here is a list of our partners and here's how we make money.
+            <div id="brokerDisplay"> </div>
+        </div>
+        <div class="item">
+            <h4>Navigation</h4>
+
+            @Ajax.ActionLink("List of All Clients", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerDisplay",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+            <br />
+            @Ajax.ActionLink("Buy Stocks or Bonds", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerDisplay_1",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+            <br />
+            @Ajax.ActionLink("Highest Dividends", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerDisplay",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+            <br />
+            @Ajax.ActionLink("Clients by Gender", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerDisplay",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+            <br />
+            @Ajax.ActionLink("Clients by Seniority", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerDisplay",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+
+        </div>
+        <div class="item">
+            <b>Why invest in index funds?</b>
+            Despite the fact that fund managers do a lot of work to "beat the market" (namely, a market index), they very rarely do. And if they do, it's highly unlikely that they will continue to beat the market over the long term.
+            According to SPIVA, which is a part of S&P Global, only 29% of actively managed funds beat the S&P 500 in 2019. In 2021, only 9% of those funds continued to beat their benchmark.
+            Because actively managed funds often underperform the market, and index funds match it, passively managed index funds typically bring their investors better financial returns over the long term. Plus, they cost less.
+            <div id="brokerDisplay_1"> </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+@*@Ajax.ActionLink("List of All ClientsXX", "ClientsList", new { id = Model.id }, new AjaxOptions
+                                                                        {
+                                                                            HttpMethod = "GET",
+                                                                            UpdateTargetId = "brokerDisplay",
+                                                                            InsertionMode = InsertionMode.Replace
+                                                                        })
+<div id="brokerDisplay">Date Here: </div>*@

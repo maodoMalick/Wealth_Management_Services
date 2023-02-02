@@ -33,10 +33,11 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 {
                     // Data to be sent to the View
                     MyViewModel.broker = bkr;
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + bkr.name;
+                    MyViewModel.Welcome = "Welcome " + bkr.name;
 
-                    // Send Authenticated user to his/her Dashboard
-                    return View("~/Views/Home/Dashboard.cshtml", MyViewModel.broker);
+                    // Send Authenticated broker user to his/her Dashboard
+                    //return View("~/Views/Home/Dashboard.cshtml", MyViewModel.broker);
+                    return View("Dashboard", bkr);
                 }
                 else
                 {
@@ -49,6 +50,73 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             return View("Index");
         }
 
+        // For 'Ajax' section in Broker Dashboard
+        public PartialViewResult ClientsList()
+        {
+            // Display title with results
+            MyViewModel.Message = "List of all Clients";
+            // Display the list of all investors
+            List<investor> investors = DataConnector.investors.ToList();
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult BuyAssets()
+        {
+            // Display title with results
+            MyViewModel.Message = "Stocks & Bonds Marketplace";
+            // Display the list of all investors
+            //List<investor> investors = DataConnector.investors.ToList();
+            return PartialView("_StocksAndBonds");
+        }
+
+        public PartialViewResult HighestDividend()
+        {
+            // Display title with results
+            MyViewModel.Message = "List of Best Clients";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              where i.latestDividend >= 3200
+                                              select i;
+
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult ClientsByGender()
+        {
+            // Display title with results
+            MyViewModel.Message = "Clients by Gender";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              where i.gender == "male"
+                                              select i;
+
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult ClientsBySeniority()
+        {
+            // Display title with results
+            MyViewModel.Message = "Clients by Seniority";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              orderby i.memberSince ascending
+                                              select i;
+            
+            return PartialView("_ClientsList", investors);
+        }
+
+        // STOCKS & BONDS PAGE
+        public PartialViewResult GetStocksList()
+        {
+            return PartialView("_StocksPage");
+        }
+
+        public PartialViewResult GetBondsList()
+        {
+            return PartialView("_BondsPage");
+        }
+
+        // REGISTRATION 
         public ActionResult Registration()
         {
             return View();
@@ -84,5 +152,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             // Will return the opposite of the logic (to be true)
             return Json(!DataConnector.brokers.Any(x => x.username == username), JsonRequestBehavior.AllowGet);
         }
+
+        
     }
 }

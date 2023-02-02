@@ -8,6 +8,7 @@ namespace Wealth_Management_Services.ViewModel
         public static int id { get; set; } 
         public static string Warning { get; set; }
         public static string Welcome { get; set; }
+        public static string Message { get; set; }
 
         // Models
         public static broker broker = null;

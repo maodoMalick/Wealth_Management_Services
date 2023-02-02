@@ -2,46 +2,96 @@
 
 @using Wealth_Management_Services.ViewModel
 
-<table width="300px" border="1" style="background-color:aqua;">
-    
-    <caption style="color:dimgrey; font-weight:bold;">
-        @MyViewModel.Welcome
-    </caption>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.name)</a></td>
-        <td>@Html.DisplayFor(x => x.name)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.username)</a></td>
-        <td>@Html.DisplayFor(x => x.username)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.password)</a></td>
-        <td>@Html.DisplayFor(x => x.password)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.gender)</a></td>
-        <td>@Html.DisplayFor(x => x.gender)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.email)</a></td>
-        <td>@Html.DisplayFor(x => x.email)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.salary)</a></td>
-        <td>@Html.DisplayFor(x => x.salary)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.commission)</a></td>
-        <td>@Html.DisplayFor(x => x.commission)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.hireDate)</a></td>
-        <td>@Html.DisplayFor(x => x.hireDate)</td>
-    </tr>
-    <tr>
-        <td><a>@Html.DisplayNameFor(x => x.managerID)</a></td>
-        <td>@Html.DisplayFor(x => x.managerID)</td>
-    </tr>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<!--Ajax Package Section-->
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
-</table>
+<div class="partialDashboardBox">
+    <div class="article">
+        <table class="table">
+            <caption style="color:dimgrey; font-weight:bold;">
+                @MyViewModel.Welcome
+            </caption>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.name)</td>
+                <td>@Html.DisplayFor(x => x.name)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.email)</td>
+                <td>@Html.DisplayFor(x => x.email)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.salary)</td>
+                <td>@Html.DisplayFor(x => x.salary)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.commission)</td>
+                <td>@Html.DisplayFor(x => x.commission)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.hireDate)</td>
+                <td>@Html.DisplayFor(x => x.hireDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.managerID)</td>
+                <td>@Html.DisplayFor(x => x.managerID)</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="article" id="brokerDisplay">
+        
+    </div>
+    <div class="article">
+
+
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("List of All Clients", "ClientsList", new AjaxOptions
+                                                                        {
+                                                                            HttpMethod = "GET",
+                                                                            UpdateTargetId = "brokerDisplay",
+                                                                            InsertionMode = InsertionMode.Replace
+                                                                        })
+        </div>
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("Highest Dividends", "HighestDividend", new { lastdividend = 3000 }, new AjaxOptions
+                                                                                           {
+                                                                                               HttpMethod = "GET",
+                                                                                               UpdateTargetId = "brokerStats",
+                                                                                               InsertionMode = InsertionMode.Replace
+                                                                                           })
+        </div>
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("Clients by Gender", "ClientsByGender", new { id = Model.id }, new AjaxOptions
+                                                                                           {
+                                                                                               HttpMethod = "GET",
+                                                                                               UpdateTargetId = "brokerStats",
+                                                                                               InsertionMode = InsertionMode.Replace
+                                                                                           })
+        </div>
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("Clients by Seniority", "ClientsBySeniority", new AjaxOptions
+                                                                                           {
+                                                                                               HttpMethod = "GET",
+                                                                                               UpdateTargetId = "brokerStats",
+                                                                                               InsertionMode = InsertionMode.Replace
+                                                                                           })
+        </div>
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("Buy Stocks or Bonds", "BuyAssets", new { id = Model.id }, new AjaxOptions
+                                                                                           {
+                                                                                               HttpMethod = "GET",
+                                                                                               UpdateTargetId = "brokerDisplay",
+                                                                                               InsertionMode = InsertionMode.Replace
+                                                                                           })
+        </div>
+    </div>
+        <div class="article" id="brokerStats">
+            <b>Why invest in index funds?</b>
+
+        </div>
+    </div>
