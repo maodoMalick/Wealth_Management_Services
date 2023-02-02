@@ -35,8 +35,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                     MyViewModel.broker = bkr;
                     MyViewModel.Welcome = "Welcome " + bkr.name;
 
-                    // Send Authenticated broker user to his/her Dashboard
-                    //return View("~/Views/Home/Dashboard.cshtml", MyViewModel.broker);
+                    // Send Authenticated broker user to the 'Main' Dashboard
                     return View("Dashboard", bkr);
                 }
                 else
@@ -65,8 +64,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             // Display title with results
             MyViewModel.Message = "Stocks & Bonds Marketplace";
             // Display the list of all investors
-            //List<investor> investors = DataConnector.investors.ToList();
-            return PartialView("_StocksAndBonds");
+            return PartialView("_StocksPage");
         }
 
         public PartialViewResult HighestDividend()
@@ -108,11 +106,13 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         // STOCKS & BONDS PAGE
         public PartialViewResult GetStocksList()
         {
+            MyViewModel.Message = "Stocks & Bonds Marketplace";
             return PartialView("_StocksPage");
         }
 
         public PartialViewResult GetBondsList()
         {
+            MyViewModel.Message = "Stocks & Bonds Marketplace";
             return PartialView("_BondsPage");
         }
 

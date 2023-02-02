@@ -7,7 +7,21 @@
 
 <div id="StocksDisplay">
     <div class="titles">@MyViewModel.Message</div>
-    <div id="stocksBondsNav">@Html.ActionLink("STOCKS", "GetStocksList", "home", new { area = "Brokers" }, null) | @Html.ActionLink("BONDS", "GetBondsList", "home", new { area = "Brokers" }, null)</div>
+    @*<div id="stocksBondsNav">@Html.ActionLink("STOCKS", "GetStocksList", "home", new { area = "Brokers" }, null) | @Html.ActionLink("BONDS", "GetBondsList", "home", new { area = "Brokers" }, null)</div>*@
+    <div id="stocksBondsNav">
+        @Ajax.ActionLink("STOCKS", "GetStocksList", new AjaxOptions
+                                                                       {
+                                                                           HttpMethod = "GET",
+                                                                           UpdateTargetId = "brokerDisplay",
+                                                                           InsertionMode = InsertionMode.Replace
+                                                                       }) |
+        @Ajax.ActionLink("BONDS", "GetBondsList", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+    </div>
     <hr />
     <div id="stocksBox">
         <div class="item"><a href="https://www.acorns.com" target="_blank"><img src="~/images_stocks/acorns_mini.jpg" /></a></div>
@@ -22,5 +36,6 @@
         <div class="item"><a href="https://www.tdameritrade.com" target="_blank"><img src="~/images_stocks/ameritrade_mini.jpg" /></a></div>
     </div>
 </div>
+
 
 
