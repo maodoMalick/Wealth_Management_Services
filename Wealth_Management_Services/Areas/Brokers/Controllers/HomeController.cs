@@ -59,7 +59,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             return PartialView("_ClientsList", investors);
         }
 
-        public PartialViewResult BuyAssets()
+        public PartialViewResult GotoMarketplace()
         {
             // Display title with results
             MyViewModel.Message = "Stocks & Bonds Marketplace";
@@ -114,6 +114,12 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";
             return PartialView("_BondsPage");
+        }
+
+        public PartialViewResult Purchasing()
+        {
+            MyViewModel.Message = "Stocks & Bonds Marketplace";
+            return PartialView("_PurchasingPage");
         }
 
         // REGISTRATION 

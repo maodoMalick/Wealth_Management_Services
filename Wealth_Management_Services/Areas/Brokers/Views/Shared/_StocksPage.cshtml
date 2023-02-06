@@ -7,20 +7,19 @@
 
 <div id="StocksDisplay">
     <div class="titles">@MyViewModel.Message</div>
-    @*<div id="stocksBondsNav">@Html.ActionLink("STOCKS", "GetStocksList", "home", new { area = "Brokers" }, null) | @Html.ActionLink("BONDS", "GetBondsList", "home", new { area = "Brokers" }, null)</div>*@
     <div id="stocksBondsNav">
         @Ajax.ActionLink("STOCKS", "GetStocksList", new AjaxOptions
-                                                                       {
-                                                                           HttpMethod = "GET",
-                                                                           UpdateTargetId = "brokerDisplay",
-                                                                           InsertionMode = InsertionMode.Replace
-                                                                       }) |
+                                                            {
+                                                                HttpMethod = "GET",
+                                                                UpdateTargetId = "brokerDisplay",
+                                                                InsertionMode = InsertionMode.Replace
+                                                            }) |
         @Ajax.ActionLink("BONDS", "GetBondsList", new AjaxOptions
-                                                                            {
-                                                                                HttpMethod = "GET",
-                                                                                UpdateTargetId = "brokerDisplay",
-                                                                                InsertionMode = InsertionMode.Replace
-                                                                            })
+                                                            {
+                                                                HttpMethod = "GET",
+                                                                UpdateTargetId = "brokerDisplay",
+                                                                InsertionMode = InsertionMode.Replace
+                                                            })
     </div>
     <hr />
     <div id="stocksBox">

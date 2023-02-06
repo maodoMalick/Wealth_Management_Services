@@ -75,19 +75,27 @@
         </div>
         <div class="ajaxLinks">
             @Ajax.ActionLink("Clients by Seniority", "ClientsBySeniority", new AjaxOptions
-                                                                                           {
-                                                                                               HttpMethod = "GET",
-                                                                                               UpdateTargetId = "brokerStats",
-                                                                                               InsertionMode = InsertionMode.Replace
-                                                                                           })
+                                                                                {
+                                                                                    HttpMethod = "GET",
+                                                                                    UpdateTargetId = "brokerStats",
+                                                                                    InsertionMode = InsertionMode.Replace
+                                                                                })
         </div>
         <div class="ajaxLinks">
-            @Ajax.ActionLink("Buy Stocks or Bonds", "BuyAssets", new { id = Model.id }, new AjaxOptions
-                                                                                           {
-                                                                                               HttpMethod = "GET",
-                                                                                               UpdateTargetId = "brokerDisplay",
-                                                                                               InsertionMode = InsertionMode.Replace
-                                                                                           })
+            @Ajax.ActionLink("Go to Marketplace", "GotoMarketplace", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+        </div>
+        <div class="ajaxLinks">
+            @Ajax.ActionLink("Buy Stocks or Bonds", "Purchasing", new AjaxOptions
+                                                                        {
+                                                                            HttpMethod = "GET",
+                                                                            UpdateTargetId = "brokerDisplay",
+                                                                            InsertionMode = InsertionMode.Replace
+                                                                        })
         </div>
     </div>
         <div class="article" id="brokerStats">

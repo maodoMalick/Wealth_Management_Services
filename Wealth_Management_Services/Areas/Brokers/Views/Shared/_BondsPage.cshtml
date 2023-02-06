@@ -7,7 +7,6 @@
 
 <div id="StocksDisplay">
     <div class="titles">@MyViewModel.Message</div>
-    @*<div id="stocksBondsNav">@Html.ActionLink("STOCKS", "GetStocksList", "home", new { area = "Brokers" }, null) | @Html.ActionLink("BONDS", "GetBondsList", "home", new { area = "Brokers" }, null)</div>*@
     <div id="stocksBondsNav">
         @Ajax.ActionLink("STOCKS", "GetStocksList", new AjaxOptions
                                                                        {
