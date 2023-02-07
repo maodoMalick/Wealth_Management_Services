@@ -12,6 +12,8 @@ namespace Wealth_Management_Services.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class DataConnection : DbContext
     {
@@ -28,5 +30,57 @@ namespace Wealth_Management_Services.Models
         public virtual DbSet<broker> brokers { get; set; }
         public virtual DbSet<investor> investors { get; set; }
         public virtual DbSet<management> managements { get; set; }
+        public virtual DbSet<brokerOperation> brokerOperations { get; set; }
+        public virtual DbSet<mgmtBillboard> mgmtBillboards { get; set; }
+    
+        public virtual ObjectResult<InvestorData_sp_Result> InvestorData_sp(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InvestorData_sp_Result>("InvestorData_sp", idParameter);
+        }
+    
+        public virtual int Stock_Operations_sp(string trader, string shares, string item, Nullable<int> amount, Nullable<decimal> price, Nullable<int> brokerID, Nullable<System.DateTime> purchaseDate, Nullable<int> clientID, Nullable<decimal> total)
+        {
+            var traderParameter = trader != null ?
+                new ObjectParameter("trader", trader) :
+                new ObjectParameter("trader", typeof(string));
+    
+            var sharesParameter = shares != null ?
+                new ObjectParameter("shares", shares) :
+                new ObjectParameter("shares", typeof(string));
+    
+            var itemParameter = item != null ?
+                new ObjectParameter("item", item) :
+                new ObjectParameter("item", typeof(string));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            var brokerIDParameter = brokerID.HasValue ?
+                new ObjectParameter("brokerID", brokerID) :
+                new ObjectParameter("brokerID", typeof(int));
+    
+            var purchaseDateParameter = purchaseDate.HasValue ?
+                new ObjectParameter("purchaseDate", purchaseDate) :
+                new ObjectParameter("purchaseDate", typeof(System.DateTime));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("clientID", clientID) :
+                new ObjectParameter("clientID", typeof(int));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("total", total) :
+                new ObjectParameter("total", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Stock_Operations_sp", traderParameter, sharesParameter, itemParameter, amountParameter, priceParameter, brokerIDParameter, purchaseDateParameter, clientIDParameter, totalParameter);
+        }
     }
 }

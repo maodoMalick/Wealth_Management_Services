@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseLessonsVaultModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseLessonsVaultModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="broker">
           <Key>
             <PropertyRef Name="id" />
@@ -19,6 +19,22 @@
           <Property Name="commission" Type="decimal" Precision="18" Scale="0" />
           <Property Name="hireDate" Type="datetime" />
           <Property Name="managerID" Type="int" />
+        </EntityType>
+        <EntityType Name="brokerOperations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transactionID" Type="nvarchar" MaxLength="50" />
+          <Property Name="trader" Type="nvarchar" MaxLength="50" />
+          <Property Name="shares" Type="nvarchar" MaxLength="50" />
+          <Property Name="item" Type="nvarchar" MaxLength="50" />
+          <Property Name="amount" Type="int" />
+          <Property Name="price" Type="money" />
+          <Property Name="brokerID" Type="int" />
+          <Property Name="purchaseDate" Type="datetime" />
+          <Property Name="clientID" Type="int" />
+          <Property Name="total" Type="money" />
         </EntityType>
         <EntityType Name="investor">
           <Key>
@@ -52,6 +68,15 @@
           <Property Name="salary" Type="money" />
           <Property Name="hireDate" Type="datetime" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mgmtBillboard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reports" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
         <Association Name="FK__broker__managerI__398D8EEE">
           <End Role="management" Type="Self.management" Multiplicity="0..1" />
           <End Role="broker" Type="Self.broker" Multiplicity="*" />
@@ -61,6 +86,30 @@
             </Principal>
             <Dependent Role="broker">
               <PropertyRef Name="managerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__brokerOpe__broke__32AB8735">
+          <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+          <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="broker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brokerOperations">
+              <PropertyRef Name="brokerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__brokerOpe__clien__339FAB6E">
+          <End Role="investor" Type="Self.investor" Multiplicity="0..1" />
+          <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="investor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brokerOperations">
+              <PropertyRef Name="clientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -76,21 +125,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="InvestorData_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Stock_Operations_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="trader" Type="nvarchar" Mode="In" />
+          <Parameter Name="shares" Type="nvarchar" Mode="In" />
+          <Parameter Name="item" Type="nvarchar" Mode="In" />
+          <Parameter Name="amount" Type="int" Mode="In" />
+          <Parameter Name="price" Type="money" Mode="In" />
+          <Parameter Name="brokerID" Type="int" Mode="In" />
+          <Parameter Name="purchaseDate" Type="datetime" Mode="In" />
+          <Parameter Name="clientID" Type="int" Mode="In" />
+          <Parameter Name="total" Type="money" Mode="In" />
+        </Function>
         <EntityContainer Name="DatabaseLessonsVaultModelStoreContainer">
           <EntitySet Name="broker" EntityType="Self.broker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="brokerOperations" EntityType="Self.brokerOperations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="investor" EntityType="Self.investor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="management" EntityType="Self.management" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mgmtBillboard" EntityType="Self.mgmtBillboard" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mgmtBillboard].[id] AS [id], 
+    [mgmtBillboard].[reports] AS [reports]
+    FROM [dbo].[mgmtBillboard] AS [mgmtBillboard]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__broker__managerI__398D8EEE" Association="Self.FK__broker__managerI__398D8EEE">
             <End Role="management" EntitySet="management" />
             <End Role="broker" EntitySet="broker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="Self.FK__brokerOpe__broke__32AB8735">
+            <End Role="broker" EntitySet="broker" />
+            <End Role="brokerOperations" EntitySet="brokerOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="Self.FK__brokerOpe__clien__339FAB6E">
+            <End Role="investor" EntitySet="investor" />
+            <End Role="brokerOperations" EntitySet="brokerOperations" />
           </AssociationSet>
           <AssociationSet Name="FK__investor__broker__3C69FB99" Association="Self.FK__investor__broker__3C69FB99">
             <End Role="broker" EntitySet="broker" />
             <End Role="investor" EntitySet="investor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseLessonsVaultModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -110,6 +187,7 @@
           <Property Name="managerID" Type="Int32" />
           <NavigationProperty Name="management" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="broker" ToRole="management" />
           <NavigationProperty Name="investors" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="broker" ToRole="investor" />
+          <NavigationProperty Name="brokerOperations" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="broker" ToRole="brokerOperation" />
         </EntityType>
         <EntityType Name="investor">
           <Key>
@@ -130,6 +208,7 @@
           <Property Name="isLocked" Type="Int32" />
           <Property Name="lockOutTime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="broker" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="investor" ToRole="broker" />
+          <NavigationProperty Name="brokerOperations" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="investor" ToRole="brokerOperation" />
         </EntityType>
         <EntityType Name="management">
           <Key>
@@ -181,7 +260,89 @@
             <End Role="broker" EntitySet="brokers" />
             <End Role="investor" EntitySet="investors" />
           </AssociationSet>
+          <EntitySet Name="brokerOperations" EntityType="DatabaseLessonsVaultModel.brokerOperation" />
+          <EntitySet Name="mgmtBillboards" EntityType="DatabaseLessonsVaultModel.mgmtBillboard" />
+          <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735">
+            <End Role="broker" EntitySet="brokers" />
+            <End Role="brokerOperation" EntitySet="brokerOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E">
+            <End Role="investor" EntitySet="investors" />
+            <End Role="brokerOperation" EntitySet="brokerOperations" />
+          </AssociationSet>
+          <FunctionImport Name="InvestorData_sp" ReturnType="Collection(DatabaseLessonsVaultModel.InvestorData_sp_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Stock_Operations_sp">
+            <Parameter Name="trader" Mode="In" Type="String" />
+            <Parameter Name="shares" Mode="In" Type="String" />
+            <Parameter Name="item" Mode="In" Type="String" />
+            <Parameter Name="amount" Mode="In" Type="Int32" />
+            <Parameter Name="price" Mode="In" Type="Decimal" />
+            <Parameter Name="brokerID" Mode="In" Type="Int32" />
+            <Parameter Name="purchaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="clientID" Mode="In" Type="Int32" />
+            <Parameter Name="total" Mode="In" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="brokerOperation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="trader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="shares" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="brokerID" Type="Int32" />
+          <Property Name="purchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="clientID" Type="Int32" />
+          <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="broker" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="brokerOperation" ToRole="broker" />
+          <NavigationProperty Name="investor" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="brokerOperation" ToRole="investor" />
+        </EntityType>
+        <EntityType Name="mgmtBillboard">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reports" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__brokerOpe__broke__32AB8735">
+          <End Type="DatabaseLessonsVaultModel.broker" Role="broker" Multiplicity="0..1" />
+          <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="broker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brokerOperation">
+              <PropertyRef Name="brokerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__brokerOpe__clien__339FAB6E">
+          <End Type="DatabaseLessonsVaultModel.investor" Role="investor" Multiplicity="0..1" />
+          <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="investor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="brokerOperation">
+              <PropertyRef Name="clientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="InvestorData_sp_Result">
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="memberSince" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="capital" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="last_profit" Nullable="true" Precision="19" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -238,6 +399,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="brokerOperations">
+            <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.brokerOperation">
+              <MappingFragment StoreEntitySet="brokerOperations">
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="clientID" ColumnName="clientID" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+                <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="item" ColumnName="item" />
+                <ScalarProperty Name="shares" ColumnName="shares" />
+                <ScalarProperty Name="trader" ColumnName="trader" />
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mgmtBillboards">
+            <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.mgmtBillboard">
+              <MappingFragment StoreEntitySet="mgmtBillboard">
+                <ScalarProperty Name="reports" ColumnName="reports" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="InvestorData_sp" FunctionName="DatabaseLessonsVaultModel.Store.InvestorData_sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.InvestorData_sp_Result">
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+                <ScalarProperty Name="capital" ColumnName="capital" />
+                <ScalarProperty Name="last_profit" ColumnName="last profit" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Stock_Operations_sp" FunctionName="DatabaseLessonsVaultModel.Store.Stock_Operations_sp" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

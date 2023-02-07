@@ -51,5 +51,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="brokerOperations">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.brokerOperation">
+        <MappingFragment StoreEntitySet="brokerOperations">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="shares" ColumnName="shares" />
+          <ScalarProperty Name="trader" ColumnName="trader" />
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mgmtBillboards">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.mgmtBillboard">
+        <MappingFragment StoreEntitySet="mgmtBillboard">
+          <ScalarProperty Name="reports" ColumnName="reports" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InvestorData_sp" FunctionName="DatabaseLessonsVaultModel.Store.InvestorData_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.InvestorData_sp_Result">
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+          <ScalarProperty Name="capital" ColumnName="capital" />
+          <ScalarProperty Name="last_profit" ColumnName="last profit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Stock_Operations_sp" FunctionName="DatabaseLessonsVaultModel.Store.Stock_Operations_sp" />
   </EntityContainerMapping>
 </Mapping>

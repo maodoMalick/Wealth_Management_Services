@@ -215,7 +215,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\brokerOperation.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\investor.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InvestorData_sp_Result.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\management.cs">
@@ -227,6 +233,9 @@
     <Compile Include="Models\Departments.cs" />
     <Compile Include="Models\investor.custom.cs" />
     <Compile Include="Models\management.custom.cs" />
+    <Compile Include="Models\mgmtBillboard.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PasswordHash.cs" />
     <Compile Include="Models\MyEntityModel.Context.cs">
       <AutoGen>True</AutoGen>

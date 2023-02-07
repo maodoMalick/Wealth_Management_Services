@@ -14,6 +14,12 @@ namespace Wealth_Management_Services.Models
     
     public partial class investor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public investor()
+        {
+            this.brokerOperations = new HashSet<brokerOperation>();
+        }
+    
         public int id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -30,5 +36,7 @@ namespace Wealth_Management_Services.Models
         public Nullable<System.DateTime> lockOutTime { get; set; }
     
         public virtual broker broker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<brokerOperation> brokerOperations { get; set; }
     }
 }

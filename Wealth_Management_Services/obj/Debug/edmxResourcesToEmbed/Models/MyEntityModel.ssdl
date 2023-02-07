@@ -15,6 +15,22 @@
     <Property Name="hireDate" Type="datetime" />
     <Property Name="managerID" Type="int" />
   </EntityType>
+  <EntityType Name="brokerOperations">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="transactionID" Type="nvarchar" MaxLength="50" />
+    <Property Name="trader" Type="nvarchar" MaxLength="50" />
+    <Property Name="shares" Type="nvarchar" MaxLength="50" />
+    <Property Name="item" Type="nvarchar" MaxLength="50" />
+    <Property Name="amount" Type="int" />
+    <Property Name="price" Type="money" />
+    <Property Name="brokerID" Type="int" />
+    <Property Name="purchaseDate" Type="datetime" />
+    <Property Name="clientID" Type="int" />
+    <Property Name="total" Type="money" />
+  </EntityType>
   <EntityType Name="investor">
     <Key>
       <PropertyRef Name="id" />
@@ -47,6 +63,15 @@
     <Property Name="salary" Type="money" />
     <Property Name="hireDate" Type="datetime" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="mgmtBillboard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reports" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
   <Association Name="FK__broker__managerI__398D8EEE">
     <End Role="management" Type="Self.management" Multiplicity="0..1" />
     <End Role="broker" Type="Self.broker" Multiplicity="*" />
@@ -56,6 +81,30 @@
       </Principal>
       <Dependent Role="broker">
         <PropertyRef Name="managerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__brokerOpe__broke__32AB8735">
+    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+    <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="broker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperations">
+        <PropertyRef Name="brokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__brokerOpe__clien__339FAB6E">
+    <End Role="investor" Type="Self.investor" Multiplicity="0..1" />
+    <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="investor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperations">
+        <PropertyRef Name="clientID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -71,13 +120,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="InvestorData_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Stock_Operations_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="trader" Type="nvarchar" Mode="In" />
+    <Parameter Name="shares" Type="nvarchar" Mode="In" />
+    <Parameter Name="item" Type="nvarchar" Mode="In" />
+    <Parameter Name="amount" Type="int" Mode="In" />
+    <Parameter Name="price" Type="money" Mode="In" />
+    <Parameter Name="brokerID" Type="int" Mode="In" />
+    <Parameter Name="purchaseDate" Type="datetime" Mode="In" />
+    <Parameter Name="clientID" Type="int" Mode="In" />
+    <Parameter Name="total" Type="money" Mode="In" />
+  </Function>
   <EntityContainer Name="DatabaseLessonsVaultModelStoreContainer">
     <EntitySet Name="broker" EntityType="Self.broker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="brokerOperations" EntityType="Self.brokerOperations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="investor" EntityType="Self.investor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="management" EntityType="Self.management" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mgmtBillboard" EntityType="Self.mgmtBillboard" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [mgmtBillboard].[id] AS [id], 
+    [mgmtBillboard].[reports] AS [reports]
+    FROM [dbo].[mgmtBillboard] AS [mgmtBillboard]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK__broker__managerI__398D8EEE" Association="Self.FK__broker__managerI__398D8EEE">
       <End Role="management" EntitySet="management" />
       <End Role="broker" EntitySet="broker" />
+    </AssociationSet>
+    <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="Self.FK__brokerOpe__broke__32AB8735">
+      <End Role="broker" EntitySet="broker" />
+      <End Role="brokerOperations" EntitySet="brokerOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="Self.FK__brokerOpe__clien__339FAB6E">
+      <End Role="investor" EntitySet="investor" />
+      <End Role="brokerOperations" EntitySet="brokerOperations" />
     </AssociationSet>
     <AssociationSet Name="FK__investor__broker__3C69FB99" Association="Self.FK__investor__broker__3C69FB99">
       <End Role="broker" EntitySet="broker" />
