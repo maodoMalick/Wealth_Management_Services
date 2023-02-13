@@ -1,4 +1,4 @@
-﻿@model Wealth_Management_Services.Models.broker
+﻿@model Wealth_Management_Services.Models.management
 
 @using Wealth_Management_Services.ViewModel
 
@@ -10,7 +10,7 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 <div class="partialDashboardBox">
-    <div class="article-bkr">
+    <div class="article-inv">
         <table class="table">
             <caption style="color:dimgrey; font-weight:bold;">
                 @MyViewModel.Welcome
@@ -21,6 +21,11 @@
             </tr>
 
             <tr>
+                <td>@Html.DisplayNameFor(x => x.username)</td>
+                <td>@Html.DisplayFor(x => x.username)</td>
+            </tr>
+
+            <tr>
                 <td>@Html.DisplayNameFor(x => x.email)</td>
                 <td>@Html.DisplayFor(x => x.email)</td>
             </tr>
@@ -28,25 +33,12 @@
                 <td>@Html.DisplayNameFor(x => x.salary)</td>
                 <td>@Html.DisplayFor(x => x.salary)</td>
             </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(x => x.commission)</td>
-                <td>@Html.DisplayFor(x => x.commission)</td>
-            </tr>
+
             <tr>
                 <td>@Html.DisplayNameFor(x => x.hireDate)</td>
                 <td>@Html.DisplayFor(x => x.hireDate)</td>
             </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(x => x.managerID)</td>
-                <td>@Html.DisplayFor(x => x.managerID)</td>
-            </tr>
-
         </table>
-    </div>
-    <div class="article-bkr" id="brokerDisplay">
-
-    </div>
-    <div class="article-bkr">
         <div id="#ajaxNavBar">
             <h4>Navigation</h4>
             <div class="ajaxLinks">
@@ -99,8 +91,15 @@
             </div>
         </div>
     </div>
-    <div class="article-bkr" id="brokerStats">
-        <b>Why invest in index funds?</b>
-    </div>
 
-</div> <!-- 'partialDashboardBox' -->
+    <div class="article-inv" id="brokerDisplay">
+
+    </div>
+    <div class="article-inv">
+        
+    </div>
+    <div class="article-inv" id="brokerStats">
+        <b>Financial Reports Listing</b>
+    </div>
+</div> <!-- / 'partialDashboardBox' -->
+

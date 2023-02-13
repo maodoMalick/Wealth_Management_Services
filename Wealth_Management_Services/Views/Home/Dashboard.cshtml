@@ -25,7 +25,7 @@
         {
             // -- BROKER SECTION --
             broker bkr = MyViewModel.broker;
-
+            //ViewBag.BROKER = bkr; // safeguard data to be sent to ..
             @Html.Partial("_BrokerPartial", bkr)
             // Must clean the model otherwise it will interfere
             MyViewModel.broker = null;

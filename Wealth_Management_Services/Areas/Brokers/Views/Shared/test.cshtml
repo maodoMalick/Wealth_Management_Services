@@ -1,0 +1,15 @@
+﻿<style>
+    body {
+        background: aqua;
+    }
+</style>
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+
+@using (Html.BeginForm("Purchasing", "Home", FormMethod.Post, new { area = "Brokers" }))
+{
+    <input type="text" value="enter text" id="str" />
+
+    <input type="submit" value="send" />
+}

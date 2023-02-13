@@ -33,7 +33,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 {
                     // Data to be sent to the View
                     MyViewModel.broker = bkr;
-                    MyViewModel.Welcome = "Welcome " + bkr.name;
+                    MyViewModel.Welcome = "Welcome Broker: " + bkr.name;
 
                     // Send Authenticated broker user to the 'Main' Dashboard
                     return View("Dashboard", bkr);
@@ -119,7 +119,24 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         public PartialViewResult Purchasing()
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";
-            return PartialView("_PurchasingPage");
+            //return PartialView("_BuyingPage");
+            return PartialView("_BuyingPage");
+        }
+
+        [HttpPost]
+        public ActionResult Purchasing(brokerOperation bkrOps)
+        {
+            if (bkrOps != null)
+            {
+                dataContext.PurchasingAssets(bkrOps);
+                MyViewModel.Message = "Stocks & Bonds Marketplace";
+                //MyViewModel.broker = ViewBag.BROKER;
+                return View("Index"/*, MyViewModel.broker*/);
+            }
+
+            return View("Index");
+            //return PartialView("_BrokerPartial");
+            //return View();
         }
 
         // REGISTRATION 

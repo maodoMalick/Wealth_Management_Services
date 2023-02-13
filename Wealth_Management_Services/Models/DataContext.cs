@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using Wealth_Management_Services.ViewModel;
+using static System.Data.Entity.Infrastructure.Design.Executor;
 
 
 namespace Wealth_Management_Services.Models
@@ -13,6 +16,7 @@ namespace Wealth_Management_Services.Models
         // Database Connection accessible to all methods
         SqlConnection conn = Connection.getConnection();
 
+        // Entity Framework Data Connection
         DataConnection DataConnector = new DataConnection();
 
 
@@ -155,9 +159,40 @@ namespace Wealth_Management_Services.Models
             }
             
         }
-        
 
+        public void PurchasingAssets(brokerOperation bkrO)
+        {
+            using (conn)
+            {
+                SqlCommand cmd = new SqlCommand("Stock_Operations_sp", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
 
+                SqlParameter paramTrader = new SqlParameter("@trader", bkrO.trader);
+                cmd.Parameters.Add(paramTrader);
+                SqlParameter paramShares = new SqlParameter("@shares", bkrO.shares);
+                cmd.Parameters.Add(paramShares);
+                SqlParameter paramItem = new SqlParameter("@item", bkrO.item);
+                cmd.Parameters.Add(paramItem);
+                SqlParameter paramAmount = new SqlParameter("@amount", bkrO.amount);
+                cmd.Parameters.Add(paramAmount);
+                SqlParameter paramPrice = new SqlParameter("@price", bkrO.price);
+                cmd.Parameters.Add(paramPrice);
+                SqlParameter paramBkrID = new SqlParameter("@brokerID", bkrO.brokerID);
+                cmd.Parameters.Add(paramBkrID);
+                SqlParameter paramPoDate = new SqlParameter("@purchaseDate", bkrO.purchaseDate);
+                cmd.Parameters.Add(paramPoDate);
+                SqlParameter paramCtID = new SqlParameter("@clientID", bkrO.clientID);
+                cmd.Parameters.Add(paramCtID);
+                SqlParameter paramTotal = new SqlParameter("@total", bkrO.total);
+                cmd.Parameters.Add(paramTotal);
+
+                //int result = (int)cmd.ExecuteScalar();
+                //return result;
+                cmd.ExecuteNonQuery();
+            }
+        }
+    
         // ---------------------* INVESTOR SECTION *---------------------------------------------------------//
         public int Investor_Registration(investor investor)
         {

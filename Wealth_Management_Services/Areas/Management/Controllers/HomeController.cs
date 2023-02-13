@@ -33,7 +33,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
                 {
                     // Data to be sent to the View
                     management manager = MyViewModel.management;
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + manager.name;
+                    MyViewModel.Welcome = "Welcome Manager: " + manager.name;
 
                     // Send Authenticated user to his/her Dashboard
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.management);

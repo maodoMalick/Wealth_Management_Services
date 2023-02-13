@@ -1,4 +1,4 @@
-﻿@model Wealth_Management_Services.Models.broker
+﻿@model Wealth_Management_Services.Models.investor
 
 @using Wealth_Management_Services.ViewModel
 
@@ -10,43 +10,41 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 <div class="partialDashboardBox">
-    <div class="article-bkr">
+    <div class="article-mgmt">
         <table class="table">
             <caption style="color:dimgrey; font-weight:bold;">
                 @MyViewModel.Welcome
             </caption>
             <tr>
-                <td>@Html.DisplayNameFor(x => x.name)</td>
-                <td>@Html.DisplayFor(x => x.name)</td>
+                <td>@Html.DisplayNameFor(x => x.firstName)</td>
+                <td>@Html.DisplayFor(x => x.firstName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.lastName)</td>
+                <td>@Html.DisplayFor(x => x.lastName)</td>
             </tr>
 
             <tr>
                 <td>@Html.DisplayNameFor(x => x.email)</td>
                 <td>@Html.DisplayFor(x => x.email)</td>
             </tr>
+
             <tr>
-                <td>@Html.DisplayNameFor(x => x.salary)</td>
-                <td>@Html.DisplayFor(x => x.salary)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(x => x.commission)</td>
-                <td>@Html.DisplayFor(x => x.commission)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(x => x.hireDate)</td>
-                <td>@Html.DisplayFor(x => x.hireDate)</td>
-            </tr>
-            <tr>
-                <td>@Html.DisplayNameFor(x => x.managerID)</td>
-                <td>@Html.DisplayFor(x => x.managerID)</td>
+                <td>@Html.DisplayNameFor(x => x.username)</td>
+                <td>@Html.DisplayFor(x => x.username)</td>
             </tr>
 
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.memberSince)</td>
+                <td>@Html.DisplayFor(x => x.memberSince)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.capital)</td>
+                <td>@Html.DisplayFor(x => x.capital)</td>
+            </tr>
         </table>
-    </div>
-    <div class="article-bkr" id="brokerDisplay">
-
-    </div>
-    <div class="article-bkr">
         <div id="#ajaxNavBar">
             <h4>Navigation</h4>
             <div class="ajaxLinks">
@@ -99,8 +97,14 @@
             </div>
         </div>
     </div>
-    <div class="article-bkr" id="brokerStats">
-        <b>Why invest in index funds?</b>
+    <div class="article-mgmt" id="brokerDisplay">
+
+    </div>
+    <div class="article-mgmt">
+
+    </div>
+    <div class="article-mgmt" id="brokerStats">
+        <b>My Personal Financial Reports</b>
     </div>
 
-</div> <!-- 'partialDashboardBox' -->
+</div>  <!-- / 'partialDashboardBox' -->

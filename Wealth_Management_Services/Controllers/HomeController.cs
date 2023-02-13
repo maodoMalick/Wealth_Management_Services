@@ -14,10 +14,10 @@ namespace Wealth_Management_Services.Controllers
     public class HomeController : Controller
     {
         // Data Object
-        DataContext dataContext = new DataContext();
+        //DataContext dataContext = new DataContext();
 
         // Entity Framework Data Connection
-        DataConnection DataConnector = new DataConnection();
+        //DataConnection DataConnector = new DataConnection();
 
         public ActionResult Index()
         {
