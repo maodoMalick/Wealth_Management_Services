@@ -176,8 +176,10 @@
     <Content Include="Models\MyEntityModel.edmx.diagram">
       <DependentUpon>MyEntityModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Views\Shared\_MinStocks.cshtml" />
-    <Content Include="Areas\Brokers\Views\Shared\_ClientsList.cshtml" />
+    <Content Include="Views\Shared\_ClientsList.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\_StocksPage.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\_BondsPage.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\_PurchasingPage.cshtml" />
@@ -186,6 +188,9 @@
     <Content Include="Areas\Brokers\Views\Shared\_Success.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_MgmtPartial.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_InvestorPartial.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_Success.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_TransactionsReport.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_BrokersInfo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
@@ -275,8 +280,11 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Shared\_BrokerPartial.cshtml" />
-    <Content Include="Views\Shared\_MgmtPartial.cshtml" />
+    <Content Include="Views\Shared\_MgmtPartialX.cshtml" />
     <Content Include="Views\Shared\_InvestorPartial.cshtml" />
+    <Content Include="Views\Shared\_BrokersList.cshtml" />
+    <Content Include="Views\Shared\_Success1.cshtml" />
+    <Content Include="Views\Shared\_Graph_Investors.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Wealth_Management_Services.Models.broker>
+
+<table class="table">
+    <tr>
+        <td><b>Broker</b></td><td><b>Manager</b></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.management.name)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+@*<td>
+        @Html.DisplayFor(modelItem => item.username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.salary)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.commission)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.hireDate)
+    </td>*@

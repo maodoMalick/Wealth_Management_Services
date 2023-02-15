@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Wealth_Management_Services.Models;
 using Wealth_Management_Services.ViewModel;
@@ -49,6 +50,103 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             return View("Index");
         }
 
+        // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
+        public PartialViewResult ClientsList()
+        {
+            // Display title with results
+            MyViewModel.Message = "List of all Clients";
+            // Display the list of all investors
+            List<investor> investors = DataConnector.investors.ToList();
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult ClientsChart()
+        {
+            // Display title with results
+            MyViewModel.Message = "Investors Assets";
+            List<string> firstNames = DataConnector.investors.Select(x => x.firstName).ToList();
+            List<decimal?> capitals = DataConnector.investors.Select(x => x.capital).ToList();
+            ViewBag.FIRSTNAMES = firstNames;
+            ViewBag.CAPITALS = capitals;
+
+            return PartialView("_Graph_Investors");
+        }
+
+        public PartialViewResult HighestDividend()
+        {
+            // Display title with results
+            MyViewModel.Message = "List of Best Clients";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              where i.latestDividend >= 3200
+                                              select i;
+
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult ClientsByGender()
+        {
+            // Display title with results
+            MyViewModel.Message = "Clients by Gender";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              where i.gender == "male"
+                                              select i;
+
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult ClientsBySeniority()
+        {
+            // Display title with results
+            MyViewModel.Message = "Clients by Seniority";
+            // Show investors with higher returns
+            IEnumerable<investor> investors = from i in DataConnector.investors
+                                              orderby i.memberSince ascending
+                                              select i;
+
+            return PartialView("_ClientsList", investors);
+        }
+
+        public PartialViewResult BrokersList()
+        {
+            // Display title with results
+            MyViewModel.Message = "List of all Brokers";
+            // Display the list of all brokers
+            List<broker> brokers = DataConnector.brokers.ToList();
+            return PartialView("_BrokersList", brokers);
+        }
+
+        public PartialViewResult Transactions()
+        {
+            // Display title with results
+            MyViewModel.Message = "All Brokers Financial Transactions";
+            // Display the list of all brokers
+            List<mgmtBillboard> billboard = DataConnector.mgmtBillboards.ToList();
+            return PartialView("_TransactionsReport", billboard);
+        }
+
+        public PartialViewResult BrokersInfo()
+        {
+            // Display the list of all brokers
+            List<broker> brokers = DataConnector.brokers.ToList();
+            return PartialView("_BrokersInfo", brokers);
+        }
+
+        public PartialViewResult BrokersPerformance()
+        {
+            // Display title with results
+            MyViewModel.Message = "Brokers Performance";
+            // Display the list of all brokers
+            List<decimal?> dividends = DataConnector.investors.Select(x => x.latestDividend).ToList();
+            List<decimal?> capitals = DataConnector.investors.Select(x => x.capital).ToList();
+            ViewBag.Dividends = dividends;
+            ViewBag.BrokerCapitals = capitals;
+
+            return PartialView("_BrokersInfo");
+        }
+
+        // REGISTRATION
         public ActionResult Registration()
         {
             return View();

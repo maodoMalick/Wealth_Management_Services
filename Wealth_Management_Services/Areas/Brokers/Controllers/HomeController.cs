@@ -49,15 +49,15 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             return View("Index");
         }
 
-        // For 'Ajax' section in Broker Dashboard
-        public PartialViewResult ClientsList()
-        {
-            // Display title with results
-            MyViewModel.Message = "List of all Clients";
-            // Display the list of all investors
-            List<investor> investors = DataConnector.investors.ToList();
-            return PartialView("_ClientsList", investors);
-        }
+        // METHODS FOR THE 'AJAX' SECTION IN BROKER DASHBOARD
+        //public PartialViewResult ClientsList()
+        //{
+        //    // Display title with results
+        //    MyViewModel.Message = "List of all Clients";
+        //    // Display the list of all investors
+        //    List<investor> investors = DataConnector.investors.ToList();
+        //    return PartialView("_ClientsList", investors);
+        //}
 
         public PartialViewResult GotoMarketplace()
         {
@@ -103,7 +103,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             return PartialView("_ClientsList", investors);
         }
 
-        // STOCKS & BONDS PAGE
+        // STOCKS & BONDS PAGES
         public PartialViewResult GetStocksList()
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";

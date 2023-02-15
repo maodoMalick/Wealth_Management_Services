@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Wealth_Management_Services.Models.mgmtBillboard>
+
+@using Wealth_Management_Services.ViewModel
+
+<!--Styles-->
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+
+<div class="titles">@MyViewModel.Message</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.reports)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.reports)
+            </td>
+        </tr>
+    }
+
+</table>

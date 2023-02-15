@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Wealth_Management_Services.Models.broker>
+
+@using Wealth_Management_Services.ViewModel
+
+<!--Styles-->
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+
+<div class="titles">@MyViewModel.Message</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.commission)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hireDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.management.name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.commission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.management.name)
+            </td>
+        </tr>
+    }
+
+</table>

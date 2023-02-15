@@ -177,8 +177,14 @@
     width: 100%;
 }
 
-
-
+/* GRAPHS SECTION */
+#chart_container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 100px;
+}
 
 
 

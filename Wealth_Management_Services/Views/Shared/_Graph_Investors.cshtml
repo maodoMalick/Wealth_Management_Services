@@ -1,0 +1,42 @@
+﻿@using Wealth_Management_Services.ViewModel
+
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/../Content/PartialStyles.css" rel="stylesheet" />
+@*<link href="@Url.Content("~/Content/CustomStyles.css")" rel="stylesheet" />*@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<div class="titles">@MyViewModel.Message</div>
+
+@*<style>
+    #chart_container {
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        border-radius: 10px;
+        margin-left: 100px;
+    }
+</style>*@
+@*<canvas id="ChartCanvas"></canvas>*@
+<div id="chart_container">
+    <canvas id="ChartCanvas"></canvas>
+</div>
+<script>
+    var Names = @Html.Raw(Json.Encode(ViewBag.FIRSTNAMES));
+    var Capitals = @Html.Raw(Json.Encode(ViewBag.CAPITALS));
+    var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+    new Chart("ChartCanvas", {
+        type: "pie",
+        data: {
+            labels: Names,
+            datasets: [{
+                data: Capitals,
+                backgroundColor: barColors,
+                label: "Investors Total Assets"
+            }]
+        }
+     });
+</script>

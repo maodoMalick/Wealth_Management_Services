@@ -53,6 +53,7 @@ namespace Wealth_Management_Services.Models
 
         [Required]
         [Range(1, 10)]
+        [Display(Name = "manager name")]
         public int managerID { get; set; }
 
     }

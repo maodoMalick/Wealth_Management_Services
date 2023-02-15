@@ -86,6 +86,18 @@ namespace Wealth_Management_Services.Models
             }
         }
 
+        public void TransactionsData()
+        {
+            using(conn)
+            {
+                SqlCommand cmd = new SqlCommand("BrokerTransactionsReport_sp", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
 
         // ---------------------* BROKER SECTION *---------------------------------------------------------//
 
