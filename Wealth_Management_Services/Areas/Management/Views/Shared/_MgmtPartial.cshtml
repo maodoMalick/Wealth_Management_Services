@@ -7,7 +7,6 @@
 <link href="~/Content/PartialStyles.css" rel="stylesheet" />
 <!-- Chart.js Section -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-@*<script src="~/Scripts/chart.min.js"></script>*@
 <script src="~/Scripts/chart.min.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
@@ -71,23 +70,7 @@
                                                                                             InsertionMode = InsertionMode.Replace
                                                                                         })
             </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Clients by Gender", "ClientsByGender", new AjaxOptions
-                                                                                {
-                                                                                    HttpMethod = "GET",
-                                                                                    UpdateTargetId = "mgmtDisplay",
-                                                                                    InsertionMode = InsertionMode.Replace
-                                                                                })
-            </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Clients by Seniority", "ClientsBySeniority", new AjaxOptions
-                                                                                    {
-                                                                                        HttpMethod = "GET",
-                                                                                        UpdateTargetId = "mgmtDisplay",
-                                                                                        InsertionMode = InsertionMode.Replace
-                                                                                    })
-            </div>
-            @*<hr />*@
+            <hr />
             <div class="ajaxLinks">
                 @Ajax.ActionLink("List of All Brokers", "BrokersList", new AjaxOptions
                                                                                 {
@@ -111,6 +94,14 @@
                                                                                 UpdateTargetId = "mgmtInfo",
                                                                                 InsertionMode = InsertionMode.Replace,
                                                                             })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Brokers Performance", "BrokersPerformanceChart", new AjaxOptions
+                                                                                        {
+                                                                                            HttpMethod = "GET",
+                                                                                            UpdateTargetId = "mgmtInfo",
+                                                                                            InsertionMode = InsertionMode.Replace,
+                                                                                        })
             </div>
         </div>
     </div>

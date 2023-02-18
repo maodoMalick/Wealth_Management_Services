@@ -285,6 +285,7 @@
     <Content Include="Views\Shared\_BrokersList.cshtml" />
     <Content Include="Views\Shared\_Success1.cshtml" />
     <Content Include="Views\Shared\_Graph_Investors.cshtml" />
+    <Content Include="Views\Shared\_Graph_Bars_Brokers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

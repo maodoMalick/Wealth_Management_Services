@@ -108,6 +108,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             return PartialView("_ClientsList", investors);
         }
 
+        // To display all Brokers names
         public PartialViewResult BrokersList()
         {
             // Display title with results
@@ -117,6 +118,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             return PartialView("_BrokersList", brokers);
         }
 
+        // All Brokers Transactions
         public PartialViewResult Transactions()
         {
             // Display title with results
@@ -126,24 +128,30 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             return PartialView("_TransactionsReport", billboard);
         }
 
+        // Broker Data
         public PartialViewResult BrokersInfo()
         {
+            // Display title with results
+            MyViewModel.Message = "Brokers Info";
             // Display the list of all brokers
             List<broker> brokers = DataConnector.brokers.ToList();
+            decimal? sum = DataConnector.investors.Where(x => x.brokerID == 1).Sum(x => x.latestDividend);
+            ViewBag.SUM = sum;
             return PartialView("_BrokersInfo", brokers);
         }
 
-        public PartialViewResult BrokersPerformance()
+        // Broker Chart
+        public PartialViewResult BrokersPerformanceChart()
         {
             // Display title with results
             MyViewModel.Message = "Brokers Performance";
-            // Display the list of all brokers
-            List<decimal?> dividends = DataConnector.investors.Select(x => x.latestDividend).ToList();
-            List<decimal?> capitals = DataConnector.investors.Select(x => x.capital).ToList();
-            ViewBag.Dividends = dividends;
-            ViewBag.BrokerCapitals = capitals;
-
-            return PartialView("_BrokersInfo");
+            // Get brokers names
+            List<string> names= DataConnector.brokers.Select(x => x.name).ToList();
+            // Get dividends performed by each broker from db
+            List<decimal?> dividends = dataContext.BrokerPerformance();
+            ViewBag.NAMES = names;
+            ViewBag.DIVIDENDS = dividends.OrderByDescending(x => x.Value);
+            return PartialView("_Graph_Bars_Brokers");
         }
 
         // REGISTRATION
@@ -158,8 +166,6 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Get results from Database
-                //int result = 0;
                 //Thread thread = new Thread(result = dataContext.Management_Registration(mgmt));
                 int result = dataContext.Management_Registration(mgmt);
                 //Validate the user is registered

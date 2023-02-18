@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using Wealth_Management_Services.ViewModel;
 using static System.Data.Entity.Infrastructure.Design.Executor;
@@ -65,12 +67,12 @@ namespace Wealth_Management_Services.Models
                 conn.Open();
 
                 // Password Hashing
-                string pwdHash = PasswordHash.HashCode(mgmt.password);
+                //string pwdHash = PasswordHash.HashCode(mgmt.password); *** COME BACK LATER TO RESET IT ***
 
                 // Stored Procedure params
                 SqlParameter paramUser = new SqlParameter("@user", mgmt.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
+                SqlParameter paramPwd = new SqlParameter("@pwd", mgmt.password);
                 cmd.Parameters.Add(paramPwd);
                 
                 // Get the validation digit (1 or 0) from SP
@@ -79,7 +81,7 @@ namespace Wealth_Management_Services.Models
                 if (result == 1)
                 {
                     // Get the corresponding row from the database
-                    MyViewModel.management = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
+                    MyViewModel.management = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password); // Be extra careful here about the 'Hashed' Password
                 }
 
                 return result;
@@ -97,6 +99,8 @@ namespace Wealth_Management_Services.Models
                 cmd.ExecuteNonQuery();
             }
         }
+
+        
 
 
         // ---------------------* BROKER SECTION *---------------------------------------------------------//
@@ -204,7 +208,31 @@ namespace Wealth_Management_Services.Models
                 cmd.ExecuteNonQuery();
             }
         }
-    
+
+        public List<decimal?> BrokerPerformance()
+        {
+            // Retrieve the exact number of brokers
+            int bkrCount = DataConnector.brokers.Count();
+            // Retrieve all brokers
+            List<broker> brokers = DataConnector.brokers.ToList();
+            // This list will hold the total dividends received by each investor
+            List<decimal?> result = new List<decimal?>();
+            int count = 1;  // For tracking 
+            int index = 0;  // for the Array indexes
+            while (count <= bkrCount)
+            {
+                count = brokers[index].id;
+                decimal? sum = (DataConnector.investors.Where(x => x.brokerID == count)).Sum(x => x.latestDividend);
+                // Register the total amount of each broker's dividend
+                result.Add(sum);
+                index++;
+                count++;
+            }
+
+            return result;
+        }
+
+
         // ---------------------* INVESTOR SECTION *---------------------------------------------------------//
         public int Investor_Registration(investor investor)
         {

@@ -97,7 +97,7 @@
 
 .article-mgmt:nth-of-type(4) {
     grid-column: 2 / 5;
-    max-height: 200px; 
+    max-height: 200px;
     overflow: auto;
     border-bottom: none;
 }
@@ -178,12 +178,21 @@
 }
 
 /* GRAPHS SECTION */
-#chart_container {
+#pie-chart_container {
     width: 300px;
     height: 300px;
     border: 1px solid black;
     border-radius: 10px;
     margin-left: 100px;
+}
+
+#bar_chart_container {
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 
 

@@ -4,29 +4,31 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <link href="~/../Content/PartialStyles.css" rel="stylesheet" />
-@*<link href="@Url.Content("~/Content/CustomStyles.css")" rel="stylesheet" />*@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <div class="titles">@MyViewModel.Message</div>
 
-<div id="pie-chart_container">
-    <canvas id="PieChartCanvas"></canvas>
+<div id="bar_chart_container">
+    <canvas id="BarChartCanvas"></canvas>
 </div>
+
 <script>
-    var FirstNames = @Html.Raw(Json.Encode(ViewBag.FIRSTNAMES));
-    var Capitals = @Html.Raw(Json.Encode(ViewBag.CAPITALS));
+    var Names = @Html.Raw(Json.Encode(ViewBag.NAMES));
+    var Dividends = @Html.Raw(Json.Encode(ViewBag.DIVIDENDS));
     var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
 
-    new Chart("PieChartCanvas", {
-        type: "pie",
+    new Chart("BarChartCanvas", {
+        type: "bar",
         data: {
-            labels: FirstNames,
+            labels: Names,
             datasets: [{
-                data: Capitals,
+                data: Dividends,
                 backgroundColor: barColors,
-                label: "Investors Total Assets"
+                label: "Based on Returns to Investors "
             }]
         }
      });
 </script>
+
+
