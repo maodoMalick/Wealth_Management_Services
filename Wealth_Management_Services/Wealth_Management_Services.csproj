@@ -191,6 +191,7 @@
     <Content Include="Areas\Management\Views\Shared\_Success.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_TransactionsReport.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_BrokersInfo.cshtml" />
+    <Content Include="Areas\Investors\Views\Shared\_Graph_Lines_MyMoney.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
@@ -229,10 +230,22 @@
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\brokerOperation.custom.cs" />
+    <Compile Include="Models\BrokerTransactionsReport_sp_Result.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dividends_2022.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetMyDividends_sp_Result.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\investor.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InvestorData_sp_Result.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Investor_Login_sp_Result.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\management.cs">

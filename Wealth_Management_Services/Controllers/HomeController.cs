@@ -29,13 +29,5 @@ namespace Wealth_Management_Services.Controllers
             return View();
         }
 
-        //public PartialViewResult Investments()
-        //{
-        //    List<investor> investors = DataConnector.investors.ToList();
-        //    return PartialView("_MinStocks", investors);
-        //    //return PartialView("~/Views/Shared/_MinStocks.cshtml", investors);
-        //    //return PartialView("~/Views/Shared/_InvestorPartial.cshtml");
-        //}
-
     }
 }

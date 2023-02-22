@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
+using System.Web.Mvc;
 using Wealth_Management_Services.ViewModel;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 
@@ -222,8 +223,9 @@ namespace Wealth_Management_Services.Models
             while (count <= bkrCount)
             {
                 count = brokers[index].id;
+                // Collecting the total dividends made by any specific broker for a given investor
                 decimal? sum = (DataConnector.investors.Where(x => x.brokerID == count)).Sum(x => x.latestDividend);
-                // Register the total amount of each broker's dividend
+                // Register the total amount of each broker's returns to investor
                 result.Add(sum);
                 index++;
                 count++;
@@ -319,9 +321,11 @@ namespace Wealth_Management_Services.Models
                         return result = "Failed_Login";
                     }                    
                 }
+
+                return result;
             }
 
-            return result;
+            
         }
 
         public ArrayList Investor_Data(int id)
@@ -351,6 +355,69 @@ namespace Wealth_Management_Services.Models
                 }
 
                 return InvArrList;
+            }
+        }
+
+        public List<decimal> MyDividends(int id)
+        {
+            // New Sql Connection
+            SqlConnection conn2 = Connection.getConnection();
+            // Container to be sent to Controller
+            List<decimal> decimals = new List<decimal>();
+
+            using (conn2)
+            {
+                SqlCommand cmd = new SqlCommand("GetMyDividends_sp", conn2);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn2.Open();
+
+                SqlParameter paramID = new SqlParameter("@id", id);
+                cmd.Parameters.Add(paramID);
+
+                //int index = 0;
+                SqlDataReader readMe = cmd.ExecuteReader();
+                while (readMe.Read())
+                {
+                    decimals.Add(Convert.ToDecimal(readMe["january"]));
+                    decimals.Add(Convert.ToDecimal(readMe["february"]));
+                    decimals.Add(Convert.ToDecimal(readMe["march"]));
+                    decimals.Add(Convert.ToDecimal(readMe["april"]));
+                    decimals.Add(Convert.ToDecimal(readMe["may"]));
+                    decimals.Add(Convert.ToDecimal(readMe["june"]));
+                    decimals.Add(Convert.ToDecimal(readMe["july"]));
+                    decimals.Add(Convert.ToDecimal(readMe["august"]));
+                    decimals.Add(Convert.ToDecimal(readMe["september"]));
+                    decimals.Add(Convert.ToDecimal(readMe["october"]));
+                    decimals.Add(Convert.ToDecimal(readMe["november"]));
+                    decimals.Add(Convert.ToDecimal(readMe["december"]));
+                }
+
+                // return the dividends of the single investor
+                return decimals;
+             }
+        }
+
+        public List<string> FirstNames()
+        {
+            // New Sql Connection
+            SqlConnection conn1 = Connection.getConnection();
+            // Container to be sent to Controller
+            List<string> fnames = new List<string>();
+
+            using (conn1)
+            {
+                SqlCommand cmd = new SqlCommand("GetFirstNames_sp", conn1);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn1.Open();
+
+                SqlDataReader ReadMe = cmd.ExecuteReader();
+                while (ReadMe.Read())
+                {
+                    // collect the first names of all investors
+                    fnames.Add(ReadMe["firstName"].ToString());
+                }
+
+                return fnames;
             }
         }
     }

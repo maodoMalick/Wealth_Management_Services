@@ -5,12 +5,17 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<!-- Chart.js Section -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 <!--Ajax Package Section-->
 <script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 <div class="partialDashboardBox">
-    <div class="article-mgmt">
+    <div class="article-inv">
         <table class="table">
             <caption style="color:dimgrey; font-weight:bold;">
                 @MyViewModel.Welcome
@@ -47,63 +52,52 @@
         </table>
         <div id="#ajaxNavBar">
             <h4>Navigation</h4>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("List of All Clients", "ClientsList", new AjaxOptions
+            @*<div class="ajaxLinks">
+                @Ajax.ActionLink("My Money Chart1", "MyMoneyChart", new AjaxOptions
                                                                             {
                                                                                 HttpMethod = "GET",
-                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                UpdateTargetId = "investorDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>*@
+        <div class="ajaxLinks">
+            @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                UpdateTargetId = "investorDisplay",
+                InsertionMode = InsertionMode.Replace
+            }))
+            {
+                int MyId = MyViewModel.UserId;<!--Retrieve the user's 'id' then place it in the input field-->
+                <input type="hidden" name="MyId" id="MyId" value="" /> <!--But since the input is 'Hidden' the entry will not be sent as a param to 'MyMoneyChart' ActionMethod, instead the -->
+                <button type="submit" class="btn-link">My Money Chart</button>
+            }
+        </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("My Broker Profile", "MyBrokerProfile", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "investorDisplay",
                                                                                 InsertionMode = InsertionMode.Replace
                                                                             })
             </div>
             <div class="ajaxLinks">
-                @Ajax.ActionLink("Highest Dividends", "HighestDividend", new { lastdividend = 3000 }, new AjaxOptions
-                                                                                        {
-                                                                                            HttpMethod = "GET",
-                                                                                            UpdateTargetId = "brokerStats",
-                                                                                            InsertionMode = InsertionMode.Replace
-                                                                                        })
-            </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Clients by Gender", "ClientsByGender", new AjaxOptions
-                                                                                {
-                                                                                    HttpMethod = "GET",
-                                                                                    UpdateTargetId = "brokerStats",
-                                                                                    InsertionMode = InsertionMode.Replace
-                                                                                })
-            </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Clients by Seniority", "ClientsBySeniority", new AjaxOptions
-                                                                                    {
-                                                                                        HttpMethod = "GET",
-                                                                                        UpdateTargetId = "brokerStats",
-                                                                                        InsertionMode = InsertionMode.Replace
-                                                                                    })
-            </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Go to Marketplace", "GotoMarketplace", new AjaxOptions
-                                                                                {
-                                                                                    HttpMethod = "GET",
-                                                                                    UpdateTargetId = "brokerDisplay",
-                                                                                    InsertionMode = InsertionMode.Replace
-                                                                                })
-            </div>
-            <div class="ajaxLinks">
-                @Ajax.ActionLink("Buy Stocks or Bonds", "Purchasing", new AjaxOptions
+                @Ajax.ActionLink("Contact Broker", "ContactBroker", new AjaxOptions
                                                                             {
                                                                                 HttpMethod = "GET",
-                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                UpdateTargetId = "investorDisplay",
                                                                                 InsertionMode = InsertionMode.Replace
                                                                             })
             </div>
         </div>
     </div>
-    <div class="article-mgmt" id="brokerDisplay">
+    <div class="article-inv" id="investorDisplay">
 
     </div>
-    <div class="article-mgmt">
+    <div class="article-inv">
 
     </div>
-    <div class="article-mgmt" id="brokerStats">
+    <div class="article-inv" id="investorStats">
         <b>My Personal Financial Reports</b>
     </div>
 

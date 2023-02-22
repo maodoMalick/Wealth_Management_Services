@@ -90,5 +90,69 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Stock_Operations_sp" FunctionName="DatabaseLessonsVaultModel.Store.Stock_Operations_sp" />
+    <EntitySetMapping Name="dividends_2022">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.dividends_2022">
+        <MappingFragment StoreEntitySet="dividends_2022">
+          <ScalarProperty Name="december" ColumnName="december" />
+          <ScalarProperty Name="november" ColumnName="november" />
+          <ScalarProperty Name="october" ColumnName="october" />
+          <ScalarProperty Name="september" ColumnName="september" />
+          <ScalarProperty Name="august" ColumnName="august" />
+          <ScalarProperty Name="july" ColumnName="july" />
+          <ScalarProperty Name="june" ColumnName="june" />
+          <ScalarProperty Name="may" ColumnName="may" />
+          <ScalarProperty Name="april" ColumnName="april" />
+          <ScalarProperty Name="march" ColumnName="march" />
+          <ScalarProperty Name="february" ColumnName="february" />
+          <ScalarProperty Name="january" ColumnName="january" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetMyDividends_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetMyDividends_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.GetMyDividends_sp_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="january" ColumnName="january" />
+          <ScalarProperty Name="february" ColumnName="february" />
+          <ScalarProperty Name="march" ColumnName="march" />
+          <ScalarProperty Name="april" ColumnName="april" />
+          <ScalarProperty Name="may" ColumnName="may" />
+          <ScalarProperty Name="june" ColumnName="june" />
+          <ScalarProperty Name="july" ColumnName="july" />
+          <ScalarProperty Name="august" ColumnName="august" />
+          <ScalarProperty Name="september" ColumnName="september" />
+          <ScalarProperty Name="october" ColumnName="october" />
+          <ScalarProperty Name="november" ColumnName="november" />
+          <ScalarProperty Name="december" ColumnName="december" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Broker_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Login_sp" />
+    <FunctionImportMapping FunctionImportName="Broker_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="BrokerTransactionsReport_sp" FunctionName="DatabaseLessonsVaultModel.Store.BrokerTransactionsReport_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="reports" ColumnName="reports" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFirstNames_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetFirstNames_sp" />
+    <FunctionImportMapping FunctionImportName="Investor_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Login_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.Investor_Login_sp_Result">
+          <ScalarProperty Name="IsAuthenticated" ColumnName="IsAuthenticated" />
+          <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Investor_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="Mgmt_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Login_sp" />
+    <FunctionImportMapping FunctionImportName="Mgmt_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="UnlockAccounts_sp" FunctionName="DatabaseLessonsVaultModel.Store.UnlockAccounts_sp" />
   </EntityContainerMapping>
 </Mapping>

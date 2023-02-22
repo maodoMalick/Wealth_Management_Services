@@ -10,36 +10,36 @@
 }
 
 /* INVESTOR SECTION */
-#inv_left {
-    float: left;
+/*#inv_left {
+    float: left;*/
     /*width: 25%;*/
-    height: 495px;
+    /*height: 495px;
     border: 1px solid black;
 }
 
 #inv_navbar {
     float: left;
     width: 60%;
-    height: 20px;
+    height: 20px;*/
     /*background-color: burlywood;*/
-    border: 1px solid black;
+    /*border: 1px solid black;
 }
 
 #inv_center {
     float:left;
     width: 30%;
-    height: 475px;
+    height: 475px;*/
     /*background-color: antiquewhite;*/
-    border: 1px solid black;
+    /*border: 1px solid black;
 }
 
 #inv_right {
     float: left;
     width: 30%;
-    height: 475px;
+    height: 475px;*/
     /*background-color: aqua;*/
-    border: 1px solid black;
-}
+    /*border: 1px solid black;
+}*/
 
 .titles{
     font-size: 1.5em;

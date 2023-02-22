@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="DatabaseLessonsVaultModel.mgmtBillboard" Width="1.5" PointX="0.75" PointY="5.75" />
         <AssociationConnector Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" />
         <AssociationConnector Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.dividends_2022" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

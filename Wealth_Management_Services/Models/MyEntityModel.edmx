@@ -36,6 +36,25 @@
           <Property Name="clientID" Type="int" />
           <Property Name="total" Type="money" />
         </EntityType>
+        <EntityType Name="dividends_2022">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="january" Type="money" />
+          <Property Name="february" Type="money" />
+          <Property Name="march" Type="money" />
+          <Property Name="april" Type="money" />
+          <Property Name="may" Type="money" />
+          <Property Name="june" Type="money" />
+          <Property Name="july" Type="money" />
+          <Property Name="august" Type="money" />
+          <Property Name="september" Type="money" />
+          <Property Name="october" Type="money" />
+          <Property Name="november" Type="money" />
+          <Property Name="december" Type="money" />
+        </EntityType>
         <EntityType Name="investor">
           <Key>
             <PropertyRef Name="id" />
@@ -125,8 +144,57 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Broker_Login_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Broker_Registration_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="salary" Type="money" Mode="In" />
+          <Parameter Name="commission" Type="decimal" Mode="In" />
+          <Parameter Name="hireDate" Type="datetime" Mode="In" />
+          <Parameter Name="mgrID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BrokerTransactionsReport_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetFirstNames_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetMyDividends_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Investor_Login_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Investor_Registration_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="first" Type="nvarchar" Mode="In" />
+          <Parameter Name="last" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+          <Parameter Name="mbrSince" Type="datetime" Mode="In" />
+          <Parameter Name="capital" Type="money" Mode="In" />
+          <Parameter Name="lastDiv" Type="money" Mode="In" />
+          <Parameter Name="brokerID" Type="int" Mode="In" />
+        </Function>
         <Function Name="InvestorData_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Mgmt_Login_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Mgmt_Registration_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="user" Type="nvarchar" Mode="In" />
+          <Parameter Name="pwd" Type="nvarchar" Mode="In" />
+          <Parameter Name="gender" Type="nvarchar" Mode="In" />
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="salary" Type="money" Mode="In" />
+          <Parameter Name="hireDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="Stock_Operations_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="trader" Type="nvarchar" Mode="In" />
@@ -139,9 +207,11 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
           <Parameter Name="clientID" Type="int" Mode="In" />
           <Parameter Name="total" Type="money" Mode="In" />
         </Function>
+        <Function Name="UnlockAccounts_sp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DatabaseLessonsVaultModelStoreContainer">
           <EntitySet Name="broker" EntityType="Self.broker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="brokerOperations" EntityType="Self.brokerOperations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dividends_2022" EntityType="Self.dividends_2022" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="investor" EntityType="Self.investor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="management" EntityType="Self.management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mgmtBillboard" EntityType="Self.mgmtBillboard" store:Type="Tables" store:Schema="dbo">
@@ -271,7 +341,7 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
             <End Role="brokerOperation" EntitySet="brokerOperations" />
           </AssociationSet>
           <FunctionImport Name="InvestorData_sp" ReturnType="Collection(DatabaseLessonsVaultModel.InvestorData_sp_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Stock_Operations_sp">
             <Parameter Name="trader" Mode="In" Type="String" />
@@ -284,6 +354,57 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
             <Parameter Name="clientID" Mode="In" Type="Int32" />
             <Parameter Name="total" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <EntitySet Name="dividends_2022" EntityType="DatabaseLessonsVaultModel.dividends_2022" />
+          <FunctionImport Name="GetMyDividends_sp" ReturnType="Collection(DatabaseLessonsVaultModel.GetMyDividends_sp_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Broker_Login_sp" ReturnType="Collection(Int32)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Broker_Registration_sp" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="salary" Mode="In" Type="Decimal" />
+            <Parameter Name="commission" Mode="In" Type="Decimal" />
+            <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+            <Parameter Name="mgrID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BrokerTransactionsReport_sp" ReturnType="Collection(DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result)" />
+          <FunctionImport Name="GetFirstNames_sp" ReturnType="Collection(String)" />
+          <FunctionImport Name="Investor_Login_sp" ReturnType="Collection(DatabaseLessonsVaultModel.Investor_Login_sp_Result)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Investor_Registration_sp" ReturnType="Collection(Int32)">
+            <Parameter Name="first" Mode="In" Type="String" />
+            <Parameter Name="last" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+            <Parameter Name="mbrSince" Mode="In" Type="DateTime" />
+            <Parameter Name="capital" Mode="In" Type="Decimal" />
+            <Parameter Name="lastDiv" Mode="In" Type="Decimal" />
+            <Parameter Name="brokerID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Mgmt_Login_sp" ReturnType="Collection(Int32)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Mgmt_Registration_sp" ReturnType="Collection(Int32)">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="pwd" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="salary" Mode="In" Type="Decimal" />
+            <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UnlockAccounts_sp" />
         </EntityContainer>
         <EntityType Name="brokerOperation">
           <Key>
@@ -342,6 +463,50 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
           <Property Type="Decimal" Name="capital" Nullable="true" Precision="19" />
           <Property Type="Decimal" Name="last_profit" Nullable="true" Precision="19" />
           <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="dividends_2022">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="january" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="february" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="march" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="april" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="may" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="june" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="july" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="august" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="september" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="october" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="november" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="december" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <ComplexType Name="GetMyDividends_sp_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="january" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="february" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="march" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="april" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="may" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="june" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="july" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="august" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="september" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="october" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="november" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="december" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="BrokerTransactionsReport_sp_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="reports" Nullable="true" MaxLength="1000" />
+        </ComplexType>
+        <ComplexType Name="Investor_Login_sp_Result">
+          <Property Type="Int32" Name="IsAuthenticated" Nullable="false" />
+          <Property Type="Int32" Name="LoginAttempts" Nullable="false" />
+          <Property Type="Int32" Name="IsLocked" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -438,6 +603,70 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Stock_Operations_sp" FunctionName="DatabaseLessonsVaultModel.Store.Stock_Operations_sp" />
+          <EntitySetMapping Name="dividends_2022">
+            <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.dividends_2022">
+              <MappingFragment StoreEntitySet="dividends_2022">
+                <ScalarProperty Name="december" ColumnName="december" />
+                <ScalarProperty Name="november" ColumnName="november" />
+                <ScalarProperty Name="october" ColumnName="october" />
+                <ScalarProperty Name="september" ColumnName="september" />
+                <ScalarProperty Name="august" ColumnName="august" />
+                <ScalarProperty Name="july" ColumnName="july" />
+                <ScalarProperty Name="june" ColumnName="june" />
+                <ScalarProperty Name="may" ColumnName="may" />
+                <ScalarProperty Name="april" ColumnName="april" />
+                <ScalarProperty Name="march" ColumnName="march" />
+                <ScalarProperty Name="february" ColumnName="february" />
+                <ScalarProperty Name="january" ColumnName="january" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetMyDividends_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetMyDividends_sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.GetMyDividends_sp_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="january" ColumnName="january" />
+                <ScalarProperty Name="february" ColumnName="february" />
+                <ScalarProperty Name="march" ColumnName="march" />
+                <ScalarProperty Name="april" ColumnName="april" />
+                <ScalarProperty Name="may" ColumnName="may" />
+                <ScalarProperty Name="june" ColumnName="june" />
+                <ScalarProperty Name="july" ColumnName="july" />
+                <ScalarProperty Name="august" ColumnName="august" />
+                <ScalarProperty Name="september" ColumnName="september" />
+                <ScalarProperty Name="october" ColumnName="october" />
+                <ScalarProperty Name="november" ColumnName="november" />
+                <ScalarProperty Name="december" ColumnName="december" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Broker_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Login_sp" />
+          <FunctionImportMapping FunctionImportName="Broker_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Registration_sp" />
+          <FunctionImportMapping FunctionImportName="BrokerTransactionsReport_sp" FunctionName="DatabaseLessonsVaultModel.Store.BrokerTransactionsReport_sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="reports" ColumnName="reports" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetFirstNames_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetFirstNames_sp" />
+          <FunctionImportMapping FunctionImportName="Investor_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Login_sp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.Investor_Login_sp_Result">
+                <ScalarProperty Name="IsAuthenticated" ColumnName="IsAuthenticated" />
+                <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Investor_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Registration_sp" />
+          <FunctionImportMapping FunctionImportName="Mgmt_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Login_sp" />
+          <FunctionImportMapping FunctionImportName="Mgmt_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Registration_sp" />
+          <FunctionImportMapping FunctionImportName="UnlockAccounts_sp" FunctionName="DatabaseLessonsVaultModel.Store.UnlockAccounts_sp" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

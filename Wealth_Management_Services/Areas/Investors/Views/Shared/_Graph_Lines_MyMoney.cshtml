@@ -1,0 +1,17 @@
+﻿
+
+<h2>Graph Lines Investors</h2>
+
+All Your Profits in 2022
+<br />
+Count = @ViewBag.NUM
+<br />
+MyID = @ViewBag.ID
+<br />
+
+@foreach (decimal d in ViewBag.DIVIDENDS)
+{
+    <ul>
+        <li>@d</li>
+    </ul>
+}

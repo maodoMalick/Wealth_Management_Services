@@ -113,6 +113,57 @@
       <Parameter Name="clientID" Mode="In" Type="Int32" />
       <Parameter Name="total" Mode="In" Type="Decimal" />
     </FunctionImport>
+    <EntitySet Name="dividends_2022" EntityType="DatabaseLessonsVaultModel.dividends_2022" />
+    <FunctionImport Name="GetMyDividends_sp" ReturnType="Collection(DatabaseLessonsVaultModel.GetMyDividends_sp_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Broker_Login_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Broker_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Decimal" />
+      <Parameter Name="commission" Mode="In" Type="Decimal" />
+      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+      <Parameter Name="mgrID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BrokerTransactionsReport_sp" ReturnType="Collection(DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result)" />
+    <FunctionImport Name="GetFirstNames_sp" ReturnType="Collection(String)" />
+    <FunctionImport Name="Investor_Login_sp" ReturnType="Collection(DatabaseLessonsVaultModel.Investor_Login_sp_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Investor_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="first" Mode="In" Type="String" />
+      <Parameter Name="last" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="mbrSince" Mode="In" Type="DateTime" />
+      <Parameter Name="capital" Mode="In" Type="Decimal" />
+      <Parameter Name="lastDiv" Mode="In" Type="Decimal" />
+      <Parameter Name="brokerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Mgmt_Login_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Mgmt_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Decimal" />
+      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UnlockAccounts_sp" />
   </EntityContainer>
   <EntityType Name="brokerOperation">
     <Key>
@@ -171,5 +222,49 @@
     <Property Type="Decimal" Name="capital" Nullable="true" Precision="19" />
     <Property Type="Decimal" Name="last_profit" Nullable="true" Precision="19" />
     <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="dividends_2022">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="january" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="february" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="march" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="april" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="may" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="june" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="july" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="august" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="september" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="october" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="november" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="december" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <ComplexType Name="GetMyDividends_sp_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="january" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="february" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="march" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="april" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="may" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="june" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="july" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="august" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="september" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="october" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="november" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="december" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="BrokerTransactionsReport_sp_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="reports" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="Investor_Login_sp_Result">
+    <Property Type="Int32" Name="IsAuthenticated" Nullable="false" />
+    <Property Type="Int32" Name="LoginAttempts" Nullable="false" />
+    <Property Type="Int32" Name="IsLocked" Nullable="false" />
   </ComplexType>
 </Schema>

@@ -12,7 +12,6 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
     {
         // Data Object
         DataContext dataContext = new DataContext();
-
         // Entity Framework Data Connection
         DataConnection DataConnector = new DataConnection();
 
@@ -23,6 +22,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             return View();
         }
 
+        // LOGIN
         [HttpPost]
         public ActionResult Login(investor invest)
         {
@@ -45,7 +45,9 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                     investor investor = MyViewModel.investor;
                     ViewBag.SingleInvestorData = dataContext.Investor_Data( investor.id);
                     //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
-                    MyViewModel.Welcome = "Welcome to your Dashboard " + investor.firstName;
+                    MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
+                    MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
+                    MyViewModel.Username = investor.username;
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
                 default:
                     // Will return to the Login page
@@ -57,9 +59,36 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         {
             List<investor> investors = DataConnector.investors.ToList();
             return PartialView("~/Views/Shared/_MinStocks.cshtml", investors);
-            //return PartialView("_MinStocks", investors);
         }
 
+        // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
+        [HttpPost]
+        public PartialViewResult MyMoneyChart(int MyId)
+        {
+            // Display title with results
+            MyViewModel.Message = "Total Assets in 2022";
+            List<decimal> Dividends = dataContext.MyDividends(MyViewModel.UserId); // User 'id' collected from Login ActionMethod
+            int num1 = Dividends.Count();
+            //var Dividends1 = (from d in dataContext.MyDividends
+            //                 where d.id == 1
+            //                 select d);
+            List<string> FirstNames = dataContext.FirstNames();
+            // Data to be feed to the Pie Chart
+            ViewBag.DIVIDENDS = Dividends;
+            ViewBag.FIRSTNAMES = FirstNames;
+
+            //decimal num = Dividends[1];
+            ViewBag.NUM = num1;
+            ViewBag.ID = MyId;
+            return PartialView("_Graph_Lines_MyMoney");
+        }
+
+        public PartialViewResult MyBrokerProfile()
+        {
+            return PartialView("_Graph_Lines_MyMoney");
+        }
+
+        // REGISTRATION 
         public ActionResult Registration()
         {
             return View();

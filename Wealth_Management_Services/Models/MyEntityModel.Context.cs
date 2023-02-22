@@ -32,6 +32,7 @@ namespace Wealth_Management_Services.Models
         public virtual DbSet<management> managements { get; set; }
         public virtual DbSet<brokerOperation> brokerOperations { get; set; }
         public virtual DbSet<mgmtBillboard> mgmtBillboards { get; set; }
+        public virtual DbSet<dividends_2022> dividends_2022 { get; set; }
     
         public virtual ObjectResult<InvestorData_sp_Result> InvestorData_sp(Nullable<int> id)
         {
@@ -81,6 +82,188 @@ namespace Wealth_Management_Services.Models
                 new ObjectParameter("total", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Stock_Operations_sp", traderParameter, sharesParameter, itemParameter, amountParameter, priceParameter, brokerIDParameter, purchaseDateParameter, clientIDParameter, totalParameter);
+        }
+    
+        public virtual ObjectResult<GetMyDividends_sp_Result> GetMyDividends_sp(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMyDividends_sp_Result>("GetMyDividends_sp", idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Broker_Login_sp(string user, string pwd)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Broker_Login_sp", userParameter, pwdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Broker_Registration_sp(string name, string user, string pwd, string gender, string email, Nullable<decimal> salary, Nullable<decimal> commission, Nullable<System.DateTime> hireDate, Nullable<int> mgrID)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("salary", salary) :
+                new ObjectParameter("salary", typeof(decimal));
+    
+            var commissionParameter = commission.HasValue ?
+                new ObjectParameter("commission", commission) :
+                new ObjectParameter("commission", typeof(decimal));
+    
+            var hireDateParameter = hireDate.HasValue ?
+                new ObjectParameter("hireDate", hireDate) :
+                new ObjectParameter("hireDate", typeof(System.DateTime));
+    
+            var mgrIDParameter = mgrID.HasValue ?
+                new ObjectParameter("mgrID", mgrID) :
+                new ObjectParameter("mgrID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Broker_Registration_sp", nameParameter, userParameter, pwdParameter, genderParameter, emailParameter, salaryParameter, commissionParameter, hireDateParameter, mgrIDParameter);
+        }
+    
+        public virtual ObjectResult<BrokerTransactionsReport_sp_Result> BrokerTransactionsReport_sp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BrokerTransactionsReport_sp_Result>("BrokerTransactionsReport_sp");
+        }
+    
+        public virtual ObjectResult<string> GetFirstNames_sp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetFirstNames_sp");
+        }
+    
+        public virtual ObjectResult<Investor_Login_sp_Result> Investor_Login_sp(string user, string pwd)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Investor_Login_sp_Result>("Investor_Login_sp", userParameter, pwdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Investor_Registration_sp(string first, string last, string gender, string email, string user, string pwd, Nullable<System.DateTime> mbrSince, Nullable<decimal> capital, Nullable<decimal> lastDiv, Nullable<int> brokerID)
+        {
+            var firstParameter = first != null ?
+                new ObjectParameter("first", first) :
+                new ObjectParameter("first", typeof(string));
+    
+            var lastParameter = last != null ?
+                new ObjectParameter("last", last) :
+                new ObjectParameter("last", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            var mbrSinceParameter = mbrSince.HasValue ?
+                new ObjectParameter("mbrSince", mbrSince) :
+                new ObjectParameter("mbrSince", typeof(System.DateTime));
+    
+            var capitalParameter = capital.HasValue ?
+                new ObjectParameter("capital", capital) :
+                new ObjectParameter("capital", typeof(decimal));
+    
+            var lastDivParameter = lastDiv.HasValue ?
+                new ObjectParameter("lastDiv", lastDiv) :
+                new ObjectParameter("lastDiv", typeof(decimal));
+    
+            var brokerIDParameter = brokerID.HasValue ?
+                new ObjectParameter("brokerID", brokerID) :
+                new ObjectParameter("brokerID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Investor_Registration_sp", firstParameter, lastParameter, genderParameter, emailParameter, userParameter, pwdParameter, mbrSinceParameter, capitalParameter, lastDivParameter, brokerIDParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Mgmt_Login_sp(string user, string pwd)
+        {
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Mgmt_Login_sp", userParameter, pwdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> Mgmt_Registration_sp(string name, string user, string pwd, string gender, string email, Nullable<decimal> salary, Nullable<System.DateTime> hireDate)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            var pwdParameter = pwd != null ?
+                new ObjectParameter("pwd", pwd) :
+                new ObjectParameter("pwd", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var salaryParameter = salary.HasValue ?
+                new ObjectParameter("salary", salary) :
+                new ObjectParameter("salary", typeof(decimal));
+    
+            var hireDateParameter = hireDate.HasValue ?
+                new ObjectParameter("hireDate", hireDate) :
+                new ObjectParameter("hireDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Mgmt_Registration_sp", nameParameter, userParameter, pwdParameter, genderParameter, emailParameter, salaryParameter, hireDateParameter);
+        }
+    
+        public virtual int UnlockAccounts_sp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnlockAccounts_sp");
         }
     }
 }

@@ -66,6 +66,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             MyViewModel.Message = "Investors Assets";
             List<string> firstNames = DataConnector.investors.Select(x => x.firstName).ToList();
             List<decimal?> capitals = DataConnector.investors.Select(x => x.capital).ToList();
+            // Data to be feed to the Pie Chart
             ViewBag.FIRSTNAMES = firstNames;
             ViewBag.CAPITALS = capitals;
 

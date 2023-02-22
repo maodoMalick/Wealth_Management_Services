@@ -30,4 +30,3 @@ namespace Wealth_Management_Services.Models
         public virtual investor investor { get; set; }
     }
 }
-
