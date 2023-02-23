@@ -63,6 +63,12 @@
     grid-column: 2 / 5;
     /*max-height: 250px;*/
     overflow: auto; /*Make table sink its excess length*/
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-bkr:nth-of-type(2)::-webkit-scrollbar {
+display: none; /* Hide Scroll bars for Chrome */
 }
 
 .article-bkr:nth-of-type(4) {
@@ -70,6 +76,12 @@
     max-height: 200px; /*Control its height, otherwise it will conflict with above article*/
     overflow: auto;
     border-bottom: none;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-bkr:nth-of-type(4)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
 }
 
 /* MANAGEMENT-PARTIAL SECTION */
@@ -87,19 +99,38 @@
 .article-mgmt:nth-of-type(2) {
     grid-column: 2 / 4;
     /*max-height: 250px;*/
-    overflow: auto; 
+    overflow: auto;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none;    /* Hide Scroll bars for Firefox */
+}
+
+.article-mgmt:nth-of-type(2)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
 }
 
 .article-mgmt:nth-of-type(3) {
     grid-column: 4;
-    overflow: auto; 
+    overflow: auto;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-mgmt:nth-of-type(3)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
 }
 
 .article-mgmt:nth-of-type(4) {
     grid-column: 2 / 5;
-    max-height: 200px;
+    /*max-height: 200px;*/
     overflow: auto;
     border-bottom: none;
+    background: #75abbd;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-mgmt:nth-of-type(4)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
 }
 
 /* INVESTOR-PARTIAL SECTION */
@@ -116,21 +147,40 @@
 
 .article-inv:nth-of-type(2) {
     grid-column: 2 / 5;
-    max-height: 400px;
+    max-height: 425px;
     overflow: auto; /*Make table sink its excess length*/
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
 }
 
-    .article-inv:nth-of-type(3) {
-        grid-column: 2 / 4;
-        overflow: auto;
-        background: yellow;
-    }
+.article-inv:nth-of-type(2)::-webkit-scrollbar {
+display: none; /* Hide Scroll bars for Chrome */
+}
+
+.article-inv:nth-of-type(3) {
+    grid-column: 2 / 4;
+    overflow: auto;
+    background: #33ccff;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-inv:nth-of-type(3)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
+}
 
 .article-inv:nth-of-type(4) {
     grid-column: 4;
-    max-height: 150px;
+    /*max-height: 150px;*/
     overflow: auto;
     border-bottom: none;
+    background: #33ccff;
+    -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
+    scrollbar-width: none; /* Hide Scroll bars for Firefox */
+}
+
+.article-inv:nth-of-type(4)::-webkit-scrollbar {
+    display: none; /* Hide Scroll bars for Chrome */
 }
 
 
