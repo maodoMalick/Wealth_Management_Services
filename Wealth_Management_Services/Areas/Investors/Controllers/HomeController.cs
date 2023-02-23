@@ -47,6 +47,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                     //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
                     MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
                     MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
+                    MyViewModel.BrokerId = (int)investor.brokerID; // Broker Id needed to get the Investor's allocated Broker
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
                 default:
                     // Will return to the Login page
@@ -78,7 +79,11 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
 
         public PartialViewResult MyBrokerProfile()
         {
-            return PartialView("_Graph_Lines_MyMoney");
+            // Display title with results
+            MyViewModel.Message = "Your Broker's Information";
+            int broker_id = MyViewModel.BrokerId; // Broker 'Id' retrieved from the Login Method
+            broker MyBroker = DataConnector.brokers.Single(x => x.id == broker_id);
+            return PartialView("_MyBrokerInfo", MyBroker);
         }
 
         // REGISTRATION 

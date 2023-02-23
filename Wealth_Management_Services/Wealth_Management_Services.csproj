@@ -192,6 +192,8 @@
     <Content Include="Areas\Management\Views\Shared\_TransactionsReport.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_BrokersInfo.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_Graph_Lines_MyMoney.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\_BrokerPartial.cshtml" />
+    <Content Include="Areas\Investors\Views\Shared\_MyBrokerInfo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
@@ -292,11 +294,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Home\Dashboard.cshtml" />
-    <Content Include="Views\Shared\_BrokerPartial.cshtml" />
-    <Content Include="Views\Shared\_MgmtPartialX.cshtml" />
+    <Content Include="Views\Shared\2Bdeleted\_BrokerPartial.cshtml" />
+    <Content Include="Views\Shared\2Bdeleted\_MgmtPartialX.cshtml" />
     <Content Include="Views\Shared\_InvestorPartial.cshtml" />
     <Content Include="Views\Shared\_BrokersList.cshtml" />
-    <Content Include="Views\Shared\_Success1.cshtml" />
+    <Content Include="Views\Shared\2Bdeleted\_Success1.cshtml" />
     <Content Include="Views\Shared\_Graph_Investors.cshtml" />
     <Content Include="Views\Shared\_Graph_Bars_Brokers.cshtml" />
     <None Include="Web.Debug.config">
