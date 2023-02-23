@@ -47,7 +47,6 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                     //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
                     MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
                     MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
-                    MyViewModel.Username = investor.username;
                     return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
                 default:
                     // Will return to the Login page
@@ -63,23 +62,17 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
 
         // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
         [HttpPost]
-        public PartialViewResult MyMoneyChart(int MyId)
+        public PartialViewResult MyMoneyChart(/*int MyId*/)
         {
             // Display title with results
             MyViewModel.Message = "Total Assets in 2022";
+            // Retrieve the Dividends and the Firstnames of the investors into Lists
             List<decimal> Dividends = dataContext.MyDividends(MyViewModel.UserId); // User 'id' collected from Login ActionMethod
-            int num1 = Dividends.Count();
-            //var Dividends1 = (from d in dataContext.MyDividends
-            //                 where d.id == 1
-            //                 select d);
-            List<string> FirstNames = dataContext.FirstNames();
-            // Data to be feed to the Pie Chart
-            ViewBag.DIVIDENDS = Dividends;
-            ViewBag.FIRSTNAMES = FirstNames;
+            List<string> MonthNames = dataContext.getMonthNames();
+            // Data to be feed to the Investor Bar Chart in the View
+            ViewBag.DIVIDENDS = Dividends.OrderByDescending(x => x).ToList();
+            ViewBag.MONTHNAMES = MonthNames;
 
-            //decimal num = Dividends[1];
-            ViewBag.NUM = num1;
-            ViewBag.ID = MyId;
             return PartialView("_Graph_Lines_MyMoney");
         }
 

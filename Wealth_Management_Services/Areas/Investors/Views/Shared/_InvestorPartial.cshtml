@@ -52,27 +52,19 @@
         </table>
         <div id="#ajaxNavBar">
             <h4>Navigation</h4>
-            @*<div class="ajaxLinks">
-                @Ajax.ActionLink("My Money Chart1", "MyMoneyChart", new AjaxOptions
-                                                                            {
-                                                                                HttpMethod = "GET",
-                                                                                UpdateTargetId = "investorDisplay",
-                                                                                InsertionMode = InsertionMode.Replace
-                                                                            })
-            </div>*@
-        <div class="ajaxLinks">
-            @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
-            {
-                HttpMethod = "POST",
-                UpdateTargetId = "investorDisplay",
-                InsertionMode = InsertionMode.Replace
-            }))
-            {
-                int MyId = MyViewModel.UserId;<!--Retrieve the user's 'id' then place it in the input field-->
-                <input type="hidden" name="MyId" id="MyId" value="" /> <!--But since the input is 'Hidden' the entry will not be sent as a param to 'MyMoneyChart' ActionMethod, instead the -->
-                <button type="submit" class="btn-link">My Money Chart</button>
-            }
-        </div>
+            <div class="ajaxLinks">
+                @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "investorDisplay",
+                    InsertionMode = InsertionMode.Replace
+                }))
+                {
+                    int MyId = MyViewModel.UserId;<!--Retrieve the user's 'id' then place it in the input field-->
+                    <input type="hidden" name="MyId" id="MyId" value="" /> <!--But since the input is 'Hidden' the entry will not be sent as a param to 'MyMoneyChart' ActionMethod, instead the 'ViewModel' object wil be used-->
+                    <button type="submit" class="btn-link">My Money Chart</button>
+                }
+            </div>
             <div class="ajaxLinks">
                 @Ajax.ActionLink("My Broker Profile", "MyBrokerProfile", new AjaxOptions
                                                                             {

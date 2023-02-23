@@ -397,16 +397,16 @@ namespace Wealth_Management_Services.Models
              }
         }
 
-        public List<string> FirstNames()
+        public List<string> getMonthNames()
         {
             // New Sql Connection
             SqlConnection conn1 = Connection.getConnection();
             // Container to be sent to Controller
-            List<string> fnames = new List<string>();
+            List<string> months = new List<string>();
 
             using (conn1)
             {
-                SqlCommand cmd = new SqlCommand("GetFirstNames_sp", conn1);
+                SqlCommand cmd = new SqlCommand("GetMonthNames_sp", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn1.Open();
 
@@ -414,10 +414,10 @@ namespace Wealth_Management_Services.Models
                 while (ReadMe.Read())
                 {
                     // collect the first names of all investors
-                    fnames.Add(ReadMe["firstName"].ToString());
+                    months.Add(ReadMe["Months"].ToString());
                 }
 
-                return fnames;
+                return months;
             }
         }
     }

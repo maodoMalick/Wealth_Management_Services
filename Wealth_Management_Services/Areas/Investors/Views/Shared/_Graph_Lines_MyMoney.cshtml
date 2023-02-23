@@ -1,17 +1,30 @@
-﻿
+﻿@using Wealth_Management_Services.ViewModel
 
-<h2>Graph Lines Investors</h2>
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<link href="~/../Content/PartialStyles.css" rel="stylesheet" />
 
-All Your Profits in 2022
-<br />
-Count = @ViewBag.NUM
-<br />
-MyID = @ViewBag.ID
-<br />
+<div class="titles">@MyViewModel.Message</div>
 
-@foreach (decimal d in ViewBag.DIVIDENDS)
-{
-    <ul>
-        <li>@d</li>
-    </ul>
-}
+<div id="bar_chart_container1">
+    <canvas id="BarChartCanvas1"></canvas>
+</div>
+
+<script>
+    var Dividends = @Html.Raw(Json.Encode(ViewBag.DIVIDENDS));
+    var MonthNames = @Html.Raw(Json.Encode(ViewBag.MONTHNAMES));
+    var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+    new Chart("BarChartCanvas1", {
+        type: "bar",
+        data: {
+            labels: MonthNames,
+            datasets: [{
+                data: Dividends,
+                backgroundColor: barColors,
+                label: "Your Returns for the Year 2022"
+            }]
+        }
+    });
+</script>
