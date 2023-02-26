@@ -144,4 +144,5 @@
 /* INVESTOR SECTION */
 .item-investor {
     grid-column: 1 / 4;
+    padding: 30px;
 }

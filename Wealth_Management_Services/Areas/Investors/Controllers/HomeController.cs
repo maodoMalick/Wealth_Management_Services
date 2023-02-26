@@ -86,13 +86,21 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             return PartialView("_MyBrokerInfo", MyBroker);
         }
 
-        public PartialViewResult ContactMyBroker(broker bkr)
+        public PartialViewResult ContactMyBroker()
         {
             // Display title with results
-            //MyViewModel.Message = "Your Broker's Information";
-            //int broker_id = MyViewModel.BrokerId; // Broker 'Id' retrieved from the Login Method
-            //broker MyBroker = DataConnector.brokers.Single(x => x.id == broker_id);
-            return PartialView("_ContactMyBroker"/*, MyBroker*/);
+            MyViewModel.Message = "Contact Your Broker";
+
+            return PartialView("_ContactMyBroker");
+        }
+
+        [HttpPost]
+        public ActionResult EmailMyBroker(email e)
+        {
+            // Run the method
+            dataContext.SendEmail(e);
+
+            return View("Index");
         }
 
         // REGISTRATION 

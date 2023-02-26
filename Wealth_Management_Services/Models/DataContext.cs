@@ -3,13 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
-using System.Web.Mvc;
 using Wealth_Management_Services.ViewModel;
-using static System.Data.Entity.Infrastructure.Design.Executor;
+using System.Net;
+using System.Net.Mail; // To send Email
 
 
 namespace Wealth_Management_Services.Models
@@ -419,6 +416,24 @@ namespace Wealth_Management_Services.Models
 
                 return months;
             }
+        }
+
+        // Investor Sending Email to their Broker
+        public void SendEmail(email e)
+        {            
+            MailMessage mail = new MailMessage(e.From, e.To);
+            mail.Subject = e.Subject;
+            mail.Body= e.Body;
+            mail.IsBodyHtml = false;
+
+            NetworkCredential credo = new NetworkCredential("info@xxx.com", "xxx");
+
+            SmtpClient smtp = new SmtpClient("smtp.ionos.com", 587);
+            smtp.EnableSsl = true;
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = credo;
+            smtp.Send(mail);
+            MyViewModel.EmailMsg = "Your email has been sent successfully!";
         }
     }
 }

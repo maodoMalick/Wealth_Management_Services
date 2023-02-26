@@ -265,5 +265,7 @@ namespace Wealth_Management_Services.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnlockAccounts_sp");
         }
+
+        public System.Data.Entity.DbSet<Wealth_Management_Services.Models.email> emails { get; set; }
     }
 }

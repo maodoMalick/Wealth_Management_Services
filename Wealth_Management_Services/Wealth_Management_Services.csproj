@@ -111,6 +111,10 @@
     <Content Include="images\chart_blue.jpg" />
     <Content Include="images\eTrade.jpg" />
     <Content Include="images\fidelity2.jpg" />
+    <Content Include="images\home_iconX.png" />
+    <Content Include="images\home_icon_new_20pixel.png" />
+    <Content Include="images\home_icon_opt-20px.png" />
+    <Content Include="images\home_icon_opt.png" />
     <Content Include="images\merryll_2.jpg" />
     <Content Include="images\merryll_black.jpg" />
     <Content Include="images\merryll_black_300x225.jpg" />
@@ -239,6 +243,7 @@
     <Compile Include="Models\dividends_2022.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\email.cs" />
     <Compile Include="Models\GetMyDividends_sp_Result.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
