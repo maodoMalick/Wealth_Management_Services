@@ -18,53 +18,56 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
 
         public ActionResult Index()
         {
+            
             return View("Index");
         }
 
         [HttpPost]
         public ActionResult Login(broker broker)
         {
-            if (broker != null)
+            try
             {
-                // Get Authentication result from Database
-                broker bkr = dataContext.Broker_Login(broker);
-
-                if (bkr != null)
+                if (broker != null)
                 {
-                    // Data to be sent to the View
-                    MyViewModel.broker = bkr;
-                    MyViewModel.Welcome = "Welcome Broker: " + bkr.name;
+                    // Get Authentication result from Database
+                    int result = dataContext.Broker_Login(broker);
 
-                    // Send Authenticated broker user to the 'Main' Dashboard
-                    return View("Dashboard", bkr);
+                    if (result == 1)
+                    {
+                        // Data to be sent to the View
+                        broker bkr = MyViewModel.broker;
+                        MyViewModel.Welcome = "Welcome Broker: " + bkr.name;
+                        MyViewModel.UserId = bkr.id; // Needed for 'ClientsList()' method
+
+                        //Send Authenticated broker user to the 'Main' Dashboard
+                        return View("Dashboard", bkr);
+                    }
+                    else
+                    {
+                        // Not authenticated message back to the View
+                        MyViewModel.Warning = "Invalid username or password";
+                    }
                 }
-                else
-                {
-                    // Not authenticated message back to view
-                    MyViewModel.Warning = "Invalid username or password";
-                }
+                // If it fails, stay in this same Login page
+                return View("Index");
             }
-
-            // If it fails, stay in this same Login page
-            return View("Index");
+            catch (Exception)
+            {
+                MyViewModel.Warning = "You must fill all fields.";
+                return View("Index");
+            }
         }
 
         // METHODS FOR THE 'AJAX' SECTION IN BROKER DASHBOARD
-        //public PartialViewResult ClientsList()
-        //{
-        //    // Display title with results
-        //    MyViewModel.Message = "List of all Clients";
-        //    // Display the list of all investors
-        //    List<investor> investors = DataConnector.investors.ToList();
-        //    return PartialView("_ClientsList", investors);
-        //}
-
-        public PartialViewResult GotoMarketplace()
+        public PartialViewResult MyClientsList()
         {
             // Display title with results
-            MyViewModel.Message = "Stocks & Bonds Marketplace";
+            MyViewModel.Message = "List of My Clients";
+            // Retrieve the broker's id from Login method
+            int MyId = MyViewModel.UserId;
             // Display the list of all investors
-            return PartialView("_StocksPage");
+            List<investor> my_investors = DataConnector.investors.Where(x => x.brokerID == MyId).ToList();
+            return PartialView("_ClientsList", my_investors);
         }
 
         public PartialViewResult HighestDividend()
@@ -104,6 +107,14 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         }
 
         // STOCKS & BONDS PAGES
+        public PartialViewResult GotoMarketplace()
+        {
+            // Display title with results
+            MyViewModel.Message = "Stocks & Bonds Marketplace";
+            // Display the list of all investors
+            return PartialView("_StocksPage");
+        }
+
         public PartialViewResult GetStocksList()
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";
@@ -119,29 +130,35 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         public PartialViewResult Purchasing()
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";
-            //return PartialView("_BuyingPage");
             return PartialView("_BuyingPage");
         }
 
         [HttpPost]
         public ActionResult Purchasing(brokerOperation bkrOps)
         {
-            if (bkrOps != null)
+            try
             {
-                dataContext.PurchasingAssets(bkrOps);
-                MyViewModel.Message = "Stocks & Bonds Marketplace";
-                //MyViewModel.broker = ViewBag.BROKER;
-                return View("Index"/*, MyViewModel.broker*/);
+                if (bkrOps != null)
+                {
+                    dataContext.PurchasingAssets(bkrOps);
+                    MyViewModel.Message = "Stocks & Bonds Marketplace";
+                    //MyViewModel.broker = ViewBag.BROKER;
+                    return View("Index"/*, MyViewModel.broker*/);
+                }
+            }
+            catch (Exception)
+            {
+                MyViewModel.Warning = "You must fill out all fields";
+                return View("Index");
             }
 
             return View("Index");
-            //return PartialView("_BrokerPartial");
-            //return View();
         }
 
         // REGISTRATION 
         public ActionResult Registration()
         {
+            MyViewModel.Warning = "";
             return View();
         }
         

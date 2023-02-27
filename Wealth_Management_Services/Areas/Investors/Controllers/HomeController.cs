@@ -26,32 +26,41 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         [HttpPost]
         public ActionResult Login(investor invest)
         {
-            MyViewModel.Warning = "";
-
-            // Get Authentication result from Database
-            string result = dataContext.Investor_Login(invest);
-
-            // User will be redirected based on the returned data
-            switch (result)
+            try
             {
-                case "Account_Locked":
-                    // Failed! Will return to the Login page
-                    return View("Index");
-                case "Failed_Login":
-                    // Failed! Will return to the Login page
-                    return View("Index");
-                case "Authenticated":
-                    // Success!
-                    investor investor = MyViewModel.investor;
-                    ViewBag.SingleInvestorData = dataContext.Investor_Data( investor.id);
-                    //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
-                    MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
-                    MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
-                    MyViewModel.BrokerId = (int)investor.brokerID; // Broker Id needed to get the Investor's allocated Broker
-                    return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
-                default:
-                    // Will return to the Login page
-                    return View("Index");
+                MyViewModel.Warning = "";
+
+                // Get Authentication result from Database
+                string result = dataContext.Investor_Login(invest);
+
+                // User will be redirected based on the returned data
+                switch (result)
+                {
+                    case "Account_Locked":
+                        // Failed! Will return to the Login page
+                        return View("Index");
+                    case "Failed_Login":
+                        // Failed! Will return to the Login page
+                        return View("Index");
+                    case "Authenticated":
+                        // Success!
+                        investor investor = MyViewModel.investor;
+                        ViewBag.SingleInvestorData = dataContext.Investor_Data(investor.id);
+                        //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
+                        MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
+                        MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
+                        MyViewModel.BrokerId = (int)investor.brokerID; // Broker Id needed to get the Investor's allocated Broker
+                        return View("~/Views/Home/Dashboard.cshtml", MyViewModel.investor);
+                    default:
+                        // Will return to the Login page
+                        return View("Index");
+                }
+            }
+            catch (Exception)
+            {
+                // Will return to the Login page
+                MyViewModel.Warning = "You must fill all fields.";
+                return View("Index");
             }
         }
 

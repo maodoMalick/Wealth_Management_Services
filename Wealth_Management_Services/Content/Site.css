@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /* GOOGLE FONTS */
+    /*font-family: 'Abel', sans-serif;
+    font-weight:21px;*/
     /*background: url(~/images/nestEgg.jpg) no-repeat top left;*/
     /*background-color: yellow;*/
 }
@@ -33,29 +36,6 @@ textarea {
 
                 /* CUSTOM CSS */
 
-/*#mainContainer {
-    width: 100%;
-    height: 500px;
-    background: url(../images/nestEgg.jpg) no-repeat top right;
+* {
+    /*font-family: 'Abel', sans-serif;*/
 }
-
-#statement{
-    width: 40%;
-}
-
-#head2{
-    padding-top: 30px;
-}
-
-.containers {
-    height: 500px;
-}
-
-.rightPanel {
-    width: 600px;
-    height: 460px;
-    float: right;
-    margin-top: -200px;
-    border-left: 1px solid #CCC;*/
-    /*background-color: aqua;*/
-/*}*/

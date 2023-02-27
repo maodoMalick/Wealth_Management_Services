@@ -10,6 +10,9 @@
 <script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
 @using (Html.BeginForm("Purchasing", "Home", FormMethod.Post, new { area = "Brokers" }))
 {
     @Html.AntiForgeryToken()

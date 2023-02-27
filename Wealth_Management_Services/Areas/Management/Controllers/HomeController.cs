@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Wealth_Management_Services.Models;
@@ -25,29 +26,41 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         [HttpPost]
         public ActionResult Login(management mgmt)
         {
-            if (mgmt != null)
+            try
             {
-                // Get Authentication result from Database
-                int result = dataContext.Management_Login(mgmt);
-                
-                if (result == 1)
+                if (mgmt != null)
                 {
-                    // Data to be sent to the View
-                    management manager = MyViewModel.management;
-                    MyViewModel.Welcome = "Welcome Manager: " + manager.name;
+                    // Get Authentication result from Database
+                    int result = dataContext.Management_Login(mgmt);
 
-                    // Send Authenticated user to his/her Dashboard
-                    return View("~/Views/Home/Dashboard.cshtml", MyViewModel.management);
+                    if (result == 1)
+                    {
+                        // Data to be sent to the View
+                        management manager = MyViewModel.management;
+                        MyViewModel.Welcome = "Welcome Manager: " + manager.name;
+
+                        // Send Authenticated user to his/her Dashboard
+                        return View("~/Views/Home/Dashboard.cshtml", MyViewModel.management);
+                    }
+                    else
+                    {
+                        // Not authenticated message back to the View
+                        MyViewModel.Warning = "Invalid username or password";
+                    }
                 }
-                else
-                {
-                    // Not authenticated message back to the View
-                    MyViewModel.Warning = "Invalid username or password";
-                }
+
+                // If it fails, stay in this same Login page
+                return View("Index");
+            }
+            catch (Exception)
+            {
+                // Will return to the Login page
+                MyViewModel.Warning = "You must fill all fields.";
+                return View("Index");
             }
 
             // If it fails, stay in this same Login page
-            return View("Index");
+            //return View("Index");
         }
 
         // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
@@ -158,6 +171,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         // REGISTRATION
         public ActionResult Registration()
         {
+            MyViewModel.Warning = "";
             return View();
         }
 

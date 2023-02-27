@@ -21,6 +21,7 @@ namespace Wealth_Management_Services.Models
         [HiddenInput(DisplayValue = false)]
         public string transactionID { get; set; }
 
+        [Required]
         public IEnumerable<SelectListItem> trader
         {
             get
@@ -41,6 +42,7 @@ namespace Wealth_Management_Services.Models
             }
         }
 
+        [Required]
         public IEnumerable<SelectListItem> shares
         {
             get
@@ -56,6 +58,7 @@ namespace Wealth_Management_Services.Models
             }
         }
 
+        [Required]
         public IEnumerable<SelectListItem> item
         {
             get
@@ -72,15 +75,21 @@ namespace Wealth_Management_Services.Models
             }
         }
 
+        [Required]
+        [Range(1, 10)]
         [DisplayName("broker Id")]
         public Nullable<int> brokerID { get; set; }
 
+        [Required]
         [DisplayName("purchase Date")]
         public Nullable<System.DateTime> purchaseDate { get; set; }
 
+        [Required]
+        [RegularExpression("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")]
         [DisplayName("client Id")]
         public Nullable<int> clientID { get; set; }
 
+        [Required]
         [DisplayName("quantity")]
         public Nullable<int> amount { get; set; }
     }

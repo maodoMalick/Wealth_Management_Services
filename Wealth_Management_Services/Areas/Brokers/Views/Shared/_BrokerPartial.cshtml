@@ -50,13 +50,13 @@
         <div id="#ajaxNavBar">
             <h4>Navigation</h4>
             <div class="ajaxLinks">
-                @Ajax.ActionLink("List of All Clients", "ClientsList", new AjaxOptions
+                @Ajax.ActionLink("List of My Clients", "MyClientsList", new AjaxOptions
                                                                             {
                                                                                 HttpMethod = "GET",
                                                                                 UpdateTargetId = "brokerDisplay",
                                                                                 InsertionMode = InsertionMode.Replace
                                                                             })
-            </div>
+            </div>@*brokerDisplay*@
             <div class="ajaxLinks">
                 @Ajax.ActionLink("Highest Dividends", "HighestDividend", new { lastdividend = 3000 }, new AjaxOptions
                                                                                         {
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="article-bkr" id="brokerStats">
-        <b>Why invest in index funds?</b>
+        
     </div>
 
 </div> <!-- 'partialDashboardBox' -->

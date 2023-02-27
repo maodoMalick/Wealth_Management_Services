@@ -63,9 +63,9 @@ namespace Wealth_Management_Services.Models
                 SqlCommand cmd = new SqlCommand("Mgmt_Login_sp", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
-
+                //  *** COME BACK LATER TO RESET IT ***
                 // Password Hashing
-                //string pwdHash = PasswordHash.HashCode(mgmt.password); *** COME BACK LATER TO RESET IT ***
+                //string pwdHash = PasswordHash.HashCode(mgmt.password); 
 
                 // Stored Procedure params
                 SqlParameter paramUser = new SqlParameter("@user", mgmt.username);
@@ -141,9 +141,9 @@ namespace Wealth_Management_Services.Models
 
         }
         
-        public broker Broker_Login(broker broker)
+        public int Broker_Login(broker broker)
         {
-            broker bkr = null;
+            //broker bkr = null;
             
             using (conn)
             {
@@ -162,14 +162,16 @@ namespace Wealth_Management_Services.Models
                 // Get the validation digit (1 or 0) from SP
                 int returnCode = (int)cmd.ExecuteScalar();
 
-                if(returnCode == 1)
+                // Get the validation digit (1 or 0) from SP
+                int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
+
+                if (result == 1)
                 {
-                    // Fetch the corresponding row from the database
-                    bkr = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
+                    // Get the corresponding row from the database
+                    MyViewModel.broker = DataConnector.brokers.SingleOrDefault(x => x.username == broker.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
                 }
 
-                // Send model to the Login Action Method 
-                return bkr;
+                return result;
             }
             
         }
