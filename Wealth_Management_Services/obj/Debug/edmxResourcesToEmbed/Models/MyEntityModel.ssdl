@@ -20,16 +20,16 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="transactionID" Type="nvarchar" MaxLength="50" />
-    <Property Name="trader" Type="nvarchar" MaxLength="50" />
-    <Property Name="shares" Type="nvarchar" MaxLength="50" />
-    <Property Name="item" Type="nvarchar" MaxLength="50" />
-    <Property Name="amount" Type="int" />
-    <Property Name="price" Type="money" />
-    <Property Name="brokerID" Type="int" />
-    <Property Name="purchaseDate" Type="datetime" />
-    <Property Name="clientID" Type="int" />
-    <Property Name="total" Type="money" />
+    <Property Name="transactionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="trader" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="shares" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="item" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+    <Property Name="brokerID" Type="int" Nullable="false" />
+    <Property Name="purchaseDate" Type="datetime" Nullable="false" />
+    <Property Name="clientID" Type="int" Nullable="false" />
+    <Property Name="total" Type="money" Nullable="false" />
   </EntityType>
   <EntityType Name="dividends_2022">
     <Key>
@@ -104,7 +104,7 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__brokerOpe__broke__32AB8735">
-    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+    <End Role="broker" Type="Self.broker" Multiplicity="1" />
     <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="broker">
@@ -116,7 +116,7 @@ warning 6002: The table/view 'DatabaseLessonsVault.dbo.mgmtBillboard' does not h
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__brokerOpe__clien__339FAB6E">
-    <End Role="investor" Type="Self.investor" Multiplicity="0..1" />
+    <End Role="investor" Type="Self.investor" Multiplicity="1" />
     <End Role="brokerOperations" Type="Self.brokerOperations" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="investor">

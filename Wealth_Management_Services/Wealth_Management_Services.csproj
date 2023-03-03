@@ -104,6 +104,13 @@
     <Content Include="Content\CustomStyles.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
+    <Content Include="images-advertiser\advertiser_1.jpg" />
+    <Content Include="images-advertiser\advertiser_2.jpg" />
+    <Content Include="images-advertiser\advertiser_3.jpg" />
+    <Content Include="images-advertiser\advertiser_4.jpg" />
+    <Content Include="images-advertiser\advertiser_5.jpg" />
+    <Content Include="images-advertiser\advertiser_6.jpg" />
+    <Content Include="images\advertizer.png" />
     <Content Include="images\boA.jpg" />
     <Content Include="images\boA_1.jpg" />
     <Content Include="images\charlesSchawb.jpg" />
@@ -182,6 +189,7 @@
     </Content>
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
+    <Content Include="Scripts\CustomJavaScript.js" />
     <Content Include="Views\Shared\_MinStocks.cshtml" />
     <Content Include="Views\Shared\_ClientsList.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\_StocksPage.cshtml" />
@@ -226,12 +234,12 @@
     <Compile Include="Areas\Investors\InvestorsAreaRegistration.cs" />
     <Compile Include="Areas\Management\Controllers\HomeController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
-    <Compile Include="Models\broker.cs">
-      <DependentUpon>MyEntityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\broker.cs">
+      <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\brokerOperation.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
@@ -244,12 +252,17 @@
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\email.cs" />
+    <Compile Include="Models\broker.custom.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\DataContext.cs" />
+    <Compile Include="Models\Departments.cs" />
     <Compile Include="Models\GetMyDividends_sp_Result.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\investor.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\investor.custom.cs" />
     <Compile Include="Models\InvestorData_sp_Result.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
@@ -259,11 +272,6 @@
     <Compile Include="Models\management.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\broker.custom.cs" />
-    <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\DataContext.cs" />
-    <Compile Include="Models\Departments.cs" />
-    <Compile Include="Models\investor.custom.cs" />
     <Compile Include="Models\management.custom.cs" />
     <Compile Include="Models\mgmtBillboard.cs">
       <DependentUpon>MyEntityModel.tt</DependentUpon>

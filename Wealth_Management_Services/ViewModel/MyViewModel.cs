@@ -7,12 +7,13 @@ namespace Wealth_Management_Services.ViewModel
     {
         public static int id { get; set; } 
         public static string Warning { get; set; }
+        public static string InvestorWarning { get; set; }
         public static string Welcome { get; set; }
         public static string Message { get; set; }
         public static int UserId { get; set; }
         public static int BrokerId { get; set; }
         public static string EmailMsg { get; set; }
-        //public static string Username { get; set; }
+        public static string Thanks { get; set; }
         //public static string Pwd { get; set; }
 
 

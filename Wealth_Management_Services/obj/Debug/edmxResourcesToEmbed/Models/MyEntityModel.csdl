@@ -89,16 +89,7 @@
       <End Role="broker" EntitySet="brokers" />
       <End Role="investor" EntitySet="investors" />
     </AssociationSet>
-    <EntitySet Name="brokerOperations" EntityType="DatabaseLessonsVaultModel.brokerOperation" />
     <EntitySet Name="mgmtBillboards" EntityType="DatabaseLessonsVaultModel.mgmtBillboard" />
-    <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735">
-      <End Role="broker" EntitySet="brokers" />
-      <End Role="brokerOperation" EntitySet="brokerOperations" />
-    </AssociationSet>
-    <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E">
-      <End Role="investor" EntitySet="investors" />
-      <End Role="brokerOperation" EntitySet="brokerOperations" />
-    </AssociationSet>
     <FunctionImport Name="InvestorData_sp" ReturnType="Collection(DatabaseLessonsVaultModel.InvestorData_sp_Result)">
       <Parameter Name="id" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -164,25 +155,16 @@
       <Parameter Name="hireDate" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="UnlockAccounts_sp" />
+    <EntitySet Name="brokerOperations" EntityType="DatabaseLessonsVaultModel.brokerOperation" />
+    <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735">
+      <End Role="broker" EntitySet="brokers" />
+      <End Role="brokerOperation" EntitySet="brokerOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E">
+      <End Role="investor" EntitySet="investors" />
+      <End Role="brokerOperation" EntitySet="brokerOperations" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="brokerOperation">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="transactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="trader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="shares" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="amount" Type="Int32" />
-    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="brokerID" Type="Int32" />
-    <Property Name="purchaseDate" Type="DateTime" Precision="3" />
-    <Property Name="clientID" Type="Int32" />
-    <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
-    <NavigationProperty Name="broker" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="brokerOperation" ToRole="broker" />
-    <NavigationProperty Name="investor" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="brokerOperation" ToRole="investor" />
-  </EntityType>
   <EntityType Name="mgmtBillboard">
     <Key>
       <PropertyRef Name="id" />
@@ -190,30 +172,6 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="reports" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="FK__brokerOpe__broke__32AB8735">
-    <End Type="DatabaseLessonsVaultModel.broker" Role="broker" Multiplicity="0..1" />
-    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="broker">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="brokerOperation">
-        <PropertyRef Name="brokerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__brokerOpe__clien__339FAB6E">
-    <End Type="DatabaseLessonsVaultModel.investor" Role="investor" Multiplicity="0..1" />
-    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="investor">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="brokerOperation">
-        <PropertyRef Name="clientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <ComplexType Name="InvestorData_sp_Result">
     <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
@@ -267,4 +225,46 @@
     <Property Type="Int32" Name="LoginAttempts" Nullable="false" />
     <Property Type="Int32" Name="IsLocked" Nullable="false" />
   </ComplexType>
+  <EntityType Name="brokerOperation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="transactionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shares" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="item" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="brokerID" Type="Int32" Nullable="false" />
+    <Property Name="purchaseDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="clientID" Type="Int32" Nullable="false" />
+    <Property Name="total" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="broker" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="brokerOperation" ToRole="broker" />
+    <NavigationProperty Name="investor" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="brokerOperation" ToRole="investor" />
+  </EntityType>
+  <Association Name="FK__brokerOpe__broke__32AB8735">
+    <End Type="DatabaseLessonsVaultModel.broker" Role="broker" Multiplicity="1" />
+    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="broker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperation">
+        <PropertyRef Name="brokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__brokerOpe__clien__339FAB6E">
+    <End Type="DatabaseLessonsVaultModel.investor" Role="investor" Multiplicity="1" />
+    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="investor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperation">
+        <PropertyRef Name="clientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

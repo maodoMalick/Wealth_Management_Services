@@ -51,23 +51,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="brokerOperations">
-      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.brokerOperation">
-        <MappingFragment StoreEntitySet="brokerOperations">
-          <ScalarProperty Name="total" ColumnName="total" />
-          <ScalarProperty Name="clientID" ColumnName="clientID" />
-          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
-          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="amount" ColumnName="amount" />
-          <ScalarProperty Name="item" ColumnName="item" />
-          <ScalarProperty Name="shares" ColumnName="shares" />
-          <ScalarProperty Name="trader" ColumnName="trader" />
-          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="mgmtBillboards">
       <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.mgmtBillboard">
         <MappingFragment StoreEntitySet="mgmtBillboard">
@@ -154,5 +137,22 @@
     <FunctionImportMapping FunctionImportName="Mgmt_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Login_sp" />
     <FunctionImportMapping FunctionImportName="Mgmt_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Registration_sp" />
     <FunctionImportMapping FunctionImportName="UnlockAccounts_sp" FunctionName="DatabaseLessonsVaultModel.Store.UnlockAccounts_sp" />
+    <EntitySetMapping Name="brokerOperations">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.brokerOperation">
+        <MappingFragment StoreEntitySet="brokerOperations">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="shares" ColumnName="shares" />
+          <ScalarProperty Name="trader" ColumnName="trader" />
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

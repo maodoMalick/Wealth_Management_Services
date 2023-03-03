@@ -304,7 +304,7 @@ namespace Wealth_Management_Services.Models
                     // The 'Reader' is expecting 3 values from the Stored Procedure
                     if (Convert.ToBoolean(ReadMe["IsLocked"]))
                     {
-                        MyViewModel.Warning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT 5MN AND RETRY OR CALL CUSTOMER SERVICE.";
+                        MyViewModel.InvestorWarning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT 5MN AND RETRY OR CALL CUSTOMER SERVICE.";
                         return result = "Account_Locked";
                     }
                     else if (Convert.ToBoolean(ReadMe["IsAuthenticated"]))
@@ -316,7 +316,7 @@ namespace Wealth_Management_Services.Models
                     else if(failedAttempts <= 3)
                     {
                         int remainingLoginAttempts = 4 - failedAttempts;
-                        MyViewModel.Warning = "Invalid Username/Password. You have " + remainingLoginAttempts + " login attempt(s) left.";
+                        MyViewModel.InvestorWarning = "Invalid Username/Password. You have " + remainingLoginAttempts + " login attempt(s) left.";
                         return result = "Failed_Login";
                     }                    
                 }

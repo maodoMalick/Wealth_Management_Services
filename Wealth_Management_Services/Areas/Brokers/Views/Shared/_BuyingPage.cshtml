@@ -100,10 +100,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.brokerID, "brokerID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.brokerID, "broker ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("brokerID", null, htmlAttributes: new { @class = "form-control" })*@
-                @Html.EditorFor(model => model.brokerID, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.brokerID, new { htmlAttributes = new { @class = "form-control" } })*@
+                @*@Html.TextBoxFor(model => model.brokerID, Session["brokerId"], new { @class = "form-control" })*@
+                @Html.TextBox("brokerID", Session["brokerId"], new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.brokerID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -112,13 +114,13 @@
             @Html.LabelFor(model => model.purchaseDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.purchaseDate, new { htmlAttributes = new { @class = "form-control" } })*@
-                <input type="date" name="purchaseDate" class="form-control" />
+                <input type="date" name="purchaseDate" id="purchaseDate" class="form-control" />
                 @Html.ValidationMessageFor(model => model.purchaseDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.clientID, "clientID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.clientID, "client ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.DropDownList("clientID", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.EditorFor(model => model.clientID, new { htmlAttributes = new { @class = "form-control" } })

@@ -89,10 +89,11 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         public PartialViewResult HighestDividend()
         {
             // Display title with results
-            MyViewModel.Message = "List of Best Clients";
+            MyViewModel.Message = "List of Highest Earnings";
             // Show investors with higher returns
             IEnumerable<investor> investors = from i in DataConnector.investors
                                               where i.latestDividend >= 3200
+                                              orderby i.latestDividend descending
                                               select i;
 
             return PartialView("_ClientsList", investors);
@@ -164,7 +165,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             // Get dividends performed by each broker from db
             List<decimal?> dividends = dataContext.BrokerPerformance();
             ViewBag.NAMES = names;
-            ViewBag.DIVIDENDS = dividends.OrderByDescending(x => x.Value);
+            ViewBag.DIVIDENDS = dividends;/*.OrderByDescending(x => x.Value);*/
             return PartialView("_Graph_Bars_Brokers");
         }
 

@@ -18,7 +18,8 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
 
         public ActionResult Index()
         {
-            
+            MyViewModel.Welcome = "";
+            MyViewModel.Thanks = "";
             return View("Index");
         }
 
@@ -130,6 +131,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         public PartialViewResult Purchasing()
         {
             MyViewModel.Message = "Stocks & Bonds Marketplace";
+            Session["brokerId"] = MyViewModel.UserId;
             return PartialView("_BuyingPage");
         }
 
@@ -142,14 +144,16 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                 {
                     dataContext.PurchasingAssets(bkrOps);
                     MyViewModel.Message = "Stocks & Bonds Marketplace";
-                    //MyViewModel.broker = ViewBag.BROKER;
-                    return View("Index"/*, MyViewModel.broker*/);
+                    MyViewModel.Thanks = "Thank you for your Purchase";
+                    return View("Index");
                 }
             }
             catch (Exception)
             {
-                MyViewModel.Warning = "You must fill out all fields";
-                return View("Index");
+                MyViewModel.Warning = "All Stock Purchase fields must be filled. Please Log in again.";
+                broker bkr = new broker();
+                //return View("_BuyingPage");
+                RedirectToAction("Login");
             }
 
             return View("Index");

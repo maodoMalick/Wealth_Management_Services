@@ -10,6 +10,9 @@
 <script src="~/Scripts/chart.min.js"></script>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+<!-- SlideShow -->
+<script src="~/Scripts/CustomJavaScript.js"></script>
+
 <!--Ajax Package Section-->
 <script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -66,6 +69,14 @@
                 }
             </div>
             <div class="ajaxLinks">
+                @Ajax.ActionLink("MY 2022 Returns", "LastYearReturns", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "investorDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+            <div class="ajaxLinks">
                 @Ajax.ActionLink("My Broker Profile", "MyBrokerProfile", new AjaxOptions
                                                                             {
                                                                                 HttpMethod = "GET",
@@ -84,13 +95,13 @@
         </div>
     </div>
     <div class="article-inv" id="investorDisplay">
-
+        <div id="result"></div>
     </div>
     <div class="article-inv" id="investorStats">
         
     </div>
     <div class="article-inv" id="investorSpot">
-        
+        <img src="~/images-advertiser/advertiser_1.jpg" id="imgDisplay"/>
     </div>
 
 </div>  <!-- / 'partialDashboardBox' -->

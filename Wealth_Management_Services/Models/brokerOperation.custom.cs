@@ -76,7 +76,7 @@ namespace Wealth_Management_Services.Models
         }
 
         [Required]
-        [Range(1, 10)]
+        [RegularExpression("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")]
         [DisplayName("broker Id")]
         public Nullable<int> brokerID { get; set; }
 
@@ -90,6 +90,7 @@ namespace Wealth_Management_Services.Models
         public Nullable<int> clientID { get; set; }
 
         [Required]
+        [RegularExpression("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")]
         [DisplayName("quantity")]
         public Nullable<int> amount { get; set; }
     }

@@ -30,9 +30,9 @@ namespace Wealth_Management_Services.Models
         public virtual DbSet<broker> brokers { get; set; }
         public virtual DbSet<investor> investors { get; set; }
         public virtual DbSet<management> managements { get; set; }
-        public virtual DbSet<brokerOperation> brokerOperations { get; set; }
         public virtual DbSet<mgmtBillboard> mgmtBillboards { get; set; }
         public virtual DbSet<dividends_2022> dividends_2022 { get; set; }
+        public virtual DbSet<brokerOperation> brokerOperations { get; set; }
     
         public virtual ObjectResult<InvestorData_sp_Result> InvestorData_sp(Nullable<int> id)
         {
@@ -265,7 +265,5 @@ namespace Wealth_Management_Services.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UnlockAccounts_sp");
         }
-
-        public System.Data.Entity.DbSet<Wealth_Management_Services.Models.email> emails { get; set; }
     }
 }

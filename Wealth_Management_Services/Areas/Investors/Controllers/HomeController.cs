@@ -18,7 +18,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         public ActionResult Index()
         {
             // Reset the warning message
-            MyViewModel.Warning = "";
+            MyViewModel.InvestorWarning = "";
             return View();
         }
 
@@ -28,7 +28,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         {
             try
             {
-                MyViewModel.Warning = "";
+                MyViewModel.InvestorWarning = "";
 
                 // Get Authentication result from Database
                 string result = dataContext.Investor_Login(invest);
@@ -59,7 +59,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             catch (Exception)
             {
                 // Will return to the Login page
-                MyViewModel.Warning = "You must fill all fields.";
+                MyViewModel.InvestorWarning = "You must fill all fields.";
                 return View("Index");
             }
         }
@@ -134,7 +134,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                 else
                 {
                     // Error to be sent back to the Broker Registration page
-                    MyViewModel.Warning = "Error! Username is already taken.";
+                    MyViewModel.InvestorWarning = "Error! Username is already taken.";
                 }
             }
             
