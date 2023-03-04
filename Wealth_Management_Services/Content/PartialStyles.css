@@ -152,7 +152,7 @@ display: none; /* Hide Scroll bars for Chrome */
 }
 
 .article-inv:nth-of-type(4) img {
-    margin: -18px 0 0 -18px;
+    margin: -18px 0 0 -18px; /* Adjust the SlideShow */
 }
 
 
@@ -168,19 +168,14 @@ display: none; /* Hide Scroll bars for Chrome */
     float: right;
 }
 
-.item {
+.item-stocks {
     padding: 3px;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid #D1D3D4;
 }
 
-.item:hover {
+.item-stocks:hover {
     opacity: 50%;
-}
-
-#buyTable {
-    /*width: 80%;*/
-    /*border: 1px solid #D1D3D4;*/
 }
 
 #buyTable table {
@@ -217,8 +212,5 @@ display: none; /* Hide Scroll bars for Chrome */
     margin-top: 20px;
     border-radius: 10px;
 }
-
-#bar_chart_container1 {
-
-} 
+ 
 

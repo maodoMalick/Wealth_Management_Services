@@ -57,8 +57,6 @@
     padding: 3px 10px;
     border-radius: 5px;
 }
-
-
 /* /End - Dashboard/ */
 
 
@@ -67,14 +65,12 @@
     float: left;
     width: 45%;
     height: 460px;
-    /*background: aqua;*/
 }
 
 .rightPanel {
     width: 600px;
     height: 460px;
     float: right;
-    /*background: yellow;*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 5px;

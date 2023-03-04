@@ -72,7 +72,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
 
         // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
         [HttpPost]
-        public PartialViewResult MyMoneyChart(/*int MyId*/)
+        public PartialViewResult MyMoneyChart()
         {
             // Display title with results
             MyViewModel.Message = "Total Assets in 2022";
@@ -84,6 +84,15 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             ViewBag.MONTHNAMES = MonthNames;
 
             return PartialView("_Graph_Lines_MyMoney");
+        }
+
+        public PartialViewResult LastYearReturns()
+        {
+            // Display title with results
+            MyViewModel.Message = "All My Returns From 2022";
+            int MyId = MyViewModel.UserId; // Investor 'Id' retrieved from the Login Method
+            dividends_2022 returns = DataConnector.dividends_2022.Single(x => x.id == MyId);
+            return PartialView("_LastYearReturns", returns);
         }
 
         public PartialViewResult MyBrokerProfile()

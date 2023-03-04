@@ -207,6 +207,7 @@
     <Content Include="Areas\Brokers\Views\Shared\_BrokerPartial.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_MyBrokerInfo.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_ContactMyBroker.cshtml" />
+    <Content Include="Areas\Investors\Views\Home\_LastYearReturns.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
