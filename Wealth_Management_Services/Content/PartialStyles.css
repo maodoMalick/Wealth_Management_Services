@@ -1,12 +1,17 @@
-﻿
+﻿/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Genos:wght@100&family=Orbitron&family=Pathway+Gothic+One&display=swap');
+/*
+    font-family: 'Genos', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    font-family: 'Pathway Gothic One', sans-serif;
+*/
+
 .partialDashboardBox {
     width: 100%;
     height: 500px;
     border: 1px solid #D1D3D4;
     display: grid; /*CSS Grid*/
     grid-template-columns: repeat(4, 1fr);
-    /*background: gray;*/
-    /*grid-template-rows: repeat(2, 1fr);*/
 }
 
 .titles{
@@ -14,6 +19,11 @@
     font-weight: bold;
 }
 
+.navigation {
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 2em;
+    letter-spacing: .1em;
+}
 
 /* BROKER-PARTIAL SECTION */
 .article-bkr {
@@ -155,6 +165,21 @@ display: none; /* Hide Scroll bars for Chrome */
     margin: -18px 0 0 -18px; /* Adjust the SlideShow */
 }
 
+/* Image Animation */
+#img-Animation {
+    opacity: .2;
+}
+
+/* Text Placeholders for Partial Page Displays */
+.placeholders {
+    /*font-family: 'Genos', sans-serif;*/
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    color: darkgray;
+    padding-left: 40%;
+    padding-top: 10%;
+}
+
 
 /* STOCKS & BONDS SECTION */
 #stocksBox {
@@ -175,7 +200,7 @@ display: none; /* Hide Scroll bars for Chrome */
 }
 
 .item-stocks:hover {
-    opacity: 50%;
+    opacity: 30%;
 }
 
 #buyTable table {

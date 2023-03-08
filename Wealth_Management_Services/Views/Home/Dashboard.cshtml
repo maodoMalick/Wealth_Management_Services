@@ -6,8 +6,8 @@
 <div class="containers">
     <div id="dashboard-main">
         <div class="dashboard-item"><span>Main Dashboard</span></div>
-        <div class="dashboard-item"><a href="~/Home/Index.cshtml"><img src="~/images/home_icon_new_20pixel.png" /></a></div>
-        <div class="dashboard-item">@DateTime.Today.ToLongDateString()<br /><span> @Html.ActionLink("Logout", "Index", new { area = "" })</span></div>
+        <div class="dashboard-item"><a href="@Url.Action("Index", "Home", new {area = ""})"><img src="~/images/home_icon_new_20pixel.png" /></a></div>
+        <div class="dashboard-item">@DateTime.Today.ToLongDateString()<br /><span> @Html.ActionLink("Logout", "LogoutUser", new { area = "" }, null)</span></div>
     </div>
 
     <!-- Here, instead of using AJAX, I have applied a simple conditional

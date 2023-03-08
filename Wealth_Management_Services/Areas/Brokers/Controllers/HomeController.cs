@@ -20,6 +20,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         {
             MyViewModel.Welcome = "";
             MyViewModel.Thanks = "";
+            MyViewModel.InvestorWarning = "";
             return View("Index");
         }
 
@@ -38,7 +39,9 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                         // Data to be sent to the View
                         broker bkr = MyViewModel.broker;
                         MyViewModel.Welcome = "Welcome Broker: " + bkr.name;
+
                         MyViewModel.UserId = bkr.id; // Needed for 'ClientsList()' method
+                        Session["Password"] = bkr.password; // Needed for Logout button on Dashboard
 
                         //Send Authenticated broker user to the 'Main' Dashboard
                         return View("Dashboard", bkr);
@@ -46,7 +49,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                     else
                     {
                         // Not authenticated message back to the View
-                        MyViewModel.Warning = "Invalid username or password";
+                        MyViewModel.InvestorWarning = "Invalid username or password";
                     }
                 }
                 // If it fails, stay in this same Login page
@@ -74,7 +77,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
         public PartialViewResult HighestDividend()
         {
             // Display title with results
-            MyViewModel.Message = "List of Best Clients";
+            MyViewModel.Message = "Clients with Highest Dividends";
             // Show investors with higher returns
             IEnumerable<investor> investors = from i in DataConnector.investors
                                               where i.latestDividend >= 3200
@@ -147,11 +150,13 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                     MyViewModel.Thanks = "Thank you for your Purchase";
                     return View("Index");
                 }
+
+                MyViewModel.InvestorWarning = "All Stock Purchase fields must be filled. Please Log in again.";
             }
             catch (Exception)
             {
-                MyViewModel.Warning = "All Stock Purchase fields must be filled. Please Log in again.";
-                broker bkr = new broker();
+                MyViewModel.InvestorWarning = "There is an Error. Please Log in again.";
+                //broker bkr = new broker();
                 //return View("_BuyingPage");
                 RedirectToAction("Login");
             }

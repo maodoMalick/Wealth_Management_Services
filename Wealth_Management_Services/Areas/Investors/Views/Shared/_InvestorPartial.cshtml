@@ -54,7 +54,7 @@
             </tr>
         </table>
         <div id="#ajaxNavBar">
-            <h4>Navigation</h4>
+            <div class="navigation">Navigation</div>
             <div class="ajaxLinks">
                 @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
                 {
@@ -94,14 +94,19 @@
             </div>
         </div>
     </div>
+
     <div class="article-inv" id="investorDisplay">
         <div id="result"></div>
+        <div class="placeholders">Main Screen</div>
     </div>
+
     <div class="article-inv" id="investorStats">
-        
+        <div class="placeholders">Broker's Data</div>
     </div>
+
     <div class="article-inv" id="investorSpot">
-        <img src="~/images-advertiser/advertiser_1.jpg" id="imgDisplay"/>
+        <img src="~/images-advertiser/advertiser_1.jpg" id="img-Animation"/>
     </div>
 
 </div>  <!-- / 'partialDashboardBox' -->
+

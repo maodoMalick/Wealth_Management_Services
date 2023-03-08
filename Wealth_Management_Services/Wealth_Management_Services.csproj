@@ -107,9 +107,6 @@
     <Content Include="images-advertiser\advertiser_1.jpg" />
     <Content Include="images-advertiser\advertiser_2.jpg" />
     <Content Include="images-advertiser\advertiser_3.jpg" />
-    <Content Include="images-advertiser\advertiser_4.jpg" />
-    <Content Include="images-advertiser\advertiser_5.jpg" />
-    <Content Include="images-advertiser\advertiser_6.jpg" />
     <Content Include="images\advertizer.png" />
     <Content Include="images\boA.jpg" />
     <Content Include="images\boA_1.jpg" />
@@ -196,8 +193,8 @@
     <Content Include="Areas\Brokers\Views\Shared\_BondsPage.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\_PurchasingPage.cshtml" />
     <Content Include="Areas\Brokers\Views\Shared\_BuyingPage.cshtml" />
-    <Content Include="Areas\Brokers\Views\Shared\test.cshtml" />
-    <Content Include="Areas\Brokers\Views\Shared\_Success.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\test.cshtml" />
+    <Content Include="Areas\Brokers\Views\Shared\2Bdeleted\_Success.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_MgmtPartial.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_InvestorPartial.cshtml" />
     <Content Include="Areas\Management\Views\Shared\_Success.cshtml" />
@@ -207,7 +204,7 @@
     <Content Include="Areas\Brokers\Views\Shared\_BrokerPartial.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_MyBrokerInfo.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_ContactMyBroker.cshtml" />
-    <Content Include="Areas\Investors\Views\Home\_LastYearReturns.cshtml" />
+    <Content Include="Areas\Investors\Views\Shared\_LastYearReturns.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />

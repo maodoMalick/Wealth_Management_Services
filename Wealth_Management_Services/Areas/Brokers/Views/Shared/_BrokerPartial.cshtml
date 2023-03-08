@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>@Html.DisplayNameFor(x => x.commission)</td>
-                <td>@Html.DisplayFor(x => x.commission)</td>
+                <td>@Html.DisplayFor(x => x.commission) %</td> 
             </tr>
             <tr>
                 <td>@Html.DisplayNameFor(x => x.hireDate)</td>
@@ -44,11 +44,11 @@
         </table>
     </div>
     <div class="article-bkr" id="brokerDisplay">
-
+        <div class="placeholders">Main Screen</div>
     </div>
     <div class="article-bkr">
         <div id="#ajaxNavBar">
-            <h4>Navigation</h4>
+            <div class="navigation">Navigation</div>
             <div class="ajaxLinks">
                 @Ajax.ActionLink("List of My Clients", "MyClientsList", new AjaxOptions
                                                                             {
@@ -99,8 +99,9 @@
             </div>
         </div>
     </div>
+
     <div class="article-bkr" id="brokerStats">
-        
+        <div class="placeholders">Client's Data</div>
     </div>
 
 </div> <!-- 'partialDashboardBox' -->

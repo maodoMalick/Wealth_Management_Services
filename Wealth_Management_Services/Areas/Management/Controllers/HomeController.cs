@@ -137,7 +137,7 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
         public PartialViewResult Transactions()
         {
             // Display title with results
-            MyViewModel.Message = "LIVE Brokers Financial Transactions";
+            MyViewModel.Message = "LIVE! Brokers Financial Transactions";
             // Display the list of all brokers
             List<mgmtBillboard> billboard = DataConnector.mgmtBillboards.ToList();
             return PartialView("_TransactionsReport", billboard);

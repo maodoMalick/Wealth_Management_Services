@@ -428,7 +428,7 @@ namespace Wealth_Management_Services.Models
             mail.Body= e.Body;
             mail.IsBodyHtml = false;
 
-            NetworkCredential credo = new NetworkCredential("info@xxx.com", "xxx");
+            NetworkCredential credo = new NetworkCredential("sales@libidoor.com", "Dev_C#_22");
 
             SmtpClient smtp = new SmtpClient("smtp.ionos.com", 587);
             smtp.EnableSsl = true;

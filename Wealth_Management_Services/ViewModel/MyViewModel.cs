@@ -14,7 +14,6 @@ namespace Wealth_Management_Services.ViewModel
         public static int BrokerId { get; set; }
         public static string EmailMsg { get; set; }
         public static string Thanks { get; set; }
-        //public static string Pwd { get; set; }
 
 
         // Models

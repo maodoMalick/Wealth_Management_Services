@@ -19,6 +19,8 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         {
             // Reset the warning message
             MyViewModel.InvestorWarning = "";
+            // Reset the Email Success message
+            MyViewModel.EmailMsg = "";
             return View();
         }
 
@@ -28,8 +30,6 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         {
             try
             {
-                MyViewModel.InvestorWarning = "";
-
                 // Get Authentication result from Database
                 string result = dataContext.Investor_Login(invest);
 
@@ -107,16 +107,33 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         public PartialViewResult ContactMyBroker()
         {
             // Display title with results
-            MyViewModel.Message = "Contact Your Broker";
+            MyViewModel.Message = "Contact My Broker";
+            Session["Email"] = "test@libidoor.com"; // To autofill the 'From' email textbox           
 
             return PartialView("_ContactMyBroker");
         }
 
         [HttpPost]
-        public ActionResult EmailMyBroker(email e)
+        public ActionResult EmailMyBroker(email email)
         {
-            // Run the method
-            dataContext.SendEmail(e);
+            try
+            {
+                if (email != null)
+                {
+                    // Run the method
+                    dataContext.SendEmail(email);
+                    MyViewModel.EmailMsg = "Your email has been successfully sent";
+                }
+                else
+                {
+                    MyViewModel.InvestorWarning = "All Fields Must be Filled. Please Log in again";
+                }
+                
+            }
+            catch (Exception)
+            {
+                MyViewModel.InvestorWarning = "Something is wrong. Please Log in again";
+            }
 
             return View("Index");
         }

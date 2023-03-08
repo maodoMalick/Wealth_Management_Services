@@ -18,7 +18,7 @@
     height: 515px;
 }
 
-/* Dashboard */
+/* DASHBOARD */
 #dashboard-main {
     display: grid;
     grid-template-columns: 15% auto 20%;
@@ -57,7 +57,7 @@
     padding: 3px 10px;
     border-radius: 5px;
 }
-/* /End - Dashboard/ */
+/* /End - DASHBOARD/ */
 
 
 /* For All Login Pages*/
@@ -181,13 +181,6 @@
 
 .item-mgmt:nth-of-type(1) div a {
     margin-left: 190px;
-    /*display: inline-block;
-    margin-top: -30px;*/
-}
-
-.reg-mgmt {
-    /*background: url(../images/chart_blue.jpg) no-repeat top right;
-    opacity: 50%;*/
 }
 
 /* INVESTOR SECTION */
