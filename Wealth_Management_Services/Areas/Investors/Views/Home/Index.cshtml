@@ -6,7 +6,10 @@
     ViewBag.Title = "Index";
 }
 
+<!-- Styles -->
 <link href="@Url.Content("~/Content/CustomStyles.css")" rel="stylesheet" />
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />
 <!--No JS Validations; it is to avoid confusion with the Json Remote Validation for Registration-->
 
 <div class="containers">
@@ -18,7 +21,7 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                @*<hr />*@<br />
+                <br />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.id)
 
@@ -60,7 +63,6 @@
             </div>
         }
     </div>
-    
 
     <div class="rightPanel">
         <div class="item item-investor">

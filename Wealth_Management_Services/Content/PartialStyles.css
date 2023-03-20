@@ -1,10 +1,6 @@
 ﻿/* GOOGLE FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Genos:wght@100&family=Orbitron&family=Pathway+Gothic+One&display=swap');
-/*
-    font-family: 'Genos', sans-serif;
-    font-family: 'Orbitron', sans-serif;
-    font-family: 'Pathway Gothic One', sans-serif;
-*/
+
 
 .partialDashboardBox {
     width: 100%;
@@ -111,6 +107,7 @@ display: none; /* Hide Scroll bars for Chrome */
     display: none; /* Hide Scroll bars for Chrome */
 }
 
+
 /* INVESTOR-PARTIAL SECTION */
 .article-inv {
     padding: 20px;
@@ -129,6 +126,7 @@ display: none; /* Hide Scroll bars for Chrome */
     overflow: auto; /*Make table sink its excess length*/
     -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge */
     scrollbar-width: none; /* Hide Scroll bars for Firefox */
+    /*background: pink;*/
 }
 
 .article-inv:nth-of-type(2)::-webkit-scrollbar {

@@ -114,14 +114,14 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         }
 
         [HttpPost]
-        public ActionResult EmailMyBroker(email email)
+        public ActionResult EmailMyBroker(email email, object fileUploader)
         {
             try
             {
                 if (email != null)
                 {
-                    // Run the method
-                    dataContext.SendEmail(email);
+                    // Typecast the uploaded attachment object
+                    dataContext.SendEmail(email, (HttpPostedFileBase)fileUploader);
                     MyViewModel.EmailMsg = "Your email has been successfully sent";
                 }
                 else

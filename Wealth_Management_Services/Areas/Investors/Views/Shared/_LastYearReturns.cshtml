@@ -1,116 +1,83 @@
 ﻿@model Wealth_Management_Services.Models.dividends_2022
 
 @using Wealth_Management_Services.ViewModel
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Genos:wght@100&family=Orbitron&family=Pathway+Gothic+One&display=swap" rel="stylesheet">
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+@*<link href="~/Content/PartialStyles.css" rel="stylesheet" />*@<!--THIS WAS THE PROBLEM IN THE RESPONSIVE DESIGN-->
 
 <!--Ajax Package Section-->
 <script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
-<div>
+<style>
+    /*
+        font-family: 'Genos', sans-serif;
+        font-family: 'Orbitron', sans-serif;
+        font-family: 'Pathway Gothic One', sans-serif;
+    */
+
+    .partialBox {
+        font-family: 'Pathway Gothic One', sans-serif;
+    }
+</style>
+
+<div class="partialBox">
     <div style="color:dimgrey; font-weight:bold; font-size: 1.5em">
         @MyViewModel.Message
     </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.january)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.january)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.february)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.february)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.march)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.march)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.april)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.april)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.may)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.may)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.june)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.june)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.july)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.july)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.august)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.august)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.september)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.september)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.october)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.october)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.november)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.november)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.december)
-        </dt>
-
-        <dd>
-            $ @Html.DisplayFor(model => model.december)
-        </dd>
-
-    </dl>
+    <table class="table">
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.january)</b></td>
+            <td>$ @Html.DisplayFor(model => model.january)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.february)</b></td>
+            <td>$ @Html.DisplayFor(model => model.february)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.march)</b></td>
+            <td>$ @Html.DisplayFor(model => model.march)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.april)</b></td>
+            <td>$ @Html.DisplayFor(model => model.april)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.may)</b></td>
+            <td>$ @Html.DisplayFor(model => model.may)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.june)</b></td>
+            <td>$ @Html.DisplayFor(model => model.june)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.july)</b></td>
+            <td>$ @Html.DisplayFor(model => model.july)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.august)</b></td>
+            <td>$ @Html.DisplayFor(model => model.august)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.september)</b></td>
+            <td>$ @Html.DisplayFor(model => model.september)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.october)</b></td>
+            <td>$ @Html.DisplayFor(model => model.october)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.november)</b></td>
+            <td>$ @Html.DisplayFor(model => model.november)</td>
+        </tr>
+        <tr>
+            <td><b>@Html.DisplayNameFor(model => model.december)</b></td>
+            <td>$ @Html.DisplayFor(model => model.december)</td>
+        </tr>
+    </table>
 </div>

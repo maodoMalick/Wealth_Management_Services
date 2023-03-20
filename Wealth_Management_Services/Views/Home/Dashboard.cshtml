@@ -1,9 +1,12 @@
 ﻿@using Wealth_Management_Services.ViewModel
 @using Wealth_Management_Services.Models
 
+<!-- Styles -->
 <link href="~/Content/CustomStyles.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries.css" rel="stylesheet" />
 
 <div class="containers">
+    <!-- Panel that displays the Home Dashboard title, the date and the Logot button -->
     <div id="dashboard-main">
         <div class="dashboard-item"><span>Main Dashboard</span></div>
         <div class="dashboard-item"><a href="@Url.Action("Index", "Home", new {area = ""})"><img src="~/images/home_icon_new_20pixel.png" /></a></div>
@@ -11,7 +14,7 @@
     </div>
 
     <!-- Here, instead of using AJAX, I have applied a simple conditional
-         technique to display the right View.
+         technique to display any requested View.
     -->
 
     @{ // >>>>> DON'T FORGET CLIENT SIDE VALID 4 LOGIN <<<<<<

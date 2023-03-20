@@ -3,11 +3,14 @@
 @{
     ViewBag.Title = "Index";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Styles -->
 <link href="~/Content/Site.css" rel="stylesheet" />
-<link href="~/Content/CustomStyles.css" rel="stylesheet" />
+@*<link href="~/Content/CustomStyles.css" rel="stylesheet" />*@
+<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />
 
-<div id="mainContainer">
+<div id="mainContainer" class="mainBox">
 
     <h2 id="head2">Welcome to Wealth Management</h2>
 
@@ -19,13 +22,16 @@
     <br />
 
     <!--When clicked each Department will send the user to a specific Area-->
-    @{
-        foreach (var item in Model.getDepartments)
-        {
-            @Html.ActionLink(item.Text, "Index", "Home", new { area = item.Value }, null);
-            <br />
+    <div id="mainNav">
+        @{
+            foreach (var item in Model.getDepartments)
+            {
+                @Html.ActionLink(item.Text, "Index", "Home", new { area = item.Value }, null);
+                <br />
+            }
         }
-    }
+    </div>
+
     <br />
 
 </div>

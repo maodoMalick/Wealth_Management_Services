@@ -1,11 +1,6 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    /* GOOGLE FONTS */
-    /*font-family: 'Abel', sans-serif;
-    font-weight:21px;*/
-    /*background: url(~/images/nestEgg.jpg) no-repeat top left;*/
-    /*background-color: yellow;*/
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -32,10 +27,4 @@ textarea {
 .navbar-inverse .navbar-toggle:focus {
     background-color: #777;
     border-color: #fff
-}
-
-                /* CUSTOM CSS */
-
-* {
-    /*font-family: 'Abel', sans-serif;*/
 }

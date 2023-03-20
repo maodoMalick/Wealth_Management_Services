@@ -7,7 +7,8 @@ using System.Linq;
 using Wealth_Management_Services.ViewModel;
 using System.Net;
 using System.Net.Mail; // To send Email
-
+using System.Web;
+using System.IO;
 
 namespace Wealth_Management_Services.Models
 {
@@ -421,14 +422,21 @@ namespace Wealth_Management_Services.Models
         }
 
         // Investor Sending Email to their Broker
-        public void SendEmail(email e)
+        public void SendEmail(email e, HttpPostedFileBase fileUploader)
         {            
             MailMessage mail = new MailMessage(e.From, e.To);
             mail.Subject = e.Subject;
             mail.Body= e.Body;
             mail.IsBodyHtml = false;
 
-            NetworkCredential credo = new NetworkCredential("sales@libidoor.com", "Dev_C#_22");
+            // Uploading an Attachment
+            if (fileUploader != null)
+            {
+                string fname = Path.GetFileName(fileUploader.FileName);
+                mail.Attachments.Add(new Attachment(fileUploader.InputStream, fname));
+            }
+
+            NetworkCredential credo = new NetworkCredential("test@libidoor.com", "Dev_C#_22");
 
             SmtpClient smtp = new SmtpClient("smtp.ionos.com", 587);
             smtp.EnableSsl = true;
