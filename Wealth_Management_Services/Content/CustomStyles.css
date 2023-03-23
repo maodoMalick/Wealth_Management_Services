@@ -14,11 +14,11 @@
 }
 /* /End - Homepage/ */
 
-.containers {
+.dashboard-container {
     height: 515px;
 }
 
-/* DASHBOARD */
+/* DASHBOARD TOP SECTION*/
 #dashboard-main {
     display: grid;
     grid-template-columns: 15% auto 20%;
