@@ -12,7 +12,7 @@ function SlideShow() {
     var imgExtension = imgUrl.substring(imgUrl.lastIndexOf("."));
 
     // If end is reached, return to beginning
-    if (imgNumber == 3) {
+    if (imgNumber == 4) {
         imgNumber = 0;
     }
 

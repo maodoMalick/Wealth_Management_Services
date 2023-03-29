@@ -97,19 +97,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\2bDeleted1\CustomStyles1.css" />
+    <Content Include="Content\2bDeleted1\MediaQueries1.css" />
+    <Content Include="Content\2bDeleted1\PartialStyles1.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\CustomStyles.css" />
+    <Content Include="Content\CustomStylesX.css" />
     <Content Include="Content\2bDeleted\CustomStylesX.css" />
+    <Content Include="Content\Main.css" />
+    <Content Include="Content\MediaQueries_Brokers.css" />
+    <Content Include="Content\2bDeleted1\MediaQueries_Investors - Copy.css" />
     <Content Include="Content\MediaQueries_Investors.css" />
-    <Content Include="Content\MediaQueries.css" />
+    <Content Include="Content\2bDeleted1\MediaQueriesX1.css" />
+    <Content Include="Content\MediaQueries_Management.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="images-advertiser\advertiser_1.jpg" />
     <Content Include="images-advertiser\advertiser_2.jpg" />
     <Content Include="images-advertiser\advertiser_3.jpg" />
+    <Content Include="images-advertiser\advertiser_4.jpg" />
     <Content Include="images\advertizer.png" />
     <Content Include="images\boA.jpg" />
     <Content Include="images\boA_1.jpg" />
@@ -208,7 +216,6 @@
     <Content Include="Areas\Investors\Views\Shared\_MyBrokerInfo.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_ContactMyBroker.cshtml" />
     <Content Include="Areas\Investors\Views\Shared\_LastYearReturns.cshtml" />
-    <Content Include="Areas\Investors\Views\Shared\_TestForLastYear.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-1.4.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.4.js" />
@@ -225,7 +232,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Content\PartialStyles.css" />
+    <Content Include="Content\2bDeleted1\PartialStylesX.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -312,7 +319,7 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Shared\2Bdeleted\_BrokerPartial.cshtml" />
     <Content Include="Views\Shared\2Bdeleted\_MgmtPartialX.cshtml" />
-    <Content Include="Views\Shared\_InvestorPartial.cshtml" />
+    <Content Include="Views\Shared\2Bdeleted\_InvestorPartial.cshtml" />
     <Content Include="Views\Shared\_BrokersList.cshtml" />
     <Content Include="Views\Shared\2Bdeleted\_Success1.cshtml" />
     <Content Include="Views\Shared\_Graph_Investors.cshtml" />

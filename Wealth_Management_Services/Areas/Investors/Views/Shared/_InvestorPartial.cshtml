@@ -4,11 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Styles -->
+<link href="~/Content/Site.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-<link href="~/Content/PartialStyles.css" rel="stylesheet" />
-<link href="~/Content/CustomStyles.css" rel="stylesheet" />
-<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />
+@*<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />*@ <!--Already included in the Dashboard page-->
 
 <!-- Chart.js Section -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -23,10 +22,9 @@
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 <div class="partialDashboardBox SubBox">
-    <div class="article-inv Box-inv">
+    <div class="article-inv @*Box-inv*@">
         <table class="table">
             <caption style="color:dimgrey; font-weight:bold;">
-
                 @MyViewModel.Welcome
             </caption>
             <tr>
@@ -60,7 +58,7 @@
             </tr>
         </table>
         <div id="#ajaxNavBar">
-            <div class="navigation">Navigation</div>
+            <div class="navigation">NavigationXX</div>
             <div class="ajaxLinks">
                 @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
                 {
