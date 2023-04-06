@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cad0c1aee8004a04a688642734ecf43a" Name="Diagram1">
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.broker" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.investor" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.management" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseLessonsVaultModel.FK__broker__managerI__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseLessonsVaultModel.FK__investor__broker__3C69FB99" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.mgmtBillboard" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.dividends_2022" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DatabaseLessonsVaultModel.brokerOperation" Width="1.5" PointX="7.5" PointY="1.25" />
+        <AssociationConnector Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" />
+        <AssociationConnector Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

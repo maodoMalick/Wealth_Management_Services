@@ -1,0 +1,71 @@
+﻿@model Wealth_Management_Services.Models.investor
+
+@using Wealth_Management_Services.ViewModel
+@using Wealth_Management_Services.Models
+
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<!--Css Styles-->
+@*<link href="~/Content/PartialStyles.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="partialDashboardBox">
+    <div id="inv_left">
+        <table class="table" width="250px" style="margin:auto">
+            <caption style="color:dimgrey; font-weight:bold;">
+                @MyViewModel.Welcome
+            </caption>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.firstName)</b></td>
+                <td>@Html.DisplayFor(x => x.firstName)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.lastName)</b></td>
+                <td>@Html.DisplayFor(x => x.lastName)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.email)</b></td>
+                <td>@Html.DisplayFor(x => x.email)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.memberSince)</b></td>
+                <td>@Html.DisplayFor(x => x.memberSince)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.capital)</b></td>
+                <td>@Html.DisplayFor(x => x.capital)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayNameFor(x => x.latestDividend)</b></td>
+                <td>@Html.DisplayFor(x => x.latestDividend)</td>
+            </tr>
+            <tr>
+                <td><b>@Html.DisplayName("broker name")</b></td>
+                <td>@Html.DisplayFor(x => x.broker.name)</td>
+            </tr>
+        </table>
+        <hr />
+    </div>
+
+    <div id="inv_navbar">
+        @Ajax.ActionLink("Stocks", "Investments", new { area = "Investors" }, new AjaxOptions()
+                                                                   {
+                                                                       HttpMethod = "GET",
+                                                                       UpdateTargetId = "data_content",
+                                                                       InsertionMode = InsertionMode.Replace
+                                                                   }) |
+        @*@Html.ActionLink("Bonds", "BondsSheet", new {area=""})*@
+
+        <div id="data_content"></div>
+
+    </div>
+    <div id="inv_center">
+
+    </div>
+    <div id="inv_right">
+        hello Brooklyn
+        
+    </div>
+
+</div>

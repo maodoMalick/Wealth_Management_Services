@@ -150,7 +150,7 @@
 }
 
 .article-bkr:nth-of-type(2)::-webkit-scrollbar {
-    display: none; /* Hide Scroll bars for Chrome */
+    display: none; /*Hide Scroll bars for Chrome, Safari, Edge */
 }
 
 .article-bkr:nth-of-type(3) {
@@ -167,7 +167,7 @@
 }
 
 .article-bkr:nth-of-type(4)::-webkit-scrollbar {
-    display: none; /* Hide Scroll bars for Chrome */
+    display: none; /*Hide Scroll bars for Chrome, Safari, Edge */
 }
 
 

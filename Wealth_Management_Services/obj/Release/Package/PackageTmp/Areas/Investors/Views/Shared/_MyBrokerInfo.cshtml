@@ -1,0 +1,48 @@
+﻿@model Wealth_Management_Services.Models.broker
+
+@using Wealth_Management_Services.ViewModel
+
+<div class="titles">@MyViewModel.Message</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.commission)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.commission) %
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.management.name)*@
+            @Html.DisplayName("manager name")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.management.name)
+        </dd>
+
+    </dl>
+</div>
+

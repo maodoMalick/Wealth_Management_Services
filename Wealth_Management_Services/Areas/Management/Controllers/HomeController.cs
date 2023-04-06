@@ -22,6 +22,11 @@ namespace Wealth_Management_Services.Areas.Management.Controllers
             return View();
         }
 
+        public ActionResult Login()
+        {
+            return View("Dashboard");
+        }
+
         // User Login
         [HttpPost]
         public ActionResult Login(management mgmt)

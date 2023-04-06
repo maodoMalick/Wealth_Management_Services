@@ -24,6 +24,11 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             return View();
         }
 
+        //public ActionResult Login()
+        //{
+        //    return View("Dashboard");
+        //}
+
         // LOGIN
         [HttpPost]
         public ActionResult Login(investor invest)
@@ -46,7 +51,6 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                         // Success!
                         investor investor = MyViewModel.investor;
                         ViewBag.SingleInvestorData = dataContext.Investor_Data(investor.id);
-                        //MyViewModel.Investor_ArrList = dataContext.Investor_Data(investor.id);
                         MyViewModel.Welcome = "Welcome investor: " + investor.firstName;
                         MyViewModel.UserId = investor.id; // user id will be needed for the Ajax link in the View
                         MyViewModel.BrokerId = (int)investor.brokerID; // Broker Id needed to get the Investor's allocated Broker
@@ -70,7 +74,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             return PartialView("~/Views/Shared/_MinStocks.cshtml", investors);
         }
 
-        // METHODS FOR THE 'AJAX' SECTION IN MANAGEMENT DASHBOARD
+        // METHODS FOR THE 'AJAX' SECTION IN INVESTOR DASHBOARD
         [HttpPost]
         public PartialViewResult MyMoneyChart()
         {
@@ -98,7 +102,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
         public PartialViewResult MyBrokerProfile()
         {
             // Display title with results
-            MyViewModel.Message = "Your Broker's Information";
+            MyViewModel.Message = "My Broker's Information";
             int broker_id = MyViewModel.BrokerId; // Broker 'Id' retrieved from the Login Method
             broker MyBroker = DataConnector.brokers.Single(x => x.id == broker_id);
             return PartialView("_MyBrokerInfo", MyBroker);

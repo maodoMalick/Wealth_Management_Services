@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseLessonsVaultModelStoreContainer" CdmEntityContainer="DataConnection">
+    <EntitySetMapping Name="brokers">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.broker">
+        <MappingFragment StoreEntitySet="broker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="commission" ColumnName="commission" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+          <ScalarProperty Name="managerID" ColumnName="managerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="investors">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.investor">
+        <MappingFragment StoreEntitySet="investor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+          <ScalarProperty Name="capital" ColumnName="capital" />
+          <ScalarProperty Name="latestDividend" ColumnName="latestDividend" />
+          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+          <ScalarProperty Name="loginAttempts" ColumnName="loginAttempts" />
+          <ScalarProperty Name="isLocked" ColumnName="isLocked" />
+          <ScalarProperty Name="lockOutTime" ColumnName="lockOutTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="managements">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.management">
+        <MappingFragment StoreEntitySet="management">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mgmtBillboards">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.mgmtBillboard">
+        <MappingFragment StoreEntitySet="mgmtBillboard">
+          <ScalarProperty Name="reports" ColumnName="reports" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InvestorData_sp" FunctionName="DatabaseLessonsVaultModel.Store.InvestorData_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.InvestorData_sp_Result">
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="memberSince" ColumnName="memberSince" />
+          <ScalarProperty Name="capital" ColumnName="capital" />
+          <ScalarProperty Name="last_profit" ColumnName="last profit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Stock_Operations_sp" FunctionName="DatabaseLessonsVaultModel.Store.Stock_Operations_sp" />
+    <EntitySetMapping Name="dividends_2022">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.dividends_2022">
+        <MappingFragment StoreEntitySet="dividends_2022">
+          <ScalarProperty Name="december" ColumnName="december" />
+          <ScalarProperty Name="november" ColumnName="november" />
+          <ScalarProperty Name="october" ColumnName="october" />
+          <ScalarProperty Name="september" ColumnName="september" />
+          <ScalarProperty Name="august" ColumnName="august" />
+          <ScalarProperty Name="july" ColumnName="july" />
+          <ScalarProperty Name="june" ColumnName="june" />
+          <ScalarProperty Name="may" ColumnName="may" />
+          <ScalarProperty Name="april" ColumnName="april" />
+          <ScalarProperty Name="march" ColumnName="march" />
+          <ScalarProperty Name="february" ColumnName="february" />
+          <ScalarProperty Name="january" ColumnName="january" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetMyDividends_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetMyDividends_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.GetMyDividends_sp_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="january" ColumnName="january" />
+          <ScalarProperty Name="february" ColumnName="february" />
+          <ScalarProperty Name="march" ColumnName="march" />
+          <ScalarProperty Name="april" ColumnName="april" />
+          <ScalarProperty Name="may" ColumnName="may" />
+          <ScalarProperty Name="june" ColumnName="june" />
+          <ScalarProperty Name="july" ColumnName="july" />
+          <ScalarProperty Name="august" ColumnName="august" />
+          <ScalarProperty Name="september" ColumnName="september" />
+          <ScalarProperty Name="october" ColumnName="october" />
+          <ScalarProperty Name="november" ColumnName="november" />
+          <ScalarProperty Name="december" ColumnName="december" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Broker_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Login_sp" />
+    <FunctionImportMapping FunctionImportName="Broker_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Broker_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="BrokerTransactionsReport_sp" FunctionName="DatabaseLessonsVaultModel.Store.BrokerTransactionsReport_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="reports" ColumnName="reports" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetFirstNames_sp" FunctionName="DatabaseLessonsVaultModel.Store.GetFirstNames_sp" />
+    <FunctionImportMapping FunctionImportName="Investor_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Login_sp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DatabaseLessonsVaultModel.Investor_Login_sp_Result">
+          <ScalarProperty Name="IsAuthenticated" ColumnName="IsAuthenticated" />
+          <ScalarProperty Name="LoginAttempts" ColumnName="LoginAttempts" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Investor_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Investor_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="Mgmt_Login_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Login_sp" />
+    <FunctionImportMapping FunctionImportName="Mgmt_Registration_sp" FunctionName="DatabaseLessonsVaultModel.Store.Mgmt_Registration_sp" />
+    <FunctionImportMapping FunctionImportName="UnlockAccounts_sp" FunctionName="DatabaseLessonsVaultModel.Store.UnlockAccounts_sp" />
+    <EntitySetMapping Name="brokerOperations">
+      <EntityTypeMapping TypeName="DatabaseLessonsVaultModel.brokerOperation">
+        <MappingFragment StoreEntitySet="brokerOperations">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="clientID" ColumnName="clientID" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="brokerID" ColumnName="brokerID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="item" ColumnName="item" />
+          <ScalarProperty Name="shares" ColumnName="shares" />
+          <ScalarProperty Name="trader" ColumnName="trader" />
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

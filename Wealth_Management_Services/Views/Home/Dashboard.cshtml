@@ -16,12 +16,12 @@
         <div class="dashboard-item">@DateTime.Today.ToLongDateString()</div>
         <div class="dashboard-item"><span>@Html.ActionLink("Logout", "LogoutUser", new { area = "" }, null)</span></div>
     </div>
+
+
         <!-- Here, instead of using AJAX, I have applied a simple conditional
-         technique to display any requested View.
-    -->
-
-        @{ // >>>>> DON'T FORGET CLIENT SIDE VALID 4 LOGIN <<<<<<
-
+         technique to display any requested partial View that will in turn upload other partial Views.
+         -->
+        @{ 
             if (MyViewModel.management != null)
             {
                 // -- MANAGEMENT SECTION --

@@ -24,9 +24,16 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             return View("Index");
         }
 
+        public ActionResult Login()
+        {
+            return View("Dashboard");
+        }
+
         [HttpPost]
         public ActionResult Login(broker broker)
         {
+            broker bkr = null;
+
             try
             {
                 if (broker != null)
@@ -36,8 +43,8 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
 
                     if (result == 1)
                     {
-                        // Data to be sent to the View
-                        broker bkr = MyViewModel.broker;
+                        // Data from 'Broker_Login()' method to be sent to the View
+                        bkr = MyViewModel.broker;
                         MyViewModel.Welcome = "Welcome Broker: " + bkr.name;
 
                         MyViewModel.UserId = bkr.id; // Needed for 'ClientsList()' method
@@ -53,7 +60,7 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
                     }
                 }
                 // If it fails, stay in this same Login page
-                return View("Index");
+                return View("Index", bkr);
             }
             catch (Exception)
             {
@@ -156,8 +163,6 @@ namespace Wealth_Management_Services.Areas.Brokers.Controllers
             catch (Exception)
             {
                 MyViewModel.InvestorWarning = "There is an Error. Please Log in again.";
-                //broker bkr = new broker();
-                //return View("_BuyingPage");
                 RedirectToAction("Login");
             }
 

@@ -64,14 +64,14 @@ namespace Wealth_Management_Services.Models
                 SqlCommand cmd = new SqlCommand("Mgmt_Login_sp", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
-                //  *** COME BACK LATER TO RESET IT ***
+                
                 // Password Hashing
-                //string pwdHash = PasswordHash.HashCode(mgmt.password); 
+                string pwdHash = PasswordHash.HashCode(mgmt.password);
 
                 // Stored Procedure params
                 SqlParameter paramUser = new SqlParameter("@user", mgmt.username);
                 cmd.Parameters.Add(paramUser);
-                SqlParameter paramPwd = new SqlParameter("@pwd", mgmt.password);
+                SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
                 
                 // Get the validation digit (1 or 0) from SP
@@ -80,7 +80,7 @@ namespace Wealth_Management_Services.Models
                 if (result == 1)
                 {
                     // Get the corresponding row from the database
-                    MyViewModel.management = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == mgmt.password); // Be extra careful here about the 'Hashed' Password
+                    MyViewModel.management = DataConnector.managements.SingleOrDefault(x => x.username == mgmt.username && x.password == pwdHash); // Be extra careful here about the 'Hashed' Password
                 }
 
                 return result;
@@ -159,9 +159,6 @@ namespace Wealth_Management_Services.Models
                 cmd.Parameters.Add(paramUser);
                 SqlParameter paramPwd = new SqlParameter("@pwd", pwdHash);
                 cmd.Parameters.Add(paramPwd);
-
-                // Get the validation digit (1 or 0) from SP
-                int returnCode = (int)cmd.ExecuteScalar();
 
                 // Get the validation digit (1 or 0) from SP
                 int result = (int)cmd.ExecuteScalar(); // Returns a single value from a column 
@@ -302,10 +299,10 @@ namespace Wealth_Management_Services.Models
                     // Get the current number of the user's failed login attempts
                     int failedAttempts = (int)ReadMe["LoginAttempts"];
 
-                    // The 'Reader' is expecting 3 values from the Stored Procedure
+                    // The 'Reader' is expecting 3 values from the Stored Procedure at each iteration
                     if (Convert.ToBoolean(ReadMe["IsLocked"]))
                     {
-                        MyViewModel.InvestorWarning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT 5MN AND RETRY OR CALL CUSTOMER SERVICE.";
+                        MyViewModel.InvestorWarning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT '5 MINUTES' AND RETRY OR CALL CUSTOMER SERVICE.";
                         return result = "Account_Locked";
                     }
                     else if (Convert.ToBoolean(ReadMe["IsAuthenticated"]))
@@ -324,8 +321,6 @@ namespace Wealth_Management_Services.Models
 
                 return result;
             }
-
-            
         }
 
         public ArrayList Investor_Data(int id)

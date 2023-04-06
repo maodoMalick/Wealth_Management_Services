@@ -1,0 +1,40 @@
+﻿@using Wealth_Management_Services.ViewModel
+
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<!-- Graph -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="@Url.Content("../../Scripts/Graphs_Scripts.js")"></script>
+
+<div class="titles">@MyViewModel.Message</div>
+
+<div id="bar_chart_container1">
+    <canvas id="BarChartCanvas1"></canvas>
+</div>
+
+<script>
+    var Dividends = @Html.Raw(Json.Encode(ViewBag.DIVIDENDS));
+    var MonthNames = @Html.Raw(Json.Encode(ViewBag.MONTHNAMES));
+    var barColors = ["#b91d47", "#00aba9", "#2b5797", "#e8c3b9", "#1e7145"];
+
+    new Chart("BarChartCanvas1", {
+        type: "bar",
+        data: {
+            labels: MonthNames,
+            datasets: [{
+                data: Dividends,
+                backgroundColor: barColors,
+                label: "Your Returns for the Year 2022"
+            }]
+        },
+        options: {
+            title: {
+                legend: { display: true },
+                display: true,
+                text: ""
+            }
+        }
+    });
+</script>

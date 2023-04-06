@@ -1,0 +1,40 @@
+﻿@model Wealth_Management_Services.Models.Departments
+
+@{
+    ViewBag.Title = "Index";
+}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Styles -->
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Main.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />
+
+<div id="mainContainer" class="mainBox">
+
+    <h2 id="head2">Welcome to Wealth Management</h2>
+
+    <div id="statement">
+        At Wealth Management Services our professionals take the time to listen carefully to every client. That way, we can learn about your situation and life goals and better understand what's most important to you. Our main goal is to help individuals grow their portfolios and plan for a better retirement.
+    </div>
+
+    <br />
+    <br />
+
+    <!--When clicked each Department will send the user to a specific Area-->
+    <div id="mainNav">
+        @{
+            foreach (var item in Model.getDepartments)
+            {
+                @Html.ActionLink(item.Text, "Index", "Home", new { area = item.Value }, null);
+                <br />
+            }
+        }
+    </div>
+
+    <br />
+
+</div>
+
+
+

@@ -93,6 +93,10 @@ namespace Wealth_Management_Services.Models
         [RegularExpression("^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$")]
         [DisplayName("quantity")]
         public Nullable<int> amount { get; set; }
+
+        [Required]
+        [RegularExpression(@"/^\d*\.?\d+$/")]
+        public decimal total { get; set; }
     }
 }
 

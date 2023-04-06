@@ -4,6 +4,8 @@
 #mainContainer {
     width: 100%;
     height: 500px;
+    /*height: 100%;*/
+    /*height: 70vh;*/
     background: url(../images/nestEgg.jpg) no-repeat top right;
     background-size: 80%;
 }

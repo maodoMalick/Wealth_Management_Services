@@ -1,0 +1,52 @@
+﻿@using Wealth_Management_Services.ViewModel
+@using Wealth_Management_Services.Models
+
+<!-- Styles -->
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/Main.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries_Brokers.css" rel="stylesheet" />
+<link href="~/Content/MediaQueries_Management.css" rel="stylesheet" />
+
+<div class="dashboard-container">
+    <!-- Panel that displays the Home Dashboard title, the date and the Logout button -->
+    <div id="dashboard-main">
+        <div class="dashboard-item"><span>Main Dashboard</span><a href="@Url.Action("Index", "Home", new {area = ""})"><img src="~/images/home_icon_new_20pixel.png" /></a></div>
+        <div class="dashboard-item"></div>
+        <div class="dashboard-item">@DateTime.Today.ToLongDateString()</div>
+        <div class="dashboard-item"><span>@Html.ActionLink("Logout", "LogoutUser", new { area = "" }, null)</span></div>
+    </div>
+        <!-- Here, instead of using AJAX, I have applied a simple conditional
+         technique to display any requested View.
+    -->
+
+        @{ // >>>>> DON'T FORGET CLIENT SIDE VALID 4 LOGIN <<<<<<
+
+            if (MyViewModel.management != null)
+            {
+                // -- MANAGEMENT SECTION --
+                management mgmt = MyViewModel.management;
+
+                @Html.Partial("_MgmtPartial", mgmt)
+                // Must clean the model otherwise it will interfere
+                MyViewModel.management = null;
+            }
+            else if (MyViewModel.broker != null)
+            {
+                // -- BROKER SECTION --
+                broker bkr = MyViewModel.broker;
+                //ViewBag.BROKER = bkr; // safeguard data to be sent to ..
+                @Html.Partial("_BrokerPartial", bkr)
+                // Must clean the model otherwise it will interfere
+                MyViewModel.broker = null;
+            }
+            else if (MyViewModel.investor != null)
+            {
+                // -- INVESTOR SECTION --
+                investor investor = MyViewModel.investor;
+
+                @Html.Partial("_InvestorPartial", investor)
+            }
+        }
+
+</div>

@@ -1,0 +1,43 @@
+﻿@model Wealth_Management_Services.Models.management
+
+@using Wealth_Management_Services.ViewModel
+
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<!--Ajax Package Section-->
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<table width="300px">
+    <caption style="color:dimgrey; font-weight:bold;">
+        @MyViewModel.Welcome
+    </caption>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.name)</a></td>
+        <td>@Html.DisplayFor(x => x.name)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.username)</a></td>
+        <td>@Html.DisplayFor(x => x.username)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.password)</a></td>
+        <td>@Html.DisplayFor(x => x.password)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.gender)</a></td>
+        <td>@Html.DisplayFor(x => x.gender)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.email)</a></td>
+        <td>@Html.DisplayFor(x => x.email)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.salary)</a></td>
+        <td>@Html.DisplayFor(x => x.salary)</td>
+    </tr>
+    <tr>
+        <td><a>@Html.DisplayNameFor(x => x.hireDate)</a></td>
+        <td>@Html.DisplayFor(x => x.hireDate)</td>
+    </tr>
+
+</table>

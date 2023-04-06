@@ -1,0 +1,115 @@
+﻿@model Wealth_Management_Services.Models.investor
+
+@using Wealth_Management_Services.ViewModel
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Styles -->
+<link href="~/Content/Site.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+@*<link href="~/Content/MediaQueries_Investors.css" rel="stylesheet" />*@ <!--Already included in the Dashboard page-->
+
+<!-- Chart.js Section -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="~/Scripts/chart.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- SlideShow -->
+<script src="~/Scripts/CustomJavaScript.js"></script>
+
+<!--Ajax Package Section-->
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="partialDashboardBox SubBox">
+    <div class="article-inv @*Box-inv*@">
+        <table class="table">
+            <caption style="color:dimgrey; font-weight:bold;">
+                @MyViewModel.Welcome
+            </caption>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.firstName)</td>
+                <td>@Html.DisplayFor(x => x.firstName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.lastName)</td>
+                <td>@Html.DisplayFor(x => x.lastName)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.email)</td>
+                <td>@Html.DisplayFor(x => x.email)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.username)</td>
+                <td>@Html.DisplayFor(x => x.username)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.memberSince)</td>
+                <td>@Html.DisplayFor(x => x.memberSince)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.capital)</td>
+                <td>@Html.DisplayFor(x => x.capital)</td>
+            </tr>
+        </table>
+        <div id="#ajaxNavBar">
+            <div class="navigation">NavigationXX</div>
+            <div class="ajaxLinks">
+                @using (Ajax.BeginForm("MyMoneyChart", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    UpdateTargetId = "investorDisplay",
+                    InsertionMode = InsertionMode.Replace
+                }))
+                {
+                    int MyId = MyViewModel.UserId;<!--Retrieve the user's 'id' then place it in the input field-->
+                    <input type="hidden" name="MyId" id="MyId" value="" /> <!--But since the input is 'Hidden' the entry will not be sent as a param to 'MyMoneyChart' ActionMethod, instead the 'ViewModel' object wil be used-->
+                    <button type="submit" class="btn-link">My Money Chart</button>
+                }
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("MY 2022 Returns", "LastYearReturns", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "investorDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("My Broker Profile", "MyBrokerProfile", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "investorStats",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Contact Broker", "ContactMyBroker", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "investorDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+        </div>
+    </div>
+
+    <div class="article-inv Box-inv" id="investorDisplay">
+        <div id="result"></div>
+        <div class="placeholders">Main Screen</div>
+    </div>
+
+    <div class="article-inv Box-inv" id="investorStats">
+        <div class="placeholders">Broker's Data</div>
+    </div>
+
+    <div class="article-inv Box-inv" id="investorSpot">
+        <img src="~/images-advertiser/advertiser_1.jpg" id="img-Animation" />
+    </div>
+
+</div>  <!-- / 'partialDashboardBox' -->

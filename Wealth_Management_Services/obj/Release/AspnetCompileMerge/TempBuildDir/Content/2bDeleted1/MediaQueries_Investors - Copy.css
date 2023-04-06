@@ -1,0 +1,551 @@
+﻿/* GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Genos:wght@100&family=Orbitron&family=Pathway+Gothic+One&display=swap');
+
+
+/*  || MOBILE DEVICES ||  */
+@media(min-width: 320px) {
+
+    #mainContainer {
+        width: 100%;
+        min-height: 90vh;
+        background-image: url(../images/nestEgg.jpg);
+        background-repeat: no-repeat;
+        background-size: 200%;
+        background-position: 90% 110%;
+    }
+
+    #statement {
+        width: 90%;
+        margin: 0 auto;
+        text-align: justify;
+    }
+
+    #head2 {
+        font-size: 150%;
+        font-weight: bold;
+        /*padding-left: 30px;*/
+        padding-left: 1em;
+    }
+
+    #mainNav {
+        /*margin-left: 40px;*/ /*Homepage Navigation */
+        margin-left: 2em;
+    }
+
+    footer {
+        text-align: center;
+    }
+    /*_END HOMEPAGE */
+
+
+    /* -- ALL LOGIN PAGES -- */
+    .containers-inv-login {
+        height: auto;
+        background: yellow; /*  ?????????????????? */
+    }
+
+    .containers-inv-login h2 {
+        /*padding-left: 20px;*/
+        padding-left: .75em;
+    }
+
+    .leftPanel {
+        float: none;
+        width: fit-content;
+        height: auto;
+        /*padding: 0 20px;*/
+        padding: 0 1.5em;
+    }
+
+    .rightPanel {
+        float: none;
+        width: fit-content;
+        height: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+    }
+
+    .item-investor {
+        grid-column: 1 / 4;
+        grid-row: 1 / 3;
+        height: 100%;
+        padding: 130px 30px 30px;
+        background: url(../images/merryll_black.jpg) no-repeat top center;
+        background-color: black;
+        border-radius: 5px;
+        color: #FFF;
+    }
+
+    .item:nth-of-type(1) a {
+        padding: 5px;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        border: 1px solid white;
+    }
+
+    .genBox {
+        padding: 0 20px; /*position the Registration page */
+        height: auto;
+    }
+
+    /* DASHBOARD TITLE */
+    #dashboard-main {
+        display: flex;
+        flex-basis: inherit;
+        justify-content: space-between;
+    }
+
+    .dashboard-item:nth-of-type(1) {
+        padding-top: 5px;
+        font-size: 1.5em;
+    }
+
+    .dashboard-item:nth-of-type(2) {
+        display: none;
+    }
+
+    .dashboard-item:nth-of-type(3) {
+        display: none;
+    }
+
+    .dashboard-item:nth-of-type(4) {
+        background-color: #ccc;
+        margin-top: 5px;
+        padding: 5px 10px 5px;
+        border-radius: 5px;
+    }
+
+    /* --  PARTIAL-PAGES-SECTION -- */
+    .dashboard-container {
+        width: 100%;
+        height: auto; /*Setting the height of the underlying main container (dashboard)*/
+        background: purple; /*  ?????????????????? */
+    }
+
+    .titles {
+        font-size: 1.2em; /* Headers for Partial pages in Investors folder*/
+        font-weight: bold;
+    }
+
+    .partialDashboardBox {
+        /*width: inherit;*/
+        width: 100%;
+        height: auto;
+        border: none;
+        overflow: auto;
+        -ms-overflow-style: none; /* Hide Scroll bars for Chrome IE and Edge scrollbar-width: none;*/
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Grid */
+        row-gap: 5px;
+        background: aqua;
+    }
+
+    .article-inv {
+        /*width: 100%;*/ /*Must extend the width of '1fr' by 10% to fit */
+        width:max-content;
+        height: 300px;
+        padding: 20px;
+        border: 1px solid #D1D3D4;
+        background: red;        /*  ?????????????????? */
+    }
+
+    .article-inv:nth-of-type(1) {
+        grid-column: 1;
+        grid-row: 1 / 3;
+        width: 100%;
+        height: 100%;
+        background: black;
+        color: white;
+            
+    }
+
+    .article-inv:nth-of-type(2) {
+        grid-column: 1;
+        grid-row: 3 / 4;
+        width: 100%;
+        overflow: auto; /*Make table sink its excess length*/
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /* Hide Scroll bars for Firefox*/
+
+        background: yellow;         /*  ?????????????????? */
+    }
+
+    .article-inv:nth-of-type(2)::-webkit-scrollbar {
+        display: none; /*Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(3) {
+        grid-column: 1;
+        grid-row: 4 / 5;
+        width: 100%;
+        background: #33ccff;
+        overflow: auto;
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /*Hide Scroll bars for Firefox*/
+    }
+
+    .article-inv:nth-of-type(3)::-webkit-scrollbar {
+        display: none; /*Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(4) {
+        grid-column: 1;
+        grid-row: 5;
+        /*width: 100%;*/
+        overflow: auto;
+        border-bottom: none;
+        background: black;
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /*Hide Scroll bars for Firefox*/
+    }
+
+    .article-inv:nth-of-type(4)::-webkit-scrollbar {
+        display: none; /* Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(4) img {
+        margin: -18px 0 0 -18px; /*Adjust the SlideShow */
+    }
+
+    #img-Animation {
+        opacity: .2; /* Image Animation */
+    }
+
+    #investorSpot {
+        text-align: center; /* Image Animation */
+    }
+
+    /* Text Placeholders for Partial Page Displays */
+    .placeholders {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.5em;
+        color: darkgray;
+        padding-left: 20%;
+        padding-top: 50%;
+    }
+}
+
+
+/* ---------- || IPADS, TABLETS || ---------------------------------------------------------------------------------------------- */
+@media(min-width: 480px) {
+
+    #mainContainer {
+        background-size: 160%;
+    }
+
+    #statement {
+        width: 91%;
+    }
+
+    #mainNav {
+        /*margin-left: 20px;*/ /*Homepage Navigation */
+        margin-left: 1.3em;
+    }
+
+    #head2 {
+        /*padding-left: 20px;*/
+        padding-left: 1.1em;
+    }
+
+
+    /* -- ALL LOGIN PAGES -- */
+    .rightPanel {
+        /*width: 100%;*/
+    }
+
+    .genBox {
+        padding: 0 75px; /*position the Registration page */
+    }
+
+    /* --  PARTIAL-PAGES-SECTION -- */
+    .partialDashboardBox {
+        width: auto;
+        /* height: auto;*/
+        /*grid-template-columns: 1fr;*/
+    }
+
+    /* Text Placeholders for Partial Page Displays */
+    .placeholders {
+        padding-left: 20%;
+        padding-top: 25%;
+    }
+}
+
+
+/* ---------- || SMALL SCREENS, LAPTOPS || ---------------------------------------------------------------------------------------------- */
+@media(min-width: 768px) {
+
+    #mainContainer {
+        background-size: 150%;
+        /*background-position: 90% 95%;*/
+    }
+
+    #statement {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    /* -- ALL LOGIN PAGES -- */
+    .rightPanel {
+        width: 100%;
+    }
+
+    .genBox {
+        padding: 0 150px; /*position the Registration page */
+    }
+
+    /* --  PARTIAL-PAGES-SECTION -- */
+    .containers-inv-login {
+        /*height: auto;*/ /*Setting the height of the underlying main container (dashboard)*/
+    }
+
+    .dashboard-item:nth-of-type(1) {
+        /*width: 100%;*/ /* to readjust the position of the 'Main Dashboard' title */
+    }
+
+    .dashboard-item:nth-of-type(2) {
+        /*margin-left: 0;*/
+        /*text-align: right; */ /* to readjust the position of the 'Home' icon */
+    }
+
+    .partialDashboardBox {
+        width: auto;
+        /*height: auto;*/
+        /* grid-template-columns: 1fr;*/
+    }
+
+    .article-inv {
+        width: auto; /* Must extend the width of '1fr' by 10% to fit */
+    }
+
+    /* Text Placeholders for Partial Page Displays */
+    .placeholders {
+        padding-left: 35%;
+        padding-top: 15%;
+    }
+}
+
+
+/* ---------- || DESKTOP, LARGE SCREENS || ---------------------------------------------------------------------------------------------- */
+@media(min-width: 1024px) {
+
+    #mainContainer {
+        /*width: 100%;
+        height: 500px;*/
+        background-size: 80%;
+        background-position: /*100% 0*/ top right;
+    }
+
+    #head2 {
+        padding-top: 30px;
+        padding-left: 0px;
+    }
+
+    #statement {
+        width: 40%;
+        margin-left: 0px;
+    }
+
+    #mainNav {
+        margin-left: 0px; /*Homepage Navigation */
+    }
+
+    .dashboard-container {
+        /*height: 515px;*/
+    }
+
+    /* -- ALL LOGIN PAGES -- */
+    .containers-inv-login {
+        /*min-height: 50vh;*/
+        min-height: 70vh;
+    }
+
+    .containers-inv-login h2 {
+        padding-left: 90px;
+    }
+
+    .leftPanel {
+        float: left;
+        width: 46%;
+        /*width:fit-content;*/
+        height: 460px;
+        padding-left: 20px;
+        background: pink;
+    }
+
+    .rightPanel {
+        float: right;
+        /*width: fit-content;*/
+        width: 53%;
+        height: 460px;
+    }
+
+    .genBox {
+        padding: 0 150px; /*position the Registration page */
+    }
+
+    /* --  PARTIAL-PAGES-SECTION -- */
+    .dashboard-container {
+        /*width:fit-content;*/
+    }
+
+    .containers-inv-login {
+        /*min-height: 70vh;*/
+        /*width:fit-content;
+        background: green;*/
+        /*height: auto;*/ /*Setting the height of the underlying main container (dashboard)*/
+    }
+
+    .partialDashboardBox {
+        width: 100%;
+        height: auto;
+        border: 1px solid #D1D3D4;
+        /*overflow: auto;*/
+        /*-ms-overflow-style: none;*/
+        /*grid-template-columns: repeat(4, 1fr);*/
+        background: aqua;
+    }
+
+    .SubBox {
+        min-height: 40vh; /* this is also the 'partialDashboardBox' */
+    }
+
+    .article-inv {
+        /*width: unset;*/ /* RESET the width of '1fr' to its original size */
+        width: 100%;
+        /*width:auto;*/
+    }
+
+    .article-inv:nth-of-type(1) {
+        grid-column: 1 /2;
+        grid-row: 1 / 3;
+        /*background: black;
+    color: white;*/
+    }
+
+    .article-inv:nth-of-type(2) {
+        grid-column: 2 / 5;
+        grid-row: 1 / 2;
+        /*max-height: 425px;*/
+        /*overflow: auto;*/ /*Make table sink its excess length*/
+        /*-ms-overflow-style: none;*/ /*Hide Scroll bars for Chrome IE and Edge */
+        /*scrollbar-width: none;*/ /* Hide Scroll bars for Firefox*/
+    }
+
+    /*.article-inv:nth-of-type(2)::-webkit-scrollbar {
+    display: none;*/ /*Hide Scroll bars for Chrome */
+    /*}*/
+
+    .article-inv:nth-of-type(3) {
+        grid-column: 2 / 4;
+        grid-row: 2;
+        /*overflow: auto;
+    background: #33ccff;
+    -ms-overflow-style: none;*/ /*Hide Scroll bars for Chrome IE and Edge */
+        /*scrollbar-width: none;*/ /*Hide Scroll bars for Firefox*/
+    }
+
+    /*.article-inv:nth-of-type(3)::-webkit-scrollbar {
+    display: none;*/ /*Hide Scroll bars for Chrome */
+    /*}*/
+
+    .article-inv:nth-of-type(4) {
+        grid-column: 4;
+        grid-row: 2;
+        /*overflow: auto;
+    border-bottom: none;
+    background: black;
+    -ms-overflow-style: none;*/ /*Hide Scroll bars for Chrome IE and Edge */
+        /*scrollbar-width: none;*/ /*Hide Scroll bars for Firefox*/
+    }
+
+    /* Text Placeholders for Partial Page Displays */
+    .placeholders {
+        padding-left: 35%;
+        padding-top: 15%;
+    }
+}
+
+
+/* ---------- - EXTRA LARGE SCREENS, TV - ---------------------------------------------------------------------------------------------- */
+@media(min-width: 1200px) {
+
+    .article-inv {
+        padding: 20px;
+        border: 1px solid #D1D3D4;
+    }
+
+    .article-inv:nth-of-type(1) {
+        grid-row: 1 / 3;
+        background: black;
+        color: white;
+    }
+
+    .article-inv:nth-of-type(2) {
+        grid-column: 2 / 5;
+        max-height: 425px;
+        overflow: auto; /*Make table sink its excess length*/
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /* Hide Scroll bars for Firefox*/
+    }
+
+    .article-inv:nth-of-type(2)::-webkit-scrollbar {
+        display: none; /*Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(3) {
+        grid-column: 2 / 4;
+        overflow: auto;
+        background: #33ccff;
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /*Hide Scroll bars for Firefox*/
+    }
+
+    .article-inv:nth-of-type(3)::-webkit-scrollbar {
+        display: none; /*Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(4) {
+        grid-column: 4;
+        /*max-height: 150px;*/
+        overflow: auto;
+        border-bottom: none;
+        background: black;
+        -ms-overflow-style: none; /*Hide Scroll bars for Chrome IE and Edge */
+        scrollbar-width: none; /*Hide Scroll bars for Firefox*/
+    }
+
+    .article-inv:nth-of-type(4)::-webkit-scrollbar {
+        display: none; /* Hide Scroll bars for Chrome */
+    }
+
+    .article-inv:nth-of-type(4) img {
+        margin: -18px 0 0 -18px; /*Adjust the SlideShow */
+    }
+
+    /* Image Animation */
+    #img-Animation {
+        opacity: .2;
+    }
+
+    /* Text Placeholders for Partial Page Displays */
+    .placeholders {
+        /*font-family: 'Genos', sans-serif;*/
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.5em;
+        color: darkgray;
+        padding-left: 40%;
+        padding-top: 20%;
+    }
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+
+
+/*  || ORIENTATION ||  (min-aspect-ratio: 7/4) */
+/*@media(max-height: 425px) and (orientation: landscape) {
+
+}*/
+

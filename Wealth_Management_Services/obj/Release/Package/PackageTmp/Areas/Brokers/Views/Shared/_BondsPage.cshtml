@@ -1,0 +1,37 @@
+﻿@using Wealth_Management_Services.ViewModel
+
+<!--Styles-->
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+@*<link href="~/Content/PartialStyles.css" rel="stylesheet" />*@
+
+<div id="StocksDisplay">
+    <div class="titles">@MyViewModel.Message</div>
+    <div id="stocksBondsNav">
+        @Ajax.ActionLink("STOCKS", "GetStocksList", new AjaxOptions
+                                                                       {
+                                                                           HttpMethod = "GET",
+                                                                           UpdateTargetId = "brokerDisplay",
+                                                                           InsertionMode = InsertionMode.Replace
+                                                                       }) |
+        @Ajax.ActionLink("BONDS", "GetBondsList", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+    </div>
+    <hr />
+    <div id="stocksBox">
+        <div class="item-stocks"><a href="https://www.marketwatch.com/investing/index/spx.com" target="_blank"><img src="~/images_bonds/bond_00.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.cnbc.com/dow-30/" target="_blank"><img src="~/images_bonds/bond_01.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.nasdaq.com" target="_blank"><img src="~/images_bonds/bond_02.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.ftserussell.com" target="_blank"><img src="~/images_bonds/bond_03.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.coinmarketcap.com" target="_blank"><img src="~/images_bonds/bond_04.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://finance.yahoo.com/quote/%5ECMC200/" target="_blank"><img src="~/images_bonds/bond_05.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.londonstockexchange.com/indices/ftse-100" target="_blank"><img src="~/images_bonds/bond_06.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.cnbc.com/quotes/.N225" target="_blank"><img src="~/images_bonds/bond_07.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.bloomberg.com" target="_blank"><img src="~/images_bonds/bond_08.jpg" /></a></div>
+        <div class="item-stocks"><a href="https://www.tradingview.com" target="_blank"><img src="~/images_bonds/bond_09.jpg" /></a></div>
+    </div>
+</div>

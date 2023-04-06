@@ -1,0 +1,106 @@
+﻿@model Wealth_Management_Services.Models.broker
+
+@using Wealth_Management_Services.ViewModel
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/PartialStyles.css" rel="stylesheet" />
+<!--Ajax Package Section-->
+<script src="~/Scripts/jquery-1.4.4.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+<div class="partialDashboardBox">
+    <div class="article-bkr">
+        <table class="table">
+            <caption style="color:dimgrey; font-weight:bold;">
+                @MyViewModel.Welcome
+            </caption>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.name)</td>
+                <td>@Html.DisplayFor(x => x.name)</td>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.email)</td>
+                <td>@Html.DisplayFor(x => x.email)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.salary)</td>
+                <td>@Html.DisplayFor(x => x.salary)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.commission)</td>
+                <td>@Html.DisplayFor(x => x.commission)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.hireDate)</td>
+                <td>@Html.DisplayFor(x => x.hireDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.managerID)</td>
+                <td>@Html.DisplayFor(x => x.managerID)</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="article-bkr" id="brokerDisplay">
+
+    </div>
+    <div class="article-bkr">
+        <div id="#ajaxNavBar">
+            <h4>Navigation</h4>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("List of All Clients", "ClientsList", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Highest Dividends", "HighestDividend", new { lastdividend = 3000 }, new AjaxOptions
+                                                                                        {
+                                                                                            HttpMethod = "GET",
+                                                                                            UpdateTargetId = "brokerStats",
+                                                                                            InsertionMode = InsertionMode.Replace
+                                                                                        })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Clients by Gender", "ClientsByGender", new AjaxOptions
+                                                                                {
+                                                                                    HttpMethod = "GET",
+                                                                                    UpdateTargetId = "brokerStats",
+                                                                                    InsertionMode = InsertionMode.Replace
+                                                                                })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Clients by Seniority", "ClientsBySeniority", new AjaxOptions
+                                                                                    {
+                                                                                        HttpMethod = "GET",
+                                                                                        UpdateTargetId = "brokerStats",
+                                                                                        InsertionMode = InsertionMode.Replace
+                                                                                    })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Go to Marketplace", "GotoMarketplace", new AjaxOptions
+                                                                                {
+                                                                                    HttpMethod = "GET",
+                                                                                    UpdateTargetId = "brokerDisplay",
+                                                                                    InsertionMode = InsertionMode.Replace
+                                                                                })
+            </div>
+            <div class="ajaxLinks">
+                @Ajax.ActionLink("Buy Stocks or Bonds", "Purchasing", new AjaxOptions
+                                                                            {
+                                                                                HttpMethod = "GET",
+                                                                                UpdateTargetId = "brokerDisplay",
+                                                                                InsertionMode = InsertionMode.Replace
+                                                                            })
+            </div>
+        </div>
+    </div>
+    <div class="article-bkr" id="brokerStats">
+        <b>Why invest in index funds?</b>
+    </div>
+
+</div> <!-- 'partialDashboardBox' -->
