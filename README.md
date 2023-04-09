@@ -14,13 +14,13 @@ investor: to view his/her returns and contact broker or register for a 'new acco
 MANAGEMENT: <br/>
 You can use this name: <br/>
 jim: username = ji123, password = Ji77777$ <br/>
-BROKERS:
-You can use this name:
-heathcliff: username = he123, password = He77777$
-INVESTORS:
-You can use this name:
-bill gates: username = bi123, password = Bi77777$
-you can also create your own account by following the same naming pattern:
-username = xx123, password = Xx12345$
+BROKERS: <br/>
+You can use this name: <br/>
+heathcliff: username = he123, password = He77777$ <br/>
+INVESTORS: <br/>
+You can use this name: <br/>
+bill gates: username = bi123, password = Bi77777$ <br/>
+you can also create your own account by following the same naming pattern: <br/>
+username = xx123, password = Xx12345$ 
 
 Unfortunately the site is not responsive yet.
