@@ -13,8 +13,6 @@ namespace Wealth_Management_Services.Models
     
     public partial class GetMyDividends_sp_Result
     {
-        public int id { get; set; }
-        public string firstName { get; set; }
         public Nullable<decimal> january { get; set; }
         public Nullable<decimal> february { get; set; }
         public Nullable<decimal> march { get; set; }

@@ -11,176 +11,31 @@
     <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="commission" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="commission" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="hireDate" Type="DateTime" Precision="3" />
     <Property Name="managerID" Type="Int32" />
     <NavigationProperty Name="management" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="broker" ToRole="management" />
-    <NavigationProperty Name="investors" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="broker" ToRole="investor" />
-    <NavigationProperty Name="brokerOperations" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="broker" ToRole="brokerOperation" />
+    <NavigationProperty Name="brokerOperations" Relationship="Self.FK__brokerOpe__broke__44952D46" FromRole="broker" ToRole="brokerOperations" />
+    <NavigationProperty Name="investors" Relationship="Self.FK__investor__broker__41B8C09B" FromRole="broker" ToRole="investor" />
   </EntityType>
-  <EntityType Name="investor">
+  <EntityType Name="brokerOperation">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="memberSince" Type="DateTime" Precision="3" />
-    <Property Name="capital" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="latestDividend" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="transactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="trader" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="shares" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="brokerID" Type="Int32" />
-    <Property Name="loginAttempts" Type="Int32" />
-    <Property Name="isLocked" Type="Int32" />
-    <Property Name="lockOutTime" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="broker" Relationship="Self.FK__investor__broker__3C69FB99" FromRole="investor" ToRole="broker" />
-    <NavigationProperty Name="brokerOperations" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="investor" ToRole="brokerOperation" />
+    <Property Name="purchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="clientID" Type="Int32" />
+    <Property Name="total" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="broker" Relationship="Self.FK__brokerOpe__broke__44952D46" FromRole="brokerOperations" ToRole="broker" />
+    <NavigationProperty Name="investor" Relationship="Self.FK__brokerOpe__clien__4589517F" FromRole="brokerOperations" ToRole="investor" />
   </EntityType>
-  <EntityType Name="management">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="hireDate" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="brokers" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="management" ToRole="broker" />
-  </EntityType>
-  <Association Name="FK__broker__managerI__398D8EEE">
-    <End Role="management" Type="Self.management" Multiplicity="0..1" />
-    <End Role="broker" Type="Self.broker" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="management">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="broker">
-        <PropertyRef Name="managerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__investor__broker__3C69FB99">
-    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
-    <End Role="investor" Type="Self.investor" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="broker">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="investor">
-        <PropertyRef Name="brokerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="DataConnection" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="brokers" EntityType="Self.broker" />
-    <EntitySet Name="investors" EntityType="Self.investor" />
-    <EntitySet Name="managements" EntityType="Self.management" />
-    <AssociationSet Name="FK__broker__managerI__398D8EEE" Association="Self.FK__broker__managerI__398D8EEE">
-      <End Role="management" EntitySet="managements" />
-      <End Role="broker" EntitySet="brokers" />
-    </AssociationSet>
-    <AssociationSet Name="FK__investor__broker__3C69FB99" Association="Self.FK__investor__broker__3C69FB99">
-      <End Role="broker" EntitySet="brokers" />
-      <End Role="investor" EntitySet="investors" />
-    </AssociationSet>
-    <EntitySet Name="mgmtBillboards" EntityType="DatabaseLessonsVaultModel.mgmtBillboard" />
-    <FunctionImport Name="InvestorData_sp" ReturnType="Collection(DatabaseLessonsVaultModel.InvestorData_sp_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Stock_Operations_sp">
-      <Parameter Name="trader" Mode="In" Type="String" />
-      <Parameter Name="shares" Mode="In" Type="String" />
-      <Parameter Name="item" Mode="In" Type="String" />
-      <Parameter Name="amount" Mode="In" Type="Int32" />
-      <Parameter Name="price" Mode="In" Type="Decimal" />
-      <Parameter Name="brokerID" Mode="In" Type="Int32" />
-      <Parameter Name="purchaseDate" Mode="In" Type="DateTime" />
-      <Parameter Name="clientID" Mode="In" Type="Int32" />
-      <Parameter Name="total" Mode="In" Type="Decimal" />
-    </FunctionImport>
-    <EntitySet Name="dividends_2022" EntityType="DatabaseLessonsVaultModel.dividends_2022" />
-    <FunctionImport Name="GetMyDividends_sp" ReturnType="Collection(DatabaseLessonsVaultModel.GetMyDividends_sp_Result)">
-      <Parameter Name="id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Broker_Login_sp" ReturnType="Collection(Int32)">
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Broker_Registration_sp" ReturnType="Collection(Int32)">
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-      <Parameter Name="gender" Mode="In" Type="String" />
-      <Parameter Name="email" Mode="In" Type="String" />
-      <Parameter Name="salary" Mode="In" Type="Decimal" />
-      <Parameter Name="commission" Mode="In" Type="Decimal" />
-      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
-      <Parameter Name="mgrID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="BrokerTransactionsReport_sp" ReturnType="Collection(DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result)" />
-    <FunctionImport Name="GetFirstNames_sp" ReturnType="Collection(String)" />
-    <FunctionImport Name="Investor_Login_sp" ReturnType="Collection(DatabaseLessonsVaultModel.Investor_Login_sp_Result)">
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Investor_Registration_sp" ReturnType="Collection(Int32)">
-      <Parameter Name="first" Mode="In" Type="String" />
-      <Parameter Name="last" Mode="In" Type="String" />
-      <Parameter Name="gender" Mode="In" Type="String" />
-      <Parameter Name="email" Mode="In" Type="String" />
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-      <Parameter Name="mbrSince" Mode="In" Type="DateTime" />
-      <Parameter Name="capital" Mode="In" Type="Decimal" />
-      <Parameter Name="lastDiv" Mode="In" Type="Decimal" />
-      <Parameter Name="brokerID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="Mgmt_Login_sp" ReturnType="Collection(Int32)">
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="Mgmt_Registration_sp" ReturnType="Collection(Int32)">
-      <Parameter Name="name" Mode="In" Type="String" />
-      <Parameter Name="user" Mode="In" Type="String" />
-      <Parameter Name="pwd" Mode="In" Type="String" />
-      <Parameter Name="gender" Mode="In" Type="String" />
-      <Parameter Name="email" Mode="In" Type="String" />
-      <Parameter Name="salary" Mode="In" Type="Decimal" />
-      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="UnlockAccounts_sp" />
-    <EntitySet Name="brokerOperations" EntityType="DatabaseLessonsVaultModel.brokerOperation" />
-    <AssociationSet Name="FK__brokerOpe__broke__32AB8735" Association="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735">
-      <End Role="broker" EntitySet="brokers" />
-      <End Role="brokerOperation" EntitySet="brokerOperations" />
-    </AssociationSet>
-    <AssociationSet Name="FK__brokerOpe__clien__339FAB6E" Association="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E">
-      <End Role="investor" EntitySet="investors" />
-      <End Role="brokerOperation" EntitySet="brokerOperations" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="mgmtBillboard">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="reports" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <ComplexType Name="InvestorData_sp_Result">
-    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="memberSince" Nullable="true" Precision="23" />
-    <Property Type="Decimal" Name="capital" Nullable="true" Precision="19" />
-    <Property Type="Decimal" Name="last_profit" Nullable="true" Precision="19" />
-    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-  </ComplexType>
   <EntityType Name="dividends_2022">
     <Key>
       <PropertyRef Name="id" />
@@ -200,9 +55,190 @@
     <Property Name="november" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="december" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
-  <ComplexType Name="GetMyDividends_sp_Result">
+  <EntityType Name="investor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="memberSince" Type="DateTime" Precision="3" />
+    <Property Name="capital" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="latestDividend" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="brokerID" Type="Int32" />
+    <Property Name="loginAttempts" Type="Int32" />
+    <Property Name="isLocked" Type="Int32" />
+    <Property Name="lockOutTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="broker" Relationship="Self.FK__investor__broker__41B8C09B" FromRole="investor" ToRole="broker" />
+    <NavigationProperty Name="brokerOperations" Relationship="Self.FK__brokerOpe__clien__4589517F" FromRole="investor" ToRole="brokerOperations" />
+  </EntityType>
+  <EntityType Name="management">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="hireDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="brokers" Relationship="Self.FK__broker__managerI__398D8EEE" FromRole="management" ToRole="broker" />
+  </EntityType>
+  <EntityType Name="mgmtBillboard">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reports" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__broker__managerI__398D8EEE">
+    <End Role="management" Type="Self.management" Multiplicity="0..1" />
+    <End Role="broker" Type="Self.broker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="management">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="broker">
+        <PropertyRef Name="managerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__brokerOpe__broke__44952D46">
+    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+    <End Role="brokerOperations" Type="Self.brokerOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="broker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperations">
+        <PropertyRef Name="brokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__investor__broker__41B8C09B">
+    <End Role="broker" Type="Self.broker" Multiplicity="0..1" />
+    <End Role="investor" Type="Self.investor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="broker">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="investor">
+        <PropertyRef Name="brokerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__brokerOpe__clien__4589517F">
+    <End Role="investor" Type="Self.investor" Multiplicity="0..1" />
+    <End Role="brokerOperations" Type="Self.brokerOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="investor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="brokerOperations">
+        <PropertyRef Name="clientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DataConnection" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="brokers" EntityType="Self.broker" />
+    <EntitySet Name="brokerOperations" EntityType="Self.brokerOperation" />
+    <EntitySet Name="dividends_2022" EntityType="Self.dividends_2022" />
+    <EntitySet Name="investors" EntityType="Self.investor" />
+    <EntitySet Name="managements" EntityType="Self.management" />
+    <EntitySet Name="mgmtBillboards" EntityType="Self.mgmtBillboard" />
+    <AssociationSet Name="FK__broker__managerI__398D8EEE" Association="Self.FK__broker__managerI__398D8EEE">
+      <End Role="management" EntitySet="managements" />
+      <End Role="broker" EntitySet="brokers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__brokerOpe__broke__44952D46" Association="Self.FK__brokerOpe__broke__44952D46">
+      <End Role="broker" EntitySet="brokers" />
+      <End Role="brokerOperations" EntitySet="brokerOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__investor__broker__41B8C09B" Association="Self.FK__investor__broker__41B8C09B">
+      <End Role="broker" EntitySet="brokers" />
+      <End Role="investor" EntitySet="investors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__brokerOpe__clien__4589517F" Association="Self.FK__brokerOpe__clien__4589517F">
+      <End Role="investor" EntitySet="investors" />
+      <End Role="brokerOperations" EntitySet="brokerOperations" />
+    </AssociationSet>
+    <FunctionImport Name="Broker_Login_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Broker_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Decimal" />
+      <Parameter Name="commission" Mode="In" Type="Decimal" />
+      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+      <Parameter Name="mgrID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="BrokerTransactionsReport_sp" ReturnType="Collection(DatabaseLessonsVaultModel.BrokerTransactionsReport_sp_Result)" />
+    <FunctionImport Name="GetFirstNames_sp" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetMonthNames_sp" ReturnType="Collection(String)" />
+    <FunctionImport Name="GetMyDividends_sp" ReturnType="Collection(DatabaseLessonsVaultModel.GetMyDividends_sp_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Investor_Login_sp" ReturnType="Collection(DatabaseLessonsVaultModel.Investor_Login_sp_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Investor_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="first" Mode="In" Type="String" />
+      <Parameter Name="last" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="mbrSince" Mode="In" Type="DateTime" />
+      <Parameter Name="capital" Mode="In" Type="Decimal" />
+      <Parameter Name="lastDiv" Mode="In" Type="Decimal" />
+      <Parameter Name="brokerID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InvestorData_sp" ReturnType="Collection(DatabaseLessonsVaultModel.InvestorData_sp_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Mgmt_Login_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Mgmt_Registration_sp" ReturnType="Collection(Int32)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+      <Parameter Name="gender" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="salary" Mode="In" Type="Decimal" />
+      <Parameter Name="hireDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Stock_Operations_sp">
+      <Parameter Name="trader" Mode="In" Type="String" />
+      <Parameter Name="shares" Mode="In" Type="String" />
+      <Parameter Name="item" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Decimal" />
+      <Parameter Name="brokerID" Mode="In" Type="Int32" />
+      <Parameter Name="purchaseDate" Mode="In" Type="DateTime" />
+      <Parameter Name="clientID" Mode="In" Type="Int32" />
+      <Parameter Name="total" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="UnlockAccounts_sp" />
+  </EntityContainer>
+  <ComplexType Name="BrokerTransactionsReport_sp_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="reports" Nullable="true" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="GetMyDividends_sp_Result">
     <Property Type="Decimal" Name="january" Nullable="true" Precision="19" />
     <Property Type="Decimal" Name="february" Nullable="true" Precision="19" />
     <Property Type="Decimal" Name="march" Nullable="true" Precision="19" />
@@ -216,55 +252,18 @@
     <Property Type="Decimal" Name="november" Nullable="true" Precision="19" />
     <Property Type="Decimal" Name="december" Nullable="true" Precision="19" />
   </ComplexType>
-  <ComplexType Name="BrokerTransactionsReport_sp_Result">
-    <Property Type="Int32" Name="id" Nullable="false" />
-    <Property Type="String" Name="reports" Nullable="true" MaxLength="1000" />
-  </ComplexType>
   <ComplexType Name="Investor_Login_sp_Result">
     <Property Type="Int32" Name="IsAuthenticated" Nullable="false" />
     <Property Type="Int32" Name="LoginAttempts" Nullable="false" />
     <Property Type="Int32" Name="IsLocked" Nullable="false" />
   </ComplexType>
-  <EntityType Name="brokerOperation">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="transactionID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="trader" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="shares" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="item" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="amount" Type="Int32" Nullable="false" />
-    <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="brokerID" Type="Int32" Nullable="false" />
-    <Property Name="purchaseDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="clientID" Type="Int32" Nullable="false" />
-    <Property Name="total" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <NavigationProperty Name="broker" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__broke__32AB8735" FromRole="brokerOperation" ToRole="broker" />
-    <NavigationProperty Name="investor" Relationship="DatabaseLessonsVaultModel.FK__brokerOpe__clien__339FAB6E" FromRole="brokerOperation" ToRole="investor" />
-  </EntityType>
-  <Association Name="FK__brokerOpe__broke__32AB8735">
-    <End Type="DatabaseLessonsVaultModel.broker" Role="broker" Multiplicity="1" />
-    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="broker">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="brokerOperation">
-        <PropertyRef Name="brokerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__brokerOpe__clien__339FAB6E">
-    <End Type="DatabaseLessonsVaultModel.investor" Role="investor" Multiplicity="1" />
-    <End Type="DatabaseLessonsVaultModel.brokerOperation" Role="brokerOperation" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="investor">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="brokerOperation">
-        <PropertyRef Name="clientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <ComplexType Name="InvestorData_sp_Result">
+    <Property Type="String" Name="firstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="memberSince" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="capital" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="last_profit" Nullable="true" Precision="19" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

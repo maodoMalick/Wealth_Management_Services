@@ -129,19 +129,6 @@
     opacity: .2;
 }
 
-/* Text Placeholders for Partial Page Displays */
-.placeholders {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5em;
-    color: darkgray;
-    padding-left: 40%;
-    padding-top: 10%;
-}
-
-
-
-
-
 
 /* --------------------------------------------------------------------------------------------------------------------- */
 /* MEDIA QUERIES */

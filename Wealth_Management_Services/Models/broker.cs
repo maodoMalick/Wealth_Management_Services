@@ -17,8 +17,8 @@ namespace Wealth_Management_Services.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public broker()
         {
-            this.investors = new HashSet<investor>();
             this.brokerOperations = new HashSet<brokerOperation>();
+            this.investors = new HashSet<investor>();
         }
     
         public int id { get; set; }
@@ -34,8 +34,8 @@ namespace Wealth_Management_Services.Models
     
         public virtual management management { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<investor> investors { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<brokerOperation> brokerOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<investor> investors { get; set; }
     }
 }

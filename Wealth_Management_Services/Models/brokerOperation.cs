@@ -19,12 +19,12 @@ namespace Wealth_Management_Services.Models
         public string trader { get; set; }
         public string shares { get; set; }
         public string item { get; set; }
-        public int amount { get; set; }
-        public decimal price { get; set; }
-        public int brokerID { get; set; }
-        public System.DateTime purchaseDate { get; set; }
-        public int clientID { get; set; }
-        public decimal total { get; set; }
+        public Nullable<int> amount { get; set; }
+        public Nullable<decimal> price { get; set; }
+        public Nullable<int> brokerID { get; set; }
+        public Nullable<System.DateTime> purchaseDate { get; set; }
+        public Nullable<int> clientID { get; set; }
+        public Nullable<decimal> total { get; set; }
     
         public virtual broker broker { get; set; }
         public virtual investor investor { get; set; }

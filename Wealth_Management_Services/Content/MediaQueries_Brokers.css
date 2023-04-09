@@ -189,9 +189,9 @@
     border: 1px solid #D1D3D4;
 }
 
-    .item-stocks:hover {
-        opacity: 30%;
-    }
+.item-stocks:hover {
+    opacity: 30%;
+}
 
 #buyTable table {
     border-radius: 10px;
@@ -201,11 +201,12 @@
     border-left: 1px solid #D1D3D4;
 }
 
-    #buyTable table td {
-        padding: 0 20px;
-    }
+#buyTable table td {
+    padding: 0 20px;
+}
 
 #send {
     margin-top: 10px;
     width: 100%;
 }
+

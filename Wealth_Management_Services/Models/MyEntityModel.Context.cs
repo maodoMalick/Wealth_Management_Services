@@ -28,70 +28,11 @@ namespace Wealth_Management_Services.Models
         }
     
         public virtual DbSet<broker> brokers { get; set; }
+        public virtual DbSet<brokerOperation> brokerOperations { get; set; }
+        public virtual DbSet<dividends_2022> dividends_2022 { get; set; }
         public virtual DbSet<investor> investors { get; set; }
         public virtual DbSet<management> managements { get; set; }
         public virtual DbSet<mgmtBillboard> mgmtBillboards { get; set; }
-        public virtual DbSet<dividends_2022> dividends_2022 { get; set; }
-        public virtual DbSet<brokerOperation> brokerOperations { get; set; }
-    
-        public virtual ObjectResult<InvestorData_sp_Result> InvestorData_sp(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InvestorData_sp_Result>("InvestorData_sp", idParameter);
-        }
-    
-        public virtual int Stock_Operations_sp(string trader, string shares, string item, Nullable<int> amount, Nullable<decimal> price, Nullable<int> brokerID, Nullable<System.DateTime> purchaseDate, Nullable<int> clientID, Nullable<decimal> total)
-        {
-            var traderParameter = trader != null ?
-                new ObjectParameter("trader", trader) :
-                new ObjectParameter("trader", typeof(string));
-    
-            var sharesParameter = shares != null ?
-                new ObjectParameter("shares", shares) :
-                new ObjectParameter("shares", typeof(string));
-    
-            var itemParameter = item != null ?
-                new ObjectParameter("item", item) :
-                new ObjectParameter("item", typeof(string));
-    
-            var amountParameter = amount.HasValue ?
-                new ObjectParameter("amount", amount) :
-                new ObjectParameter("amount", typeof(int));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("price", price) :
-                new ObjectParameter("price", typeof(decimal));
-    
-            var brokerIDParameter = brokerID.HasValue ?
-                new ObjectParameter("brokerID", brokerID) :
-                new ObjectParameter("brokerID", typeof(int));
-    
-            var purchaseDateParameter = purchaseDate.HasValue ?
-                new ObjectParameter("purchaseDate", purchaseDate) :
-                new ObjectParameter("purchaseDate", typeof(System.DateTime));
-    
-            var clientIDParameter = clientID.HasValue ?
-                new ObjectParameter("clientID", clientID) :
-                new ObjectParameter("clientID", typeof(int));
-    
-            var totalParameter = total.HasValue ?
-                new ObjectParameter("total", total) :
-                new ObjectParameter("total", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Stock_Operations_sp", traderParameter, sharesParameter, itemParameter, amountParameter, priceParameter, brokerIDParameter, purchaseDateParameter, clientIDParameter, totalParameter);
-        }
-    
-        public virtual ObjectResult<GetMyDividends_sp_Result> GetMyDividends_sp(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMyDividends_sp_Result>("GetMyDividends_sp", idParameter);
-        }
     
         public virtual ObjectResult<Nullable<int>> Broker_Login_sp(string user, string pwd)
         {
@@ -157,6 +98,20 @@ namespace Wealth_Management_Services.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetFirstNames_sp");
         }
     
+        public virtual ObjectResult<string> GetMonthNames_sp()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetMonthNames_sp");
+        }
+    
+        public virtual ObjectResult<GetMyDividends_sp_Result> GetMyDividends_sp(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMyDividends_sp_Result>("GetMyDividends_sp", idParameter);
+        }
+    
         public virtual ObjectResult<Investor_Login_sp_Result> Investor_Login_sp(string user, string pwd)
         {
             var userParameter = user != null ?
@@ -215,6 +170,15 @@ namespace Wealth_Management_Services.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Investor_Registration_sp", firstParameter, lastParameter, genderParameter, emailParameter, userParameter, pwdParameter, mbrSinceParameter, capitalParameter, lastDivParameter, brokerIDParameter);
         }
     
+        public virtual ObjectResult<InvestorData_sp_Result> InvestorData_sp(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InvestorData_sp_Result>("InvestorData_sp", idParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> Mgmt_Login_sp(string user, string pwd)
         {
             var userParameter = user != null ?
@@ -259,6 +223,47 @@ namespace Wealth_Management_Services.Models
                 new ObjectParameter("hireDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("Mgmt_Registration_sp", nameParameter, userParameter, pwdParameter, genderParameter, emailParameter, salaryParameter, hireDateParameter);
+        }
+    
+        public virtual int Stock_Operations_sp(string trader, string shares, string item, Nullable<int> amount, Nullable<decimal> price, Nullable<int> brokerID, Nullable<System.DateTime> purchaseDate, Nullable<int> clientID, Nullable<decimal> total)
+        {
+            var traderParameter = trader != null ?
+                new ObjectParameter("trader", trader) :
+                new ObjectParameter("trader", typeof(string));
+    
+            var sharesParameter = shares != null ?
+                new ObjectParameter("shares", shares) :
+                new ObjectParameter("shares", typeof(string));
+    
+            var itemParameter = item != null ?
+                new ObjectParameter("item", item) :
+                new ObjectParameter("item", typeof(string));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            var brokerIDParameter = brokerID.HasValue ?
+                new ObjectParameter("brokerID", brokerID) :
+                new ObjectParameter("brokerID", typeof(int));
+    
+            var purchaseDateParameter = purchaseDate.HasValue ?
+                new ObjectParameter("purchaseDate", purchaseDate) :
+                new ObjectParameter("purchaseDate", typeof(System.DateTime));
+    
+            var clientIDParameter = clientID.HasValue ?
+                new ObjectParameter("clientID", clientID) :
+                new ObjectParameter("clientID", typeof(int));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("total", total) :
+                new ObjectParameter("total", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Stock_Operations_sp", traderParameter, sharesParameter, itemParameter, amountParameter, priceParameter, brokerIDParameter, purchaseDateParameter, clientIDParameter, totalParameter);
         }
     
         public virtual int UnlockAccounts_sp()
