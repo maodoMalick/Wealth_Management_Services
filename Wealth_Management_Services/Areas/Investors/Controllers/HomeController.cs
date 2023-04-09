@@ -42,6 +42,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
                 switch (result)
                 {
                     case "Account_Locked":
+                        UserAccountUnlocker.Unlocker(); // THIS REPLACES THE 'SQL SERVER AGENT' JOB
                         // Failed! Will return to the Login page
                         return View("Index");
                     case "Failed_Login":
