@@ -10,10 +10,10 @@ Broker: to view investor data and purchase stocks or bonds.
 investor: to view his/her returns and contact broker or register for a 'new account'. But if an investor fails login more than three times, he/she will be locked out and a SQL Server Agent is set to unlock their account after five minutes. BUT unfortunately, I am using a 'Shared Server' account on GoDaddy which doesn't provide for such a tool.
 
 *** HOW TO LOGIN: *** <br/>
-(See the PNG files for all SQL Server Database tables or use the names below)
-MANAGEMENT:
-You can use this name:
-jim: username = ji123, password = Ji77777$
+(See the PNG files for all SQL Server Database tables or use the names below) <br/>
+MANAGEMENT: <br/>
+You can use this name: <br/>
+jim: username = ji123, password = Ji77777$ <br/>
 BROKERS:
 You can use this name:
 heathcliff: username = he123, password = He77777$
