@@ -1,5 +1,6 @@
 # Wealth_Management_Services
-Fictitious Financial Company
+Fictional Financial Company
+
 This is an ASP.NET project which layout is set on a base View (Dashboard) that loads _Partial Views upon _Partial Views as per user's requests.
 It is a simulation of a small investment company that has three departments. Areas have been used to better structure the different departments and EntityFrame has been used for Data Connection along with LINQ and ADO.NET for Data Access and Manipulation. (See the PNG file for the Site Map)
 
