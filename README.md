@@ -2,7 +2,7 @@
 Latest ASP.NET MVC Project
 
 This is an ASP.NET project which layout is set on a base View (Dashboard) that loads _Partial Views upon _Partial Views as per user's requests.
-It is a simulation of a small investment company that has three departments. Areas have been used to better structure the different departments and EntityFrame has been used for Data Connection along with LINQ and ADO.NET for Data Access and Manipulation. (See the PNG file for the Site Map)
+It is a simulation of a small investment company that has three departments. Areas have been set to better structure the different departments and EntityFrame has been used for Data Connection along with LINQ and ADO.NET for Data Access and Manipulation. (See the PNG file for the Site Map)
 
 Any user can login as: <br/>
 <b>Manager</b>: to view investor data and Broker purchases dynamically. <br/>
@@ -11,13 +11,13 @@ Any user can login as: <br/>
 
 *** HOW TO LOGIN: *** <br/>
 (See the PNG files for all SQL Server Database tables or use the names below) <br/>
-MANAGEMENT: <br/>
+<b>MANAGEMENT</b>: <br/>
 You can use this name: <br/>
 jim: username = ji123, password = Ji77777$ <br/>
-BROKERS: <br/>
+<b>BROKERS</b>: <br/>
 You can use this name: <br/>
 heathcliff: username = he123, password = He77777$ <br/>
-INVESTORS: <br/>
+<b>INVESTORS</b>: <br/>
 You can use this name: <br/>
 bill gates: username = bi123, password = Bi77777$ <br/>
 you can also create your own account by following the same naming pattern: <br/>
