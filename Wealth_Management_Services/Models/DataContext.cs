@@ -303,7 +303,7 @@ namespace Wealth_Management_Services.Models
                     // The 'Reader' is expecting 3 values from the Stored Procedure at each iteration
                     if (Convert.ToBoolean(ReadMe["IsLocked"]))
                     {
-                        MyViewModel.InvestorWarning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT ' 10 MINUTES ' AND RETRY OR CALL CUSTOMER SERVICE.";
+                        MyViewModel.InvestorWarning = "YOUR ACCOUNT HAS BEEN LOCKED. PLEASE WAIT '10 MINUTES' AND RETRY OR CALL CUSTOMER SERVICE.";
                         return result = "Account_Locked";
                     }
                     else if (Convert.ToBoolean(ReadMe["IsAuthenticated"]))

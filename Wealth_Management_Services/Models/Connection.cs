@@ -14,8 +14,8 @@ namespace Wealth_Management_Services.Models
         {
             // Connection String
             string cstr = ConfigurationManager.ConnectionStrings["CONN"].ConnectionString;
-            SqlConnection conn = new SqlConnection(cstr);
-            return conn;
+            SqlConnection connect = new SqlConnection(cstr);
+            return connect;
         }
 
     }

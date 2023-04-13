@@ -97,20 +97,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\2bDeleted1\CustomStyles1.css" />
-    <Content Include="Content\2bDeleted1\MediaQueries1.css" />
-    <Content Include="Content\2bDeleted1\PartialStyles1.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\2bDeleted1\CustomStylesX.css" />
-    <Content Include="Content\2bDeleted\CustomStylesX.css" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\MediaQueries_Brokers.css" />
-    <Content Include="Content\2bDeleted1\MediaQueries_Investors - Copy.css" />
     <Content Include="Content\MediaQueries_Investors.css" />
-    <Content Include="Content\2bDeleted1\MediaQueriesX1.css" />
     <Content Include="Content\MediaQueries_Management.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
@@ -232,7 +225,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Content\2bDeleted1\PartialStylesX.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

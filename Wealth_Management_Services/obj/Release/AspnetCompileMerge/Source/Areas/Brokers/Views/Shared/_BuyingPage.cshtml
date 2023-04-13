@@ -5,7 +5,7 @@
 <!--Styles-->
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-@*<link href="~/Content/PartialStyles.css" rel="stylesheet" />*@
+
 <!--Ajax Package Section-->
 <script src="~/Scripts/jquery-1.4.4.min.js"></script>
 <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
@@ -102,9 +102,6 @@
         <div class="form-group">
             @Html.LabelFor(model => model.brokerID, "broker ID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @*@Html.DropDownList("brokerID", null, htmlAttributes: new { @class = "form-control" })*@
-                @*@Html.EditorFor(model => model.brokerID, new { htmlAttributes = new { @class = "form-control" } })*@
-                @*@Html.TextBoxFor(model => model.brokerID, Session["brokerId"], new { @class = "form-control" })*@
                 @Html.TextBox("brokerID", Session["brokerId"], new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.brokerID, "", new { @class = "text-danger" })
             </div>
@@ -131,7 +128,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBox("total", "", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -145,3 +143,12 @@
 }
 
 
+<script>
+    document.getElementById("price").onkeyup = Totalize;
+    function Totalize() {
+        var amount = document.getElementById("amount").Value;
+        var price = document.getElementById("price").Value;
+        document.getElementById("total").Value = amount * price;
+    }
+    // doesn't work, will get back to it some day
+</script>

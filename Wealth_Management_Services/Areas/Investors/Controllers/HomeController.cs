@@ -85,7 +85,7 @@ namespace Wealth_Management_Services.Areas.Investors.Controllers
             List<decimal> Dividends = dataContext.MyDividends(MyViewModel.UserId); // User 'id' collected from Login ActionMethod
             List<string> MonthNames = dataContext.getMonthNames();
             // Data to be feed to the Investor Bar Chart in the View
-            ViewBag.DIVIDENDS = Dividends.OrderByDescending(x => x).ToList();
+            ViewBag.DIVIDENDS = Dividends.ToList();
             ViewBag.MONTHNAMES = MonthNames;
 
             return PartialView("_Graph_Lines_MyMoney");

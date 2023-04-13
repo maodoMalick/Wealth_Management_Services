@@ -7,15 +7,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5UouPQRf1EOdexEnoldP1gAAAAACAAAAAAAQZgAAAAEAACAAAACrEffYsIiSaZmaphTuKWD9SX5OoZCOODkP0OtzRJXbjAAAAAAOgAAAAAIAACAAAADVvoCfY+DfXj0XBp0CGf1FHGUJl3hnpFTGJ1h9rxcR+iAAAAAHW3P8U1i/LsQb+4bxNK84Kpsz3orq+kaFpATXI8MT00AAAAAquJt4NIDEsqE9MDOVlc4u5XSu3ZgU/7tckpsVsy8TXQYRBc7JL7vy7h71UA7cJcLwU6zmicxhlwDE0eH121yi</EncryptedPassword>
     <_PublishTargetUrl>ftp://107.180.46.156/httpdocs</_PublishTargetUrl>
-    <History>True|2023-03-29T09:08:36.4749432Z;</History>
+    <History>True|2023-04-11T07:22:29.5663165Z;True|2023-04-11T02:36:16.4324443-04:00;True|2023-04-10T06:16:33.2077171-04:00;True|2023-03-29T05:08:36.4749432-04:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Brokers/Views/Home/Index.cshtml">
-      <publishTime>03/28/2023 04:42:43</publishTime>
+      <publishTime>04/06/2023 06:53:43</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Home/Registration.cshtml">
-      <publishTime>03/25/2023 00:47:40</publishTime>
+      <publishTime>04/06/2023 06:56:43</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/2Bdeleted/test.cshtml">
       <publishTime>02/11/2023 08:13:42</publishTime>
@@ -27,19 +27,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/11/2023 08:13:42</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/_BondsPage.cshtml">
-      <publishTime>03/25/2023 00:48:06</publishTime>
+      <publishTime>04/06/2023 06:57:18</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/_BrokerPartial.cshtml">
       <publishTime>03/29/2023 01:30:05</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/_BuyingPage.cshtml">
-      <publishTime>03/25/2023 00:48:34</publishTime>
+      <publishTime>04/06/2023 06:59:51</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/_Layout.cshtml">
       <publishTime>03/18/2023 12:34:28</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/Shared/_StocksPage.cshtml">
-      <publishTime>03/25/2023 00:49:10</publishTime>
+      <publishTime>04/06/2023 07:00:19</publishTime>
     </File>
     <File Include="Areas/Brokers/Views/web.config">
       <publishTime>01/02/2023 08:25:43</publishTime>
@@ -48,7 +48,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/03/2023 11:06:46</publishTime>
     </File>
     <File Include="Areas/Investors/Views/Home/Index.cshtml">
-      <publishTime>03/24/2023 04:59:17</publishTime>
+      <publishTime>04/04/2023 04:11:23</publishTime>
     </File>
     <File Include="Areas/Investors/Views/Home/Registration.cshtml">
       <publishTime>03/23/2023 23:23:06</publishTime>
@@ -78,10 +78,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/03/2023 11:11:01</publishTime>
     </File>
     <File Include="Areas/Management/Views/Home/Index.cshtml">
-      <publishTime>03/28/2023 15:43:36</publishTime>
+      <publishTime>04/05/2023 04:25:26</publishTime>
     </File>
     <File Include="Areas/Management/Views/Home/Registration.cshtml">
-      <publishTime>03/12/2023 20:04:35</publishTime>
+      <publishTime>04/06/2023 07:11:19</publishTime>
     </File>
     <File Include="Areas/Management/Views/Shared/_BrokersInfo.cshtml">
       <publishTime>02/18/2023 11:02:12</publishTime>
@@ -90,13 +90,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/28/2023 16:30:39</publishTime>
     </File>
     <File Include="Areas/Management/Views/Shared/_MgmtPartial.cshtml">
-      <publishTime>03/29/2023 01:30:41</publishTime>
+      <publishTime>04/09/2023 01:17:31</publishTime>
     </File>
     <File Include="Areas/Management/Views/Shared/_Success.cshtml">
       <publishTime>02/13/2023 16:30:40</publishTime>
     </File>
     <File Include="Areas/Management/Views/Shared/_TransactionsReport.cshtml">
-      <publishTime>03/25/2023 00:51:34</publishTime>
+      <publishTime>04/06/2023 07:14:34</publishTime>
     </File>
     <File Include="Areas/Management/Views/web.config">
       <publishTime>01/02/2023 08:26:15</publishTime>
@@ -105,10 +105,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/03/2023 11:12:14</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>03/29/2023 05:05:39</publishTime>
+      <publishTime>04/11/2023 03:19:02</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>03/29/2023 05:05:39</publishTime>
+      <publishTime>04/11/2023 03:19:01</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/16/2020 16:38:42</publishTime>
@@ -288,16 +288,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>05/28/2022 00:42:50</publishTime>
     </File>
     <File Include="bin/Wealth_Management_Services.dll">
-      <publishTime>03/29/2023 05:05:11</publishTime>
+      <publishTime>04/11/2023 03:18:45</publishTime>
     </File>
     <File Include="bin/Wealth_Management_Services.pdb">
-      <publishTime>03/29/2023 05:05:11</publishTime>
+      <publishTime>04/11/2023 03:18:45</publishTime>
     </File>
     <File Include="Content/2bDeleted/CustomStylesX.css">
       <publishTime>03/16/2023 08:12:32</publishTime>
     </File>
     <File Include="Content/2bDeleted1/CustomStyles1.css">
       <publishTime>03/23/2023 17:35:28</publishTime>
+    </File>
+    <File Include="Content/2bDeleted1/CustomStylesX.css">
+      <publishTime>03/23/2023 23:15:45</publishTime>
     </File>
     <File Include="Content/2bDeleted1/MediaQueries1.css">
       <publishTime>03/23/2023 17:35:28</publishTime>
@@ -342,16 +345,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>03/23/2023 23:15:45</publishTime>
     </File>
     <File Include="Content/Main.css">
-      <publishTime>03/29/2023 00:40:52</publishTime>
+      <publishTime>04/09/2023 01:23:27</publishTime>
     </File>
     <File Include="Content/MediaQueries_Brokers.css">
-      <publishTime>03/29/2023 02:51:10</publishTime>
+      <publishTime>04/09/2023 01:02:01</publishTime>
     </File>
     <File Include="Content/MediaQueries_Investors.css">
-      <publishTime>03/29/2023 04:05:18</publishTime>
+      <publishTime>04/09/2023 01:02:01</publishTime>
     </File>
     <File Include="Content/MediaQueries_Management.css">
-      <publishTime>03/29/2023 02:43:54</publishTime>
+      <publishTime>04/09/2023 01:02:01</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>03/12/2023 11:22:12</publishTime>
@@ -498,10 +501,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/01/2023 21:18:29</publishTime>
     </File>
     <File Include="Models/MyEntityModel.edmx.diagram">
-      <publishTime>02/27/2023 19:12:48</publishTime>
+      <publishTime>04/08/2023 06:12:47</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>03/29/2023 05:05:21</publishTime>
+      <publishTime>04/11/2023 03:18:49</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>01/01/2023 19:51:33</publishTime>
@@ -564,10 +567,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/2023 19:51:33</publishTime>
     </File>
     <File Include="Views/Home/Dashboard.cshtml">
-      <publishTime>03/29/2023 01:28:01</publishTime>
+      <publishTime>04/06/2023 07:22:26</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>03/28/2023 03:01:28</publishTime>
+      <publishTime>04/10/2023 03:50:21</publishTime>
     </File>
     <File Include="Views/Shared/2Bdeleted/_BrokerPartial.cshtml">
       <publishTime>02/13/2023 14:36:37</publishTime>
@@ -582,16 +585,16 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/14/2023 14:54:57</publishTime>
     </File>
     <File Include="Views/Shared/_BrokersList.cshtml">
-      <publishTime>03/25/2023 00:29:23</publishTime>
+      <publishTime>04/06/2023 07:23:49</publishTime>
     </File>
     <File Include="Views/Shared/_ClientsList.cshtml">
-      <publishTime>03/25/2023 00:29:42</publishTime>
+      <publishTime>04/06/2023 07:24:22</publishTime>
     </File>
     <File Include="Views/Shared/_Graph_Bars_Brokers.cshtml">
-      <publishTime>03/25/2023 00:30:11</publishTime>
+      <publishTime>04/06/2023 07:24:41</publishTime>
     </File>
     <File Include="Views/Shared/_Graph_Investors.cshtml">
-      <publishTime>03/25/2023 00:30:37</publishTime>
+      <publishTime>04/06/2023 07:24:55</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>03/29/2023 00:21:32</publishTime>
@@ -606,7 +609,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/2023 19:45:37</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/29/2023 05:05:15</publishTime>
+      <publishTime>04/11/2023 03:18:47</publishTime>
     </File>
   </ItemGroup>
 </Project>
