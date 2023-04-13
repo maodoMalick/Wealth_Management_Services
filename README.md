@@ -2,7 +2,7 @@
 Latest ASP.NET MVC Project
 
 This is an ASP.NET project which layout is set on a base View (Dashboard) that loads _Partial Views upon _Partial Views as per user's requests.
-It is a simulation of a small investment company that has three departments. Areas have been set to better structure the different departments and EntityFrame has been used for Data Connection along with LINQ and ADO.NET for Data Access and Manipulation. (See the PNG file for the Site Map). A Sql Server TRIGGER has been set to record  dynamically any Broker stock purchase to the Transaction Billboard of the managers.
+It is a simulation of a small investment company that has three departments. Areas are set to better structure the different departments and EntityFrame has been used for Data Connection along with LINQ and ADO.NET for Data Access and Manipulation. (See the PNG file for the Site Map). A Sql Server TRIGGER has been set to record  dynamically any Broker stock purchase to the Transaction Billboard of the managers.
 
 Any user can login as: <br/>
 <b>Manager</b>: to view investor data and Broker purchases dynamically. <br/>
