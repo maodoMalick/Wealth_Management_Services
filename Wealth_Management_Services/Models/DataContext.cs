@@ -202,8 +202,6 @@ namespace Wealth_Management_Services.Models
                 SqlParameter paramTotal = new SqlParameter("@total", bkrO.total);
                 cmd.Parameters.Add(paramTotal);
 
-                //int result = (int)cmd.ExecuteScalar();
-                //return result;
                 cmd.ExecuteNonQuery();
             }
         }
